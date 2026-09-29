@@ -29,8 +29,8 @@
         ];
 
         var varietyChannels = [
-            { n: "MBC 1", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8", t: "hls" },
-            { n: "MBC 2", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fcloth.orangecord.net%2Fpdf%2Fsat2MBC2%2Findex.m3u8%3Ftoken%3D%3D", t: "hls" },
+            { n: "MBC 1", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8?aws.manifestfilter=video_height:144-576;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
+            { n: "MBC 2", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-2/15cf99af5de54063fdabfefe66adc075/index.m3u8?aws.manifestfilter=video_height:144-576;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
             { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
             { n: "MBC 4", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8", t: "hls" },
             { n: "MBC 5", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8", t: "hls" },
@@ -62,12 +62,12 @@
 
         var dashChannels = [
             {
-                n: "Starzplay Sports 1 HD",
-                u: "https://sps1.starzplayarabia.com/out/v1/eee188845e9543699fd24e5a9890c6e2/index.mpd",
+                n: "mbc2 HD",
+                u: "https://shd-mediacdn-live.edgenextcdn.net/live/bitmovin-mbc-2/51db9d7fa48a27d051f1eecb68069151/index.mpd",
                 t: "dash",
                 drm: {
                     clearKeys: {
-                        "b253c726c24c7c94a3ddf9b1907e2c76": "097963d6ad73c3d712a104981de0ed42"
+                        "b1a8592dff8a4965983fd7f8ee7006dc": "0954d76121a0c33c6e3f52175aca6c05"
                     }
                 }
             }
