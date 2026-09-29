@@ -16,7 +16,7 @@ var dashClearKeyChannels = [
     // المفاتيح تكون بنظام 16-byte hex: KEY_ID : KEY
     {
         n: "تجربة DASH ClearKey",
-        u: "https://storage.googleapis.com/shaka-demo-assets/angel-one-clearkey/dash.mpd",
+        u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-2/51db9d7fa48a27d051f1eecb68069151/index.mpd",
         t: "dash",
         clearkey: {
             "4a656e6e69666572416e6e6973746f6e": "7b80302b0c3cb7a26f0490b62b694b28"
