@@ -2,6 +2,7 @@
 
 var hls = null;
 var shakaPlayer = null;
+var tsPlayer = null;
 var cur = { r: -1, i: -1 };
 var retryT = null;
 
@@ -62,6 +63,10 @@ async function resetPlayers() {
         await shakaPlayer.destroy();
         shakaPlayer = null;
     }
+    if (tsPlayer) {
+        tsPlayer.destroy();
+        tsPlayer = null;
+    }
     vid.removeAttribute('src');
     vid.load();
 }
@@ -113,6 +118,43 @@ async function loadDash(url, clearkeyConfig) {
         console.error('Failed to load DASH:', e);
         toast('تعذر فك تشفير أو تشغيل بث DASH');
     }
+}
+
+// تشغيل روابط MPEG-TS المباشرة عبر mpegts.js
+function loadTs(url) {
+    showLoader();
+    vid.style.display = 'block';
+    iframeWrap.style.display = 'none';
+    resetPlayers().then(function () {
+        if (window.mpegts && mpegts.getFeatureList().mseLivePlayback) {
+            tsPlayer = mpegts.createPlayer({
+                type: 'mpegts',
+                isLive: true,
+                url: url
+            }, {
+                enableWorker: true,
+                lazyLoad: false,
+                liveBufferLatencyChasing: true
+            });
+            tsPlayer.attachMediaElement(vid);
+            tsPlayer.load();
+            tsPlayer.play().catch(function () {});
+
+            tsPlayer.on(mpegts.Events.ERROR, function (e, d) {
+                console.error('TS Error:', e, d);
+                hideLoader();
+                toast('خطأ في تشغيل بث TS');
+            });
+
+            vid.addEventListener('playing', function () {
+                hideLoader();
+                pw.classList.add('playing');
+            }, { once: true });
+        } else {
+            hideLoader();
+            toast('المتصفح لا يدعم تشغيل بث TS');
+        }
+    });
 }
 
 // تشغيل روابط HLS
@@ -172,10 +214,12 @@ function load(ri, ci) {
     chTitle.textContent = ch.n;
     chTitle.style.display = 'block';
 
-    var type = ch.t || (ch.u.includes('.mpd') ? 'dash' : 'hls');
+    var type = ch.t || (ch.u.includes('.mpd') ? 'dash' : (ch.u.includes('.ts') ? 'ts' : 'hls'));
 
     if (type === 'dash') {
         loadDash(ch.u, ch.clearkey);
+    } else if (type === 'ts') {
+        loadTs(ch.u);
     } else if (type === 'iframe') {
         resetPlayers();
         vid.style.display = 'none';
@@ -231,7 +275,7 @@ function buildDashQuality() {
     });
 }
 
-function closeQ() { qm.classList.remove('open'); }
+function closeQ() {`qm.classList.remove('open'); }
 function toggleQ() { qm.classList.toggle('open'); }
 
 function togglePlay() { vid.paused ? vid.play() : vid.pause(); }
