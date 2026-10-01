@@ -180,7 +180,7 @@
             { n: "AR| BEIN SPORTS 7 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330480.m3u8", t: "hls" },
             { n: "AR| BEIN SPORTS 8 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330481.m3u8", t: "hls" },
             { n: "AR| BEIN SPORTS 9 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330482.m3u8", t: "hls" }
-       ];  
+        ];  
 
 
         var ROWS = [
