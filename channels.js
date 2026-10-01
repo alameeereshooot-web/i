@@ -169,17 +169,17 @@
         ];
 
         var beinLQChannels = [
-            { n: "AR| BEIN SPORTS NEWS LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330471.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS GLOBAL LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330472.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 1 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330474.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 2 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330475.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 3 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330476.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 4 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330477.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 5 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330478.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 6 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330479.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 7 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330480.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 8 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330481.m3u8", t: "hls" },
-            { n: "AR| BEIN SPORTS 9 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330482.m3u8", t: "hls" }
+            { n: "AR| BEIN SPORTS NEWS LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330471.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS GLOBAL LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330472.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 1 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330474.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 2 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330475.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 3 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330476.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 4 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330477.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 5 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330478.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 6 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330479.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 7 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330480.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 8 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330481.m3u8", t: "ts" },
+            { n: "AR| BEIN SPORTS 9 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330482.m3u8", t: "ts" }
         ];  
 
 
