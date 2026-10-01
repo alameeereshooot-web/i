@@ -195,5 +195,5 @@
             { label: 'الفجر', channels: fajerChannels, special: false },
             { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
             { label: 'الوان', channels: alwanChannels, special: false },
-            { label: 'bein LQ', channels: mbcNewChannels, special: false }
+            { label: 'bein LQ', channels: beinLQChannels, special: false }
         ];
