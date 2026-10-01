@@ -122,39 +122,36 @@ async function loadDash(url, clearkeyConfig) {
 
 // تشغيل روابط MPEG-TS المباشرة عبر mpegts.js
 function loadTs(url) {
-    showLoader();
-    vid.style.display = 'block';
-    iframeWrap.style.display = 'none';
-    resetPlayers().then(function () {
-        if (window.mpegts && mpegts.getFeatureList().mseLivePlayback) {
-            tsPlayer = mpegts.createPlayer({
-                type: 'mpegts',
-                isLive: true,
-                url: url
-            }, {
-                enableWorker: true,
-                lazyLoad: false,
-                liveBufferLatencyChasing: true
-            });
-            tsPlayer.attachMediaElement(vid);
-            tsPlayer.load();
-            tsPlayer.play().catch(function () {});
+  if (!mpegts.isSupported()) {
+    toast('المتصفح لا يدعم بث TS');
+    return;
+  }
+  tsPlayer = mpegts.createPlayer({
+    type: 'mpegts',
+    isLive: true,
+    url: url
+  }, {
+    enableWorker: true,
+    lazyLoad: false,
+    // إيقاف القفز العنيف لمنع التقطيع كل ثانيتين
+    liveBufferLatencyChasing: false,
+    // بدء التشغيل فوراً بحجم ذاكرة مبدئي صغير (128KB بدلاً من الانتظار 10 ثوانٍ)
+    enableStashBuffer: true,
+    stashInitialSize: 128 * 1024,
+    // تنظيف تلقائي للذاكرة حتى لا يثقل المتصفح
+    autoCleanupSourceBuffer: true,
+    autoCleanupMaxBackwardDuration: 30,
+    autoCleanupMinBackwardDuration: 15
+  });
 
-            tsPlayer.on(mpegts.Events.ERROR, function (e, d) {
-                console.error('TS Error:', e, d);
-                hideLoader();
-                toast('خطأ في تشغيل بث TS');
-            });
+  tsPlayer.attachMediaElement(vid);
+  tsPlayer.load();
+  tsPlayer.play().catch(function(e) { console.log('Autoplay TS:', e); });
 
-            vid.addEventListener('playing', function () {
-                hideLoader();
-                pw.classList.add('playing');
-            }, { once: true });
-        } else {
-            hideLoader();
-            toast('المتصفح لا يدعم تشغيل بث TS');
-        }
-    });
+  tsPlayer.on(mpegts.Events.ERROR, function(type, detail, info) {
+    console.error('TS Error:', type, detail, info);
+    toast('خطأ في تشغيل قناة TS');
+  });
 }
 
 // تشغيل روابط HLS
