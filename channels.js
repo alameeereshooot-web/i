@@ -61,18 +61,17 @@
             { n: "Zain TV 1", u: "https://zaintv1.zaintvpro.workers.dev/live/z1.m3u8", t: "hls" }
         ];
 
-        var dashChannels = [
+       var dashChannels = [
             {
                 n: "mbc2 HD",
                 u: "https://shd-mediacdn-live.edgenextcdn.net/live/bitmovin-mbc-2/51db9d7fa48a27d051f1eecb68069151/index.mpd",
                 t: "dash",
-                drm: {
-                    clearKeys: {
-                        "b1a8592dff8a4965983fd7f8ee7006dc": "0954d76121a0c33c6e3f52175aca6c05"
-                    }
+                clearkey: {
+                    "b1a8592dff8a4965983fd7f8ee7006dc": "0954d76121a0c33c6e3f52175aca6c05"
                 }
             }
         ];
+
 
         var playChannels = [
             { n: "الفجر١", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1114.m3u8", t: "hls" },
