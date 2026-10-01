@@ -120,36 +120,49 @@ async function loadDash(url, clearkeyConfig) {
     }
 }
 
-// تشغيل روابط MPEG-TS المباشرة عبر mpegts.js
-function loadTs(url) {
+// تشغيل روابط MPEG-TS المباشرة عبر mpegts.js بسلاسة ودون تقطيع
+async function loadTs(url) {
   if (!mpegts.isSupported()) {
     toast('المتصفح لا يدعم بث TS');
     return;
   }
+  showLoader();
+  vid.style.display = 'block';
+  iframeWrap.style.display = 'none';
+  await resetPlayers();
+
   tsPlayer = mpegts.createPlayer({
     type: 'mpegts',
     isLive: true,
     url: url
   }, {
-    enableWorker: true,
+    enableWorker: false,             // تعطيل Worker لمنع تقطيع الفريمات على متصفح الهاتف
     lazyLoad: false,
-    // إيقاف القفز العنيف لمنع التقطيع كل ثانيتين
-    liveBufferLatencyChasing: false,
-    // بدء التشغيل فوراً بحجم ذاكرة مبدئي صغير (128KB بدلاً من الانتظار 10 ثوانٍ)
     enableStashBuffer: true,
-    stashInitialSize: 128 * 1024,
-    // تنظيف تلقائي للذاكرة حتى لا يثقل المتصفح
+    stashInitialSize: 384 * 1024,    // مخزون مبدئي متزن (384KB) يبدأ البث سريعاً خلال 2-3 ثوانٍ
+    liveBufferLatencyChasing: true,  // تفعيل إدارة المخزون التلقائي
+    liveBufferLatencyMaxLatency: 4.5,// أقصى حد للتأخير 4.5 ثوانٍ
+    liveBufferLatencyMinRemain: 2.0, // الاحتفاظ دائماً بمخزون أمان ثانيتين يمتص تذبذب النت ويمنع التوقف
     autoCleanupSourceBuffer: true,
-    autoCleanupMaxBackwardDuration: 30,
-    autoCleanupMinBackwardDuration: 15
+    autoCleanupMaxBackwardDuration: 60,
+    autoCleanupMinBackwardDuration: 30
   });
 
   tsPlayer.attachMediaElement(vid);
   tsPlayer.load();
-  tsPlayer.play().catch(function(e) { console.log('Autoplay TS:', e); });
+
+  vid.addEventListener('playing', function() {
+    hideLoader();
+    pw.classList.add('playing');
+  }, { once: true });
+
+  tsPlayer.play().catch(function(e) {
+    console.log('Autoplay TS:', e);
+  });
 
   tsPlayer.on(mpegts.Events.ERROR, function(type, detail, info) {
     console.error('TS Error:', type, detail, info);
+    hideLoader();
     toast('خطأ في تشغيل قناة TS');
   });
 }
