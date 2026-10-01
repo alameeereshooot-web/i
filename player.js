@@ -275,7 +275,7 @@ function buildDashQuality() {
     });
 }
 
-function closeQ() {`qm.classList.remove('open'); }
+function closeQ() { qm.classList.remove('open'); }
 function toggleQ() { qm.classList.toggle('open'); }
 
 function togglePlay() { vid.paused ? vid.play() : vid.pause(); }
