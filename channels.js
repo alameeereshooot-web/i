@@ -168,19 +168,20 @@
             { n: "الوان 12", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3462_.m3u8", t: "hls" }
         ];
 
-        var mbcNewChannels = [
-            { n: "MBC 1 HD", u: "https://dtv-1072493095011.europe-west1.run.app/proxy_stream?server=http%3A%2F%2Fs6nip811.top&mac=00%3A1A%3A79%3Ac2%3Aa0%3A33&stream_id=1330471&type=itv&use_worker=0", t: "hls" },
-            { n: "MBC 2 HD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fcloth.orangecord.net%2Fpdf%2Fsat2MBC2%2Findex.m3u8%3Ftoken%3D%3D", t: "hls" },
-            { n: "MBC 3 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-3-usa%2F5d58265a862a476dc7f97694addb5ded%2Findex.m3u8", t: "hls" },
-            { n: "MBC 4 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-4%2F24f134f1cd63db9346439e96b86ca6ed%2Findex.m3u8", t: "hls" },
-            { n: "MBC 5 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-5%2Fee6b000cee0629411b666ab26cb13e9b%2Findex.m3u8", t: "hls" },
-            { n: "MBC Drama HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-drama%2F2c28a458e2f3253e678b07ac7d13fe71%2Findex.m3u8", t: "hls" },
-            { n: "MBC Masr HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.lg.mncdn.com%2Flive%2Fbitmovin-mbc-masr%2F956eac069c78a35d47245db6cdbb1575%2Findex.m3u8", t: "hls" },
-            { n: "MBC Masr 2 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-masr-2%2F754931856515075b0aabf0e583495c68%2Findex.m3u8", t: "hls" },
-            { n: "MBC Masr Drama", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-masr-drama%2F567b703c19ede6598222de81b0e4508b%2Findex.m3u8", t: "hls" },
-            { n: "MBC Iraq HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-iraq%2Fe38c44b1b43474e1c39cb5b90203691e%2Findex.m3u8", t: "hls" },
-            { n: "MBC Persia HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-persia%2F818ee8e4b592dc497608f066d825bfb4%2Findex.m3u8", t: "hls" }
-        ];
+        var beinLQChannels = [
+            { n: "AR| BEIN SPORTS NEWS LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330471.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS GLOBAL LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330472.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 1 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330474.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 2 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330475.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 3 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330476.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 4 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330477.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 5 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330478.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 6 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330479.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 7 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330480.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 8 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330481.m3u8", t: "hls" },
+            { n: "AR| BEIN SPORTS 9 LQ", u: "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/1330482.m3u8", t: "hls" }
+       ];  
+
 
         var ROWS = [
             { label: 'bein', channels: beinChannels, special: false },
@@ -194,5 +195,5 @@
             { label: 'الفجر', channels: fajerChannels, special: false },
             { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
             { label: 'الوان', channels: alwanChannels, special: false },
-            { label: 'MBC', channels: mbcNewChannels, special: false }
+            { label: 'bein', channels: mbcNewChannels, special: false }
         ];
