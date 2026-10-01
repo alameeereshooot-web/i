@@ -169,7 +169,7 @@
         ];
 
         var mbcNewChannels = [
-            { n: "MBC 1 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-1%2F15cf99af5de54063fdabfefe66adc075%2Findex.m3u8", t: "hls" },
+            { n: "MBC 1 HD", u: "https://dtv-1072493095011.europe-west1.run.app/proxy_stream?server=http%3A%2F%2Fs6nip811.top&mac=00%3A1A%3A79%3Ac2%3Aa0%3A33&stream_id=1330471&type=itv&use_worker=0", t: "hls" },
             { n: "MBC 2 HD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fcloth.orangecord.net%2Fpdf%2Fsat2MBC2%2Findex.m3u8%3Ftoken%3D%3D", t: "hls" },
             { n: "MBC 3 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-3-usa%2F5d58265a862a476dc7f97694addb5ded%2Findex.m3u8", t: "hls" },
             { n: "MBC 4 HD", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-4%2F24f134f1cd63db9346439e96b86ca6ed%2Findex.m3u8", t: "hls" },
