@@ -1,25 +1,133 @@
 // ==========================================
-// 1. القنوات متعددة الجودات (من الملف الخارجي)
+// 1. القنوات متعددة الجودات (beIN 1 -> 9)
 // ==========================================
 const gamerdzBaseUrl = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
 
-var bein1MultiQuality = {
-    n: "BEIN 1 (متعدد الجودات)",
-    u: `${gamerdzBaseUrl}1330437.m3u8`, // الجودة الافتراضية HD
-    t: "hls",
-    qualities: [
-        { label: "HEVC", src: `${gamerdzBaseUrl}1330433.m3u8` },
-        { label: "HD 1080p", src: `${gamerdzBaseUrl}1330437.m3u8` },
-        { label: "720p", src: `${gamerdzBaseUrl}1660414.m3u8` },
-        { label: "SD 480p", src: `${gamerdzBaseUrl}1660413.m3u8` },
-        { label: "SD", src: `${gamerdzBaseUrl}1330457.m3u8` },
-        { label: "LQ", src: `${gamerdzBaseUrl}1330474.m3u8` },
-        { label: "LOW", src: `${gamerdzBaseUrl}1836254.m3u8` }
-    ]
-};
+var beinMultiQualities = [
+    {
+        n: "BEIN 1",
+        u: `${gamerdzBaseUrl}1330437.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HEVC", src: `${gamerdzBaseUrl}1330433.m3u8` },
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330437.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660414.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660413.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330457.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330474.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836254.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 2",
+        u: `${gamerdzBaseUrl}1330438.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HEVC", src: `${gamerdzBaseUrl}1330434.m3u8` },
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330438.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660416.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660415.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330458.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330475.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836255.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 3",
+        u: `${gamerdzBaseUrl}1330439.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HEVC", src: `${gamerdzBaseUrl}1330435.m3u8` },
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330439.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660418.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660417.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330459.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330476.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836256.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 4",
+        u: `${gamerdzBaseUrl}1330440.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330440.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660420.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660419.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330460.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330477.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836257.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 5",
+        u: `${gamerdzBaseUrl}1330441.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330441.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660422.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660421.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330461.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330478.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836258.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 6",
+        u: `${gamerdzBaseUrl}1330442.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330442.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660424.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660423.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330462.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330479.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836259.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 7",
+        u: `${gamerdzBaseUrl}1330443.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330443.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660426.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660425.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330463.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330480.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836260.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 8",
+        u: `${gamerdzBaseUrl}1330444.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330444.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660428.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660427.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330464.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330481.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836261.m3u8` }
+        ]
+    },
+    {
+        n: "BEIN 9",
+        u: `${gamerdzBaseUrl}1330445.m3u8`,
+        t: "ts",
+        qualities: [
+            { label: "HD 1080p", src: `${gamerdzBaseUrl}1330445.m3u8` },
+            { label: "720p", src: `${gamerdzBaseUrl}1660430.m3u8` },
+            { label: "SD 480p", src: `${gamerdzBaseUrl}1660429.m3u8` },
+            { label: "SD", src: `${gamerdzBaseUrl}1330465.m3u8` },
+            { label: "LQ", src: `${gamerdzBaseUrl}1330482.m3u8` },
+            { label: "LOW", src: `${gamerdzBaseUrl}1836262.m3u8` }
+        ]
+    }
+];
 
 // ==========================================
-// 2. مصفوفات القنوات الأصلية (بدون أي تغيير)
+// 2. مصفوفات القنوات الأصلية الخاصة بك
 // ==========================================
 var beinChannels = [
     { n: "bein 1 HD", u: "https://mainnew.fiberlive.live:8443/live/D8550E7ACCB1/775371713/50.m3u8", t: "hls" },
@@ -189,29 +297,20 @@ var alwanChannels = [
     { n: "الوان 12", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3462_.m3u8", t: "hls" }
 ];
 
-// قنوات beIN من الملف الخارجي (تم تحويل الامتداد إلى https و m3u8)
-var beinLQChannels = [
-    { n: "BEIN NEWS", u: `${gamerdzBaseUrl}1330471.m3u8`, t: "hls" },
-    { n: "BEIN GLOBAL", u: `${gamerdzBaseUrl}1330472.m3u8`, t: "hls" },
-    { n: "BEIN 1", u: `${gamerdzBaseUrl}1330474.m3u8`, t: "hls" },
-    { n: "BEIN 2", u: `${gamerdzBaseUrl}1330475.m3u8`, t: "hls" },
-    { n: "BEIN 3", u: `${gamerdzBaseUrl}1330476.m3u8`, t: "hls" },
-    { n: "BEIN 4", u: `${gamerdzBaseUrl}1330477.m3u8`, t: "hls" },
-    { n: "BEIN 5", u: `${gamerdzBaseUrl}1330478.m3u8`, t: "hls" },
-    { n: "BEIN 6", u: `${gamerdzBaseUrl}1330479.m3u8`, t: "hls" },
-    { n: "BEIN 7", u: `${gamerdzBaseUrl}1330480.m3u8`, t: "hls" },
-    { n: "BEIN 8", u: `${gamerdzBaseUrl}1330481.m3u8`, t: "hls" },
-    { n: "BEIN 9", u: `${gamerdzBaseUrl}1330482.m3u8`, t: "hls" }
-];  
-
 // ==========================================
-// 3. جدول الأقسام التفاعلي
+// 3. جدول الأقسام
 // ==========================================
 var ROWS = [
-    { label: 'bein', channels: [bein1MultiQuality, ...beinChannels], special: false },
+    { label: 'BEIN متعددة الجودة', channels: beinMultiQualities, special: false },
+    { label: 'bein', channels: beinChannels, special: false },
     { label: 'bein متعدد', channels: beinMultiChannels, special: true },
     { label: 'أخبار', channels: newsChannels, special: false },
     { label: 'منوعات', channels: varietyChannels, special: false },
     { label: 'رياضة', channels: sportsChannels, special: false },
     { label: 'قنوات DASH', channels: dashChannels, special: false },
-    { label: 'وقت اللعب', channels
+    { label: 'وقت اللعب', channels: playChannels, special: false },
+    { label: 'ترفيه', channels: entertainmentChannels, special: false },
+    { label: 'الفجر', channels: fajerChannels, special: false },
+    { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
+    { label: 'الوان', channels: alwanChannels, special: false }
+];
