@@ -321,12 +321,22 @@ var alwanChannels = [
     { n: "الوان 4", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3458_.m3u8", t: "hls" },
     { n: "الوان 5", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3457_.m3u8", t: "hls" },
     { n: "الوان 6", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3456_.m3u8", t: "hls" },
-    { n: "الوان 7", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3467_.m3u8", t: "hls" },
-    { n: "الوان 8", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3466_.m3u8", t: "hls" },
-    { n: "الوان 9", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3465_.m3u8", t: "hls" },
-    { n: "الوان 10", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3464_.m3u8", t: "hls" },
-    { n: "الوان 11", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3463_.m3u8", t: "hls" },
-    { n: "الوان 12", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3462_.m3u8", t: "hls" }
+    { n: "الوان 7", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418119.ts", t: "ts" },
+    { n: "الوان 8", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418120.ts", t: "ts" },
+    { n: "الوان 9", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418121.ts", t: "ts" },
+    { n: "الوان 10", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418122.ts", t: "ts" },
+    { n: "الوان 11", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418123.ts", t: "ts" },
+    { n: "الوان 12", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418124.ts", t: "ts" },
+    { n: "الوان 13", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418125.ts", t: "ts" },
+    { n: "الوان 14", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418126.ts", t: "ts" },
+    { n: "الوان 15", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418127.ts", t: "ts" },
+    { n: "الوان 16", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418128.ts", t: "ts" },
+    { n: "الوان 17", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418129.ts", t: "ts" },
+    { n: "الوان 18", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418130.ts", t: "ts" },
+    { n: "الوان 19", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418131.ts", t: "ts" },
+    { n: "الوان 20", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418132.ts", t: "ts" },
+    { n: "الوان 21", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418133.ts", t: "ts" },
+    { n: "الوان 22", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418134.ts", t: "ts" }
 ];
 
 // ==========================================
