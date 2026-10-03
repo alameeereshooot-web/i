@@ -178,14 +178,14 @@ var varietyChannels = [
 ];
 
 var sportsChannels = [
-    { n: "الكأس 1", u: "https://storage.googleapis.com/livealkass-eu/alkass1-p/main.m3u8", t: "hls" },
-    { n: "الكأس 2", u: "https://storage.googleapis.com/livealkass-eu/alkass2-p/main.m3u8", t: "hls" },
-    { n: "الكأس 3", u: "https://storage.googleapis.com/livealkass-eu/alkass3-p/main.m3u8", t: "hls" },
-    { n: "الكأس 4", u: "https://storage.googleapis.com/livealkass-eu/alkass4-p/main.m3u8", t: "hls" },
-    { n: "الكأس 5", u: "https://storage.googleapis.com/livealkass-eu/alkass5-p/main.m3u8", t: "hls" },
-    { n: "الكأس 6", u: "https://storage.googleapis.com/livealkass-eu/alkass6-p/main.m3u8", t: "hls" },
-    { n: "الكأس 7", u: "https://storage.googleapis.com/livealkass-eu/alkass7-p/main.m3u8", t: "hls" },
-    { n: "الكأس 8", u: "https://storage.googleapis.com/livealkass-eu/alkass8-p/main.m3u8", t: "hls" },
+    { n: "الكأس 1", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass1-p/main.m3u8?hdnts=exp=1791013759~hmac=5755ff523ffb4b3167f3b16f7e296debc460cf0bd0a26c072cbf639365bfe0bd", t: "hls" },
+    { n: "الكأس 2", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass2-p/main.m3u8?hdnts=exp=1791014475~hmac=dad763d0641e79a6c4d4f3c43b268420323e38ed9b2f190c2d1adc5ffb021fd0", t: "hls" },
+    { n: "الكأس 3", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass3-p/main.m3u8?hdnts=exp=1791014610~hmac=a648caf89bbc1731b6ac51cb50647669660e10f261cca1993830e1b27b74a7a4", t: "hls" },
+    { n: "الكأس 4", u: "https://kurdtv.org/api/public/hls?u=https://liveeu-gcps.alkassdigital.net/alkass4-p/main.m3u8?hdnts=exp=1791014653~hmac=11cd143c45081413756c4aac990d9e31ca29a6f0bf8ad79460b87df9172bad51", t: "hls" },
+    { n: "الكأس 5", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass5-p/main.m3u8?hdnts=exp=1791014779~hmac=4d7c41c57afecc8d2332d260ceffbab729353f8e88db414b1ca1028130ceaaf8", t: "hls" },
+    { n: "الكأس 6", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass6-p/main.m3u8?hdnts=exp=1791014835~hmac=12ce55403c0888ac0882868fa4cb67c3f198469428e1fda3d2477dc5abc003e4", t: "hls" },
+    { n: "الكأس 7", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass7-p/main.m3u8?hdnts=exp=1791014864~hmac=aef4f6a41d4787a5e90e033c5a42868f3f40f13bd1e9e47bd453b598e9948d04", t: "hls" },
+    { n: "الكأس 8", u: "https://website.screenifyplus.workers.dev/?stream=https://liveeu-gcps.alkassdigital.net/alkass8-p/main.m3u8?hdnts=exp=1791014918~hmac=003577ba5468468aed277034da98ad3170542d0c60cd41c1eb6359775ba4c83b", t: "hls" },
     { n: "البحرين 1", u: "https://5c7b683162943.streamlock.net/live/ngrp:sportsone_all/playlist.m3u8", t: "hls" },
     { n: "البحرين 2", u: "https://5c7b683162943.streamlock.net/live/ngrp:bahrainsportstwo_all/playlist.m3u8", t: "hls" },
     { n: "العراقية رياضية", u: "https://imn-live.esite-lab.com/hls/iraqia-sports-1.m3u8", t: "hls" },
