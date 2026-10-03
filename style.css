@@ -142,7 +142,7 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 #qm {
     position: absolute;
     bottom: 42px;
-    right: 0;
+    left: 0;
     background: rgba(15,15,15,0.95);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 8px;
