@@ -292,13 +292,25 @@ function buildHlsQuality() {
     });
 }
 
-// بناء قائمة الجودة لـ DASH تلقائياً إن لم تكن هناك جودات مخصصة
+// بناء قائمة الجودة لـ DASH تلقائياً مع ترتيبها
 function buildDashQuality() {
     if (cur.r !== -1 && cur.i !== -1 && ROWS[cur.r].channels[cur.i].qualities) return;
     qm.innerHTML = '';
     if (!shakaPlayer) return;
-    var tracks = shakaPlayer.getVariantTracks().filter(t => t.type === 'video');
-    if (!tracks.length) return;
+
+    var rawTracks = shakaPlayer.getVariantTracks().filter(function (t) { return t.height; });
+    if (!rawTracks.length) return;
+
+    // ترتيب الجودات من الأعلى (1080p) إلى الأقل (288p)
+    rawTracks.sort(function (a, b) { return (b.height || 0) - (a.height || 0); });
+
+    // منع تكرار نفس الجودة
+    var seen = {};
+    var tracks = rawTracks.filter(function (t) {
+        if (seen[t.height]) return false;
+        seen[t.height] = true;
+        return true;
+    });
 
     var autoBtn = document.createElement('button');
     autoBtn.textContent = 'تلقائي';
@@ -310,7 +322,7 @@ function buildDashQuality() {
 
     tracks.forEach(function (tr) {
         var b = document.createElement('button');
-        b.textContent = tr.height ? tr.height + 'p' : Math.round(tr.bandwidth / 1000) + 'k';
+        b.textContent = tr.height + 'p';
         b.onclick = function () {
             shakaPlayer.configure({ abr: { enabled: false } });
             shakaPlayer.selectVariantTrack(tr, true);
