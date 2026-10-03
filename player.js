@@ -352,15 +352,171 @@ function reloadCurrentStream() {
     if (cur.r !== -1 && cur.i !== -1) load(cur.r, cur.i);
 }
 
-// إعداد كامل الشاشة
+// إعداد كامل الشاشة مع الدوران وتجاوز نتوء الكاميرا
 function doFullscreen() {
-    if (document.fullscreenElement || document.webkitFullscreenElement) {
-        if (document.exitFullscreen) document.exitFullscreen();
+    var isFs = document.fullscreenElement || document.webkitFullscreenElement || pw.classList.contains('fullscreen-fallback');
+    if (isFs) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().catch(function () {});
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen().catch(function () {});
+        }
+        pw.classList.remove('fullscreen-fallback');
+        if (screen.orientation && screen.orientation.unlock) {
+            try { screen.orientation.unlock(); } catch (e) {}
+        }
     } else {
         var req = pw.requestFullscreen || pw.webkitRequestFullscreen;
-        if (req) req.call(pw);
+        if (req) {
+            var p = req.call(pw, { navigationUI: 'hide' });
+            if (p && p.then) {
+                p.then(function () {
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock('landscape').catch(function () {});
+                    }
+                }).catch(function () {});
+            } else {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(function () {});
+                }
+            }
+        } else if (vid.webkitEnterFullscreen) {
+            vid.webkitEnterFullscreen();
+        } else {
+            pw.classList.add('fullscreen-fallback');
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(function () {});
+            }
+        }
     }
 }
+
+// إلغاء قفل التدوير تلقائياً عند الخروج من ملء الشاشة
+['fullscreenchange', 'webkitfullscreenchange'].forEach(function (ev) {
+    document.addEventListener(ev, function () {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+            pw.classList.remove('fullscreen-fallback');
+            if (screen.orientation && screen.orientation.unlock) {
+                try { screen.orientation.unlock(); } catch (e) {}
+            }
+        }
+    });
+});
+
+// ===== إيماءات اللمس: الصوت (يمين)، الإضاءة (يسار)، النقر المزدوج (ملء الشاشة) =====
+var touchStartX = 0;
+var touchStartY = 0;
+var touchSide = '';
+var isSwiping = false;
+var initialVal = 0;
+var swipeTimer = null;
+var lastTapTime = 0;
+var singleTapTimer = null;
+
+function showSwipeIndicator(icon, label, pct, color) {
+    if (!swInd) return;
+    siIcon.textContent = icon;
+    siLabel.textContent = label + ' ' + Math.round(pct) + '%';
+    siBar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    siBar.style.background = color || '#38bdf8';
+    swInd.style.display = 'flex';
+    clearTimeout(swipeTimer);
+    swipeTimer = setTimeout(function () {
+        swInd.style.display = 'none';
+    }, 900);
+}
+
+function showDblHint(txt) {
+    if (!dblHint || !dblTxt) return;
+    dblTxt.textContent = txt;
+    dblHint.classList.add('show');
+    setTimeout(function () {
+        dblHint.classList.remove('show');
+    }, 800);
+}
+
+pw.addEventListener('touchstart', function (e) {
+    if (e.target.closest('#controls-overlay button, #controls-overlay input, #qm')) return;
+
+    if (e.touches.length === 1) {
+        var t = e.touches[0];
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+        isSwiping = false;
+
+        var rect = pw.getBoundingClientRect();
+        var relX = t.clientX - rect.left;
+
+        // النصف الأيمن للصوت، والنصف الأيسر للإضاءة
+        if (relX > rect.width / 2) {
+            touchSide = 'vol';
+            initialVal = vid.muted ? 0 : vid.volume;
+        } else {
+            touchSide = 'bright';
+            var curOp = parseFloat(brightL.style.opacity || '0');
+            initialVal = Math.round((1 - (curOp / 0.85)) * 100);
+        }
+    }
+}, { passive: true });
+
+pw.addEventListener('touchmove', function (e) {
+    if (e.touches.length !== 1 || !touchSide) return;
+    var t = e.touches[0];
+    var deltaY = touchStartY - t.clientY; // سحب للأعلى = زيادة
+    var deltaX = t.clientX - touchStartX;
+
+    if (!isSwiping && Math.abs(deltaY) > 8 && Math.abs(deltaY) > Math.abs(deltaX)) {
+        isSwiping = true;
+    }
+
+    if (isSwiping) {
+        var rect = pw.getBoundingClientRect();
+        var changePct = (deltaY / (rect.height * 0.7)) * 100;
+
+        if (touchSide === 'vol') {
+            var newVol = Math.min(1, Math.max(0, initialVal + (changePct / 100)));
+            vid.volume = newVol;
+            vid.muted = newVol === 0;
+            var vs = document.getElementById('vs');
+            if (vs) vs.value = newVol;
+            var muteBtn = document.getElementById('mute-btn');
+            if (muteBtn) muteBtn.textContent = newVol === 0 ? '🔇' : (newVol < 0.5 ? '🔉' : '🔊');
+            showSwipeIndicator(newVol === 0 ? '🔇' : '🔊', 'الصوت', newVol * 100, '#38bdf8');
+        } else if (touchSide === 'bright') {
+            var newBright = Math.min(100, Math.max(5, initialVal + changePct));
+            var newOpacity = ((100 - newBright) / 100) * 0.85;
+            brightL.style.opacity = newOpacity;
+            localStorage.setItem('brightness', newOpacity);
+            showSwipeIndicator('☀️', 'الإضاءة', newBright, '#facc15');
+        }
+    }
+}, { passive: true });
+
+pw.addEventListener('touchend', function (e) {
+    if (isSwiping) {
+        touchSide = '';
+        isSwiping = false;
+        return;
+    }
+
+    if (e.target.closest('#controls-overlay button, #controls-overlay input, #qm')) return;
+
+    var now = Date.now();
+    if (now - lastTapTime < 300) {
+        // نقر مزدوج سريع: شاشة كاملة مع الدوران
+        clearTimeout(singleTapTimer);
+        lastTapTime = 0;
+        doFullscreen();
+        showDblHint(document.fullscreenElement ? '⛶ خروج من ملء الشاشة' : '⛶ ملء الشاشة مع الدوران');
+    } else {
+        // نقرة واحدة: إظهار أو إخفاء أزرار التحكم
+        lastTapTime = now;
+        singleTapTimer = setTimeout(function () {
+            pw.classList.toggle('show-ctrl');
+        }, 300);
+    }
+    touchSide = '';
+});
 
 // بناء واجهة القنوات
 function buildChannels() {
