@@ -200,6 +200,22 @@ var dashChannels = [
         clearkey: {
             "b1a8592dff8a4965983fd7f8ee7006dc": "0954d76121a0c33c6e3f52175aca6c05"
         }
+    },
+    {
+        n: "MBC Action HD",
+        u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-action/8ea6ca1108d03e03da5e61372354f5c8/index.mpd",
+        t: "dash",
+        clearkey: {
+            "73d6c44e70d24e09a1c4735bb6e2f696": "22f2237a1722bf4d4623346a3ea08b7c"
+        }
+    },
+    {
+        n: "MBC Max HD",
+        u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-max/b628d2bbaee0431a17859963edf2975f/index.mpd",
+        t: "dash",
+        clearkey: {
+            "9f494797bdec4203aed785cc18901e5e": "784c3fabbb87e741d7a4dcf13d03bc35"
+        }
     }
 ];
 
