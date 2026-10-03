@@ -93,14 +93,24 @@ async function loadDash(url, clearkeyConfig) {
 
     shakaPlayer = new shaka.Player(vid);
 
-    // إعدادات مفاتيح ClearKey إن وجدت
+    // إعداد مفاتيح ClearKey وتخطي طلب رخص Widevine الخارجية
+    var drmConfig = {};
     if (clearkeyConfig && Object.keys(clearkeyConfig).length > 0) {
-        shakaPlayer.configure({
-            drm: {
-                clearKeys: clearkeyConfig
-            }
-        });
+        drmConfig.clearKeys = clearkeyConfig;
     }
+
+    shakaPlayer.configure({
+        drm: drmConfig,
+        manifest: {
+            dash: {
+                ignoreDrmInfo: true // ضروري جداً لتعمل بدون طلب رخصة خارجية
+            }
+        },
+        streaming: {
+            bufferingGoal: 10,
+            rebufferingGoal: 2
+        }
+    });
 
     shakaPlayer.addEventListener('error', function (event) {
         console.error('Shaka error:', event.detail);
@@ -119,7 +129,6 @@ async function loadDash(url, clearkeyConfig) {
         toast('تعذر فك تشفير أو تشغيل بث DASH');
     }
 }
-
 // تشغيل روابط MPEG-TS المباشرة عبر mpegts.js بسلاسة ودون تقطيع
 async function loadTs(url) {
   if (!mpegts.isSupported()) {
