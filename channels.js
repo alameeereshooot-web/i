@@ -216,6 +216,22 @@ var dashChannels = [
         clearkey: {
             "9f494797bdec4203aed785cc18901e5e": "784c3fabbb87e741d7a4dcf13d03bc35"
         }
+    },
+    {
+        n: "Starzplay 1 HD",
+        u: "https://sps1.starzplayarabia.com/out/v1/eee188845e9543699fd24e5a9890c6e2/index.mpd",
+        t: "dash",
+        clearkey: {
+            "b253c726c24c7c94a3ddf9b1907e2c76": "097963d6ad73c3d712a104981de0ed42"
+        }
+    },
+    {
+        n: "Starzplay 2 HD",
+        u: "https://sps2.starzplayarabia.com/out/v1/15e7d1ffb99746dda03f71dbbbc3c08b/index.mpd",
+        t: "dash",
+        clearkey: {
+            "ee861edcd99093153a763a94b14c2c5a": "ab3991f6a7729ba1ea4bcdba0c1ae6c0"
+        }
     }
 ];
 
