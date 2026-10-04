@@ -343,7 +343,7 @@ var ROWS = [
     { label: 'bein', channels: beinChannels, special: false },
     { label: 'bein متعدد', channels: beinMultiChannels, special: true },
     { label: 'أخبار', channels: newsChannels, special: false },
-    { label: 'منوعات', channels: varietyChannels, special: false },
+    { label: 'mbc', channels: mbcNewChannels, special: false },
     { label: 'رياضة', channels: sportsChannels, special: false },
     { label: 'قنوات DASH', channels: dashChannels, special: false },
     { label: 'وقت اللعب', channels: playChannels, special: false },
