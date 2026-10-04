@@ -269,3 +269,6 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 .ch.dash-ch { border-right: 3px solid #10b981; }
 .ch.ts-ch { border-right: 3px solid #f59e0b; }
 .ch.iframe-ch { border-right: 3px solid #8b5cf6; }
+
+.ch.bein-logo-ch { width: 116px; height: 50px; padding: 0; overflow: hidden; border: 0; }
+.ch.bein-logo-ch img { display: block; width: 100%; height: 100%; object-fit: fill; }
