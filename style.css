@@ -240,59 +240,59 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     flex: 1;
     overflow-y: auto;
     background: #0f0f13;
-    padding: 6px 8px;
+    padding: 8px 10px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 }
 .ch-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #1e293b;
-    padding: 3px 0;
-    gap: 6px;
+    padding: 6px 0;
+    gap: 8px;
 }
 
 .row-label {
     flex-shrink: 0;
-    width: 48px;
-    min-width: 48px;
+    width: 55px;
+    min-width: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 1px;
+    gap: 3px;
     color: #94a3b8;
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 700;
-    padding: 2px 1px;
+    padding: 4px 2px;
     border-left: 1px solid #1e293b;
     background: #0b0f17;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 .row-label span:first-child {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 .row-scroll {
     flex: 1;
     display: flex;
-    gap: 6px;
+    gap: 8px;
     overflow-x: auto;
     align-items: center;
-    padding: 1px 0;
+    padding: 2px 0;
 }
 .ch {
     flex: 0 0 auto;
     background: #1e293b;
     border: 1px solid #334155;
     color: #e2e8f0;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 11px;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
