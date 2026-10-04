@@ -535,7 +535,15 @@ function buildChannels() {
             if (c.t === 'ts') cls += ' ts-ch';
             if (c.t === 'iframe') cls += ' iframe-ch';
             b.className = cls;
-            b.textContent = c.n;
+                    if (ri === 0) {
+          b.classList.add('bein-logo-ch');
+          var img = document.createElement('img');
+          img.src = 'bein-' + (ci + 1) + '.png';
+          img.alt = c.n;
+          b.appendChild(img);
+        } else {
+          b.textContent = c.n;
+        }
             b.id = 'ch-' + ri + '-' + ci;
             b.onclick = function () { load(ri, ci); };
             scroll.appendChild(b);
