@@ -165,7 +165,7 @@ var varietyChannels = [
     { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
     { n: "MBC 4", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
     { n: "MBC 5", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
-    { n: "MBC Action", u: "https://edge66.magictvbox.com/liveApple/MBC_Action/index.m3u8", t: "hls" },
+    { n: "MBC Action", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" },
     { n: "MBC Bollywood", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-bollywood/546eb40d7dcf9a209255dd2496903764/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
     { n: "MBC Masr", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
     { n: "MBC Masr+", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8", t: "hls" },
