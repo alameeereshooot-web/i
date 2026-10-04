@@ -306,3 +306,9 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 
 .ch.bein-logo-ch { width: 75px; height: 32px; padding: 0; overflow: hidden; border: 0; }
 .ch.bein-logo-ch img { display: block; width: 85%; height: 85%; object-fit: fill; }
+.row-scroll { scrollbar-width: none; }
+.row-scroll::-webkit-scrollbar { display: none; }
+.ch-row {
+    border-bottom: 1px solid #3b4657;
+    padding-bottom: 6px;
+}
