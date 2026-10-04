@@ -160,11 +160,11 @@ var newsChannels = [
 ];
 
 var varietyChannels = [
-    { n: "MBC 1", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8?aws.manifestfilter=video_height:144-576;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
-    { n: "MBC 2", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-2/15cf99af5de54063fdabfefe66adc075/index.m3u8?aws.manifestfilter=video_height:144-576;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
+    { n: "MBC 1", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8", t: "hls" },
+    { n: "MBC 2", u: "https://sho.alameeereshooot-web.deno.net/?url=http%3A%2F%2Fcloth.orangecord.net%2Fpdf%2Fsat2MBC2%2Findex.m3u8%3Ftoken%3D%3D", t: "hls" },
     { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
-    { n: "MBC 4", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
-    { n: "MBC 5", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
+    { n: "MBC 4", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8", t: "hls" },
+    { n: "MBC 5", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8", t: "hls" },
     { n: "MBC Action", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" },
     { n: "MBC Bollywood", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-bollywood/546eb40d7dcf9a209255dd2496903764/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
     { n: "MBC Masr", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8?aws.manifestfilter=video_height:144-1080;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
@@ -172,7 +172,7 @@ var varietyChannels = [
     { n: "MBC Masr 2", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8", t: "hls" },
     { n: "MBC Plus Drama", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-plus-drama/e37251ec2aac8f6c98f75cd0fa37cd28/index.m3u8", t: "hls" },
     { n: "MBC Drama", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama/2c28a458e2f3253e678b07ac7d13fe71/index.m3u8", t: "hls" },
-    { n: "MBC Masr Drama", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr-drama/567b703c19ede6598222de81b0e4508b/index.m3u8?aws.manifestfilter=video_height:144-720;video_codec:H264&video_height=144-1080&video_codec=H264", t: "hls" },
+    { n: "MBC Masr Drama", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-drama/567b703c19ede6598222de81b0e4508b/index.m3u8", t: "hls" },
     { n: "MBC Iraq", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-iraq/e38c44b1b43474e1c39cb5b90203691e/index.m3u8", t: "hls" },
     { n: "MBC Persia", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-persia/818ee8e4b592dc497608f066d825bfb4/index.m3u8", t: "hls" }
 ];
@@ -321,22 +321,22 @@ var alwanChannels = [
     { n: "الوان 4", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3458_.m3u8", t: "hls" },
     { n: "الوان 5", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3457_.m3u8", t: "hls" },
     { n: "الوان 6", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3456_.m3u8", t: "hls" },
-    { n: "الوان 7", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418119.ts", t: "ts" },
-    { n: "الوان 8", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418120.ts", t: "ts" },
-    { n: "الوان 9", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418121.ts", t: "ts" },
-    { n: "الوان 10", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418122.ts", t: "ts" },
-    { n: "الوان 11", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418123.ts", t: "ts" },
-    { n: "الوان 12", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418124.ts", t: "ts" },
-    { n: "الوان 13", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418125.ts", t: "ts" },
-    { n: "الوان 14", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418126.ts", t: "ts" },
-    { n: "الوان 15", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418127.ts", t: "ts" },
-    { n: "الوان 16", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418128.ts", t: "ts" },
-    { n: "الوان 17", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418129.ts", t: "ts" },
-    { n: "الوان 18", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418130.ts", t: "ts" },
-    { n: "الوان 19", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418131.ts", t: "ts" },
-    { n: "الوان 20", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418132.ts", t: "ts" },
-    { n: "الوان 21", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418133.ts", t: "ts" },
-    { n: "الوان 22", u: "http://185.191.126.127:8080/live//b0:99:d7:15:88:50/3090914536649669/418134.ts", t: "ts" }
+    { n: "الوان 7 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738888.m3u8", t: "hls" },
+    { n: "الوان 8 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738887.m3u8", t: "hls" },
+    { n: "الوان 9 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738886.m3u8", t: "hls" },
+    { n: "الوان 10 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738885.m3u8", t: "hls" },
+    { n: "الوان 11 افلام 1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738869.m3u8", t: "hls" },
+    { n: "الوان 12 افلام 2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738868.m3u8", t: "hls" },
+    { n: "الوان 13 افلام 3", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738867.m3u8", t: "hls" },
+    { n: "الوان 14 افلام 4", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738866.m3u8", t: "hls" },
+    { n: "الوان 15 مسلسلات", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738862.m3u8", t: "hls" },
+    { n: "الوان 16 مسلسلات+", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738858.m3u8", t: "hls" },
+    { n: "الوان 17 تركي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738865.m3u8", t: "hls" },
+    { n: "الوان 18 كوري", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738859.m3u8", t: "hls" },
+    { n: "الوان 19 بوليوود", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738860.m3u8", t: "hls" },
+    { n: "الوان 20 انمي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738857.m3u8", t: "hls" },
+    { n: "الوان 21 WWE", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738882.m3u8", t: "hls" },
+    { n: "الوان 22 UFC", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738884.m3u8", t: "hls" }
 ];
 
 // ==========================================
