@@ -183,12 +183,18 @@ function loadHls(url) {
     iframeWrap.style.display = 'none';
     resetPlayers().then(function () {
         if (window.Hls && Hls.isSupported()) {
-            hls = new Hls({
+                        hls = new Hls({
                 enableWorker: true,
-                startLevel: 0,
-                autoLevelEnabled: false,
                 lowLatencyMode: true,
-                manifestLoadingMaxRetry: 4
+                startLevel: -1,                  // اختيار تلقائي سريع للبث
+                liveSyncDurationCount: 1,       // تشغيل فوري من أول جزء دون انتظار 3 أجزاء (يحل تأخير الـ 9 ثوانٍ)
+                liveMaxLatencyDurationCount: 3,
+                maxBufferLength: 8,
+                maxMaxBufferLength: 15,
+                manifestLoadingTimeOut: 3500,
+                manifestLoadingMaxRetry: 2,
+                levelLoadingTimeOut: 3500,
+                fragLoadingTimeOut: 5000
             });
             hls.loadSource(url);
             hls.attachMedia(vid);
@@ -220,30 +226,21 @@ function loadHls(url) {
 }
 
 // دالة اختيار القناة وتحويلها للمشغل المناسب
-function load(ri, ci) {
-    if (ri < 0 || ri >= ROWS.length || ci < 0 || ci >= ROWS[ri].channels.length) return;
-    cur = { r: ri, i: ci };
-    if (retryT) { clearTimeout(retryT); retryT = null; }
+    // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
+    var finalUrl = targetUrl;
+    var isDenoStream = targetUrl.includes('sharkhost.xyz') || targetUrl.includes('.ts') || targetUrl.includes('alwan');
 
-    document.querySelectorAll('.ch').forEach(function (b) { b.classList.remove('on'); });
-    var btn = document.getElementById('ch-' + ri + '-' + ci);
-    if (btn) btn.classList.add('on');
+    if (isDenoStream && !targetUrl.includes('.mpd')) {
+        var m3u8Url = targetUrl.replace(/\.ts(\?|$)/i, '.m3u8$1');
+        finalUrl = 'https://sho.alameeereshooot-web.deno.net/?url=' + encodeURIComponent(m3u8Url);
+        loadHls(finalUrl);
+        return;
+    }
 
-    var ch = ROWS[ri].channels[ci];
-    chTitle.textContent = ch.n;
-    chTitle.style.display = 'block';
-
-    // تحديث قائمة الجودات اليدوية للقناة إذا كانت موجودة
-    buildCustomQualityMenu(ch);
-
-    // اختيار الرابط: يبدأ بالجودة الأقل إذا أضيفت قائمة qualities أو بالرابط الرئيسي u
-    var targetUrl = (ch.qualities && ch.qualities.length > 0) ? ch.qualities[0].src : ch.u;
-    var type = ch.t || (targetUrl.includes('.mpd') ? 'dash' : (targetUrl.includes('.ts') ? 'ts' : 'hls'));
+    var type = ch.t || (targetUrl.includes('.mpd') ? 'dash' : 'hls');
 
     if (type === 'dash') {
         loadDash(targetUrl, ch.clearkey);
-    } else if (type === 'ts') {
-        loadTs(targetUrl);
     } else if (type === 'iframe') {
         resetPlayers();
         vid.style.display = 'none';
@@ -251,9 +248,8 @@ function load(ri, ci) {
         iframePlayer.src = targetUrl;
         pw.classList.add('playing');
     } else {
-        loadHls(targetUrl);
+        loadHls(finalUrl);
     }
-}
 
 // بناء قائمة الجودة الخاصة الممررة مع القناة (لـ beIN وغيرها)
 function buildCustomQualityMenu(ch) {
