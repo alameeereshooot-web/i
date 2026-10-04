@@ -270,5 +270,5 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 .ch.ts-ch { border-right: 3px solid #f59e0b; }
 .ch.iframe-ch { border-right: 3px solid #8b5cf6; }
 
-.ch.bein-logo-ch { width: 82px; height: 35px; padding: 0; overflow: hidden; border: 0; }
-.ch.bein-logo-ch img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.ch.bein-logo-ch { width: 50px; height: 25px; padding: 0; overflow: hidden; border: 0; }
+.ch.bein-logo-ch img { display: block; width: 95%; height: 95%; object-fit: fill; }
