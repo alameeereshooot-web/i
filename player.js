@@ -226,15 +226,13 @@ function loadHls(url) {
 }
 
 // دالة اختيار القناة وتحويلها للمشغل المناسب
-    // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
+        // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
     var finalUrl = targetUrl;
     var isDenoStream = targetUrl.includes('sharkhost.xyz') || targetUrl.includes('.ts') || targetUrl.includes('alwan');
 
     if (isDenoStream && !targetUrl.includes('.mpd')) {
         var m3u8Url = targetUrl.replace(/\.ts(\?|$)/i, '.m3u8$1');
-        finalUrl = 'https://sho.alameeereshooot-web.deno.net/?url=' + encodeURIComponent(m3u8Url);
-        loadHls(finalUrl);
-        return;
+        finalUrl = 'https://deno.net' + encodeURIComponent(m3u8Url);
     }
 
     var type = ch.t || (targetUrl.includes('.mpd') ? 'dash' : 'hls');
