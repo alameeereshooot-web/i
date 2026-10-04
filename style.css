@@ -243,14 +243,14 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     padding: 8px 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
 }
 .ch-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid #1e293b;
-    padding: 6px 0;
+    padding: 2px 0;
     gap: 8px;
 }
 
