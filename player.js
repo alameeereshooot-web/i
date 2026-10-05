@@ -245,18 +245,43 @@ function load(ri, ci) {
     // اختيار الرابط: يبدأ بالجودة الأقل إذا أضيفت قائمة qualities أو بالرابط الرئيسي u
     var targetUrl = (ch.qualities && ch.qualities.length > 0) ? ch.qualities[0].src : ch.u;
 
-    // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
+    // تسريع: تحويل الروابط تلقائياً لأسرع طريق
+    var DENO = 'https://sho.alameeereshooot-web.deno.net/?url=';
+    // فك بروكسي Cloudflare المتعطل واستخدام الرابط الأصلي
+    if (targetUrl.indexOf('alameeeretv.workers.dev') !== -1) {
+        var m = targetUrl.match(/[?&]url=([^&]+)/);
+        if (m) targetUrl = decodeURIComponent(m[1]);
+    }
     var finalUrl = targetUrl;
-    var isDenoStream = targetUrl.includes('sharkhost.xyz') || targetUrl.includes('.ts') || targetUrl.includes('alwan');
-
-    if (isDenoStream && !targetUrl.includes('.mpd')) {
+    var isMpd = targetUrl.indexOf('.mpd') !== -1;
+    var alreadyProxied = targetUrl.indexOf('deno.net') !== -1;
+    var needProxy = !alreadyProxied && !isMpd && (
+        targetUrl.indexOf('http://') === 0 ||
+        targetUrl.indexOf('sharkhost.xyz') !== -1 ||
+        targetUrl.indexOf('blcco.linkip.org') !== -1 ||
+        /\.ts(\?|$)/i.test(targetUrl)
+    );
+    if (needProxy) {
         var m3u8Url = targetUrl.replace(/\.ts(\?|$)/i, '.m3u8$1');
-        finalUrl = 'https://sho.alameeereshooot-web.deno.net/?url=' + encodeURIComponent(m3u8Url);
+        finalUrl = DENO + encodeURIComponent(m3u8Url);
         loadHls(finalUrl);
         return;
     }
 
     var type = ch.t || (targetUrl.includes('.mpd') ? 'dash' : 'hls');
+
+    if (type === 'dash') {
+        loadDash(targetUrl, ch.clearkey);
+    } else if (type === 'iframe') {
+        resetPlayers();
+        vid.style.display = 'none';
+        iframeWrap.style.display = 'block';
+        iframePlayer.src = targetUrl;
+        pw.classList.add('playing');
+    } else {
+        loadHls(finalUrl);
+    }
+}
 
     if (type === 'dash') {
         loadDash(targetUrl, ch.clearkey);
