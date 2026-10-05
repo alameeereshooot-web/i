@@ -291,7 +291,7 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     border: 1px solid #334155;
     color: #e2e8f0;
     min-width: 72px;
-    height: 34px;
+    height: 36px;
     padding: 0 10px;
     border-radius: 8px;
     font-size: 12px;
@@ -312,7 +312,7 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 
 .ch.bein-logo-ch {
     width: 72px;
-    height: 34px;
+    height: 36px;
     padding: 3px 6px;
     overflow: hidden;
     display: inline-flex;
