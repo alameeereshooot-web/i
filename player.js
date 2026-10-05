@@ -247,11 +247,7 @@ function load(ri, ci) {
 
     // تسريع: تحويل الروابط تلقائياً لأسرع طريق
     var DENO = 'https://sho.alameeereshooot-web.deno.net/?url=';
-    // فك بروكسي Cloudflare المتعطل واستخدام الرابط الأصلي
-    if (targetUrl.indexOf('alameeeretv.workers.dev') !== -1) {
-        var m = targetUrl.match(/[?&]url=([^&]+)/);
-        if (m) targetUrl = decodeURIComponent(m[1]);
-    }
+    
     var finalUrl = targetUrl;
     var isMpd = targetUrl.indexOf('.mpd') !== -1;
     var alreadyProxied = targetUrl.indexOf('deno.net') !== -1;
