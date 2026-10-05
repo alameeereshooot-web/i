@@ -290,13 +290,19 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     background: #1e293b;
     border: 1px solid #334155;
     color: #e2e8f0;
-    padding: 9px 13px;
+    min-width: 72px;
+    height: 34px;
+    padding: 0 10px;
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 .ch:hover { background: #334155; }
 .ch.on { background: #2563eb; border-color: #60a5fa; color: #fff; }
@@ -304,11 +310,26 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 .ch.ts-ch { border-right: 3px solid #f59e0b; }
 .ch.iframe-ch { border-right: 3px solid #8b5cf6; }
 
-.ch.bein-logo-ch { width: 75px; height: 32px; padding: 0; overflow: hidden; border: 0; }
-.ch.bein-logo-ch img { display: block; width: 85%; height: 85%; object-fit: fill; }
+.ch.bein-logo-ch {
+    width: 72px;
+    height: 34px;
+    padding: 3px 6px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.ch.bein-logo-ch img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 .row-scroll { scrollbar-width: none; }
 .row-scroll::-webkit-scrollbar { display: none; }
 .ch-row {
     border-bottom: 1px solid #3b4657;
     padding-bottom: 6px;
 }
+
