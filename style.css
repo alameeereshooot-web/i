@@ -332,4 +332,6 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     border-bottom: 1px solid #3b4657;
     padding-bottom: 6px;
 }
+#ch-rows { background: #000; }
+.row-label { background: #000; }
 
