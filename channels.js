@@ -161,11 +161,11 @@ var newsChannels = [
 
 var mbcNewChannels = [
     { n: "MBC 1", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8", t: "hls" },
-    { n: "MBC 2", u: "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/5no1pjpw/7240.m3u8.ts", t: "hls" },
+    { n: "MBC 2", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fx.gamerdz1517.com%2Flive%2F00%3A1A%3A79%3A9A%3AB0%3AA8%2F5no1pjpw%2F7240.m3u8", t: "hls" },
     { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
     { n: "MBC 4", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8", t: "hls" },
     { n: "MBC 5", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8", t: "hls" },
-    { n: "MBC أكشن", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" },
+    { n: "MBC Action", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" },
     { n: "MBC Drama", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama/2c28a458e2f3253e678b07ac7d13fe71/index.m3u8", t: "hls" },
     { n: "MBC Masr", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8", t: "hls" },
     { n: "MBC Masr 2", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8", t: "hls" },
