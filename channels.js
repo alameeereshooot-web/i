@@ -165,6 +165,7 @@ var mbcNewChannels = [
     { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
     { n: "MBC 4", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8", t: "hls" },
     { n: "MBC 5", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8", t: "hls" },
+    { n: "MBC أكشن", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" },
     { n: "MBC Drama", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-drama/2c28a458e2f3253e678b07ac7d13fe71/index.m3u8", t: "hls" },
     { n: "MBC Masr", u: "https://shd-gcp-live.lg.mncdn.com/live/bitmovin-mbc-masr/956eac069c78a35d47245db6cdbb1575/index.m3u8", t: "hls" },
     { n: "MBC Masr 2", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-masr-2/754931856515075b0aabf0e583495c68/index.m3u8", t: "hls" },
@@ -306,8 +307,7 @@ var tamanyaSportChannels = [
     { n: "ثمانية 3 FHD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F248005.m3u8", t: "hls" },
     { n: "ثمانية 1 4K", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F710135.m3u8", t: "hls" },
     { n: "ثمانية 2 4k", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F769078.m3u8", t: "hls" },
-    { n: "ثمانية 3 4K", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F841733.m3u8", t: "hls" },
-    { n: "MBC أكشن", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1657.m3u8", t: "hls" }
+    { n: "ثمانية 3 4K", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F841733.m3u8", t: "hls" }
 ];
 
 var alwanChannels = [
@@ -317,29 +317,29 @@ var alwanChannels = [
     { n: "الوان 4", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3458_.m3u8", t: "hls" },
     { n: "الوان 5", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3457_.m3u8", t: "hls" },
     { n: "الوان 6", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3456_.m3u8", t: "hls" },
-    { n: "الوان 7 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738888.m3u8", t: "hls" },
-    { n: "الوان 8 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738887.m3u8", t: "hls" },
-    { n: "الوان 9 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738886.m3u8", t: "hls" },
-    { n: "الوان 10 سبورت", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738885.m3u8", t: "hls" },
-    { n: "الوان 11 افلام 1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738869.m3u8", t: "hls" },
-    { n: "الوان 12 افلام 2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738868.m3u8", t: "hls" },
-    { n: "الوان 13 افلام 3", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738867.m3u8", t: "hls" },
-    { n: "الوان 14 افلام 4", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738866.m3u8", t: "hls" },
-    { n: "الوان 15 مسلسلات", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738862.m3u8", t: "hls" },
-    { n: "الوان 16 مسلسلات+", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738858.m3u8", t: "hls" },
-    { n: "الوان 17 تركي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738865.m3u8", t: "hls" },
-    { n: "الوان 18 كوري", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738859.m3u8", t: "hls" },
-    { n: "الوان 19 بوليوود", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738860.m3u8", t: "hls" },
-    { n: "الوان 20 انمي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738857.m3u8", t: "hls" },
-    { n: "الوان 21 WWE", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738882.m3u8", t: "hls" },
-    { n: "الوان 22 UFC", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738884.m3u8", t: "hls" }
+    { n: "الوان 7", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738888.m3u8", t: "hls" },
+    { n: "الوان 8", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738887.m3u8", t: "hls" },
+    { n: "الوان 9", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738886.m3u8", t: "hls" },
+    { n: "الوان 10", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738885.m3u8", t: "hls" },
+    { n: "الوان افلام 1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738869.m3u8", t: "hls" },
+    { n: "الوان افلام 2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738868.m3u8", t: "hls" },
+    { n: "الوان افلام 3", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738867.m3u8", t: "hls" },
+    { n: "الوان افلام 4", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738866.m3u8", t: "hls" },
+    { n: "الوان مسلسلات", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738862.m3u8", t: "hls" },
+    { n: "الوان مسلسلات+", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738858.m3u8", t: "hls" },
+    { n: "الوان تركي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738865.m3u8", t: "hls" },
+    { n: "الوان كوري", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738859.m3u8", t: "hls" },
+    { n: "الوان بوليوود", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738860.m3u8", t: "hls" },
+    { n: "الوان انمي", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738857.m3u8", t: "hls" },
+    { n: "الوان WWE", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738882.m3u8", t: "hls" },
+    { n: "الوان UFC", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738884.m3u8", t: "hls" }
 ];
 
 // ==========================================
 // 3. جدول الأقسام
 // ==========================================
 var ROWS = [
-    { label: 'BEIN متعددة الجودة', channels: beinMultiQualities, special: false },
+    { label: 'BEIN متعددة', channels: beinMultiQualities, special: false },
     { label: 'bein', channels: beinChannels, special: false },
     { label: 'bein متعدد', channels: beinMultiChannels, special: true },
     { label: 'أخبار', channels: newsChannels, special: false },
