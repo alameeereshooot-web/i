@@ -250,7 +250,9 @@ function load(ri, ci) {
     
     var finalUrl = targetUrl;
     var isMpd = targetUrl.indexOf('.mpd') !== -1;
-    var alreadyProxied = targetUrl.indexOf('deno.net') !== -1;
+    var alreadyProxied =
+    targetUrl.indexOf('deno.net') !== -1 ||
+    targetUrl.indexOf('l.alameeeretv.workers.dev') !== -1;
     var needProxy = !alreadyProxied && !isMpd && (
         targetUrl.indexOf('http://') === 0 ||
         targetUrl.indexOf('sharkhost.xyz') !== -1 ||
