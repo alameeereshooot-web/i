@@ -283,19 +283,6 @@ function load(ri, ci) {
     }
 }
 
-    if (type === 'dash') {
-        loadDash(targetUrl, ch.clearkey);
-    } else if (type === 'iframe') {
-        resetPlayers();
-        vid.style.display = 'none';
-        iframeWrap.style.display = 'block';
-        iframePlayer.src = targetUrl;
-        pw.classList.add('playing');
-    } else {
-        loadHls(finalUrl);
-    }
-}
-
 // بناء قائمة الجودة الخاصة الممررة مع القناة (لـ beIN وغيرها)
 function buildCustomQualityMenu(ch) {
     qm.innerHTML = '';
