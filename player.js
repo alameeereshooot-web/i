@@ -226,13 +226,34 @@ function loadHls(url) {
 }
 
 // دالة اختيار القناة وتحويلها للمشغل المناسب
-        // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
+function load(ri, ci) {
+    if (ri < 0 || ri >= ROWS.length || ci < 0 || ci >= ROWS[ri].channels.length) return;
+    cur = { r: ri, i: ci };
+    if (retryT) { clearTimeout(retryT); retryT = null; }
+
+    document.querySelectorAll('.ch').forEach(function (b) { b.classList.remove('on'); });
+    var btn = document.getElementById('ch-' + ri + '-' + ci);
+    if (btn) btn.classList.add('on');
+
+    var ch = ROWS[ri].channels[ci];
+    chTitle.textContent = ch.n;
+    chTitle.style.display = 'block';
+
+    // تحديث قائمة الجودات اليدوية للقناة إذا كانت موجودة
+    buildCustomQualityMenu(ch);
+
+    // اختيار الرابط: يبدأ بالجودة الأقل إذا أضيفت قائمة qualities أو بالرابط الرئيسي u
+    var targetUrl = (ch.qualities && ch.qualities.length > 0) ? ch.qualities[0].src : ch.u;
+
+    // معالجة قنوات الترفيه وألوان وسيرفرات TS وتحويلها إلى m3u8 عبر بروكسي Deno
     var finalUrl = targetUrl;
     var isDenoStream = targetUrl.includes('sharkhost.xyz') || targetUrl.includes('.ts') || targetUrl.includes('alwan');
 
     if (isDenoStream && !targetUrl.includes('.mpd')) {
         var m3u8Url = targetUrl.replace(/\.ts(\?|$)/i, '.m3u8$1');
-        finalUrl = 'https://deno.net' + encodeURIComponent(m3u8Url);
+        finalUrl = 'https://sho.alameeereshooot-web.deno.net/?url=' + encodeURIComponent(m3u8Url);
+        loadHls(finalUrl);
+        return;
     }
 
     var type = ch.t || (targetUrl.includes('.mpd') ? 'dash' : 'hls');
@@ -248,6 +269,7 @@ function loadHls(url) {
     } else {
         loadHls(finalUrl);
     }
+}
 
 // بناء قائمة الجودة الخاصة الممررة مع القناة (لـ beIN وغيرها)
 function buildCustomQualityMenu(ch) {
