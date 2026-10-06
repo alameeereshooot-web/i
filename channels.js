@@ -161,7 +161,7 @@ var newsChannels = [
 
 var mbcNewChannels = [
     { n: "MBC 1", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-1/15cf99af5de54063fdabfefe66adc075/index.m3u8", t: "hls" },
-    { n: "MBC 2", u: "http://neorcqds.top:8080/live/7851740326546692/ad453617508e/53049.m3u8", t: "hls" },
+    { n: "MBC 2", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fneorcqds.top%3A8080%2Flive%2F7851740326546692%2Fad453617508e%2F53049.m3u8", t: "hls" },
     { n: "MBC 3", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-3-usa/5d58265a862a476dc7f97694addb5ded/index.m3u8", t: "hls" },
     { n: "MBC 4", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-4/24f134f1cd63db9346439e96b86ca6ed/index.m3u8", t: "hls" },
     { n: "MBC 5", u: "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-5/ee6b000cee0629411b666ab26cb13e9b/index.m3u8", t: "hls" },
