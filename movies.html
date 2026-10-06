@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المسلسلات والأفلام</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #000; color: #fff; margin: 0; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        #contentGrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); }
+        .spinner { border: 3px solid rgba(255,255,255,0.08); border-top: 3px solid #2563eb; border-radius: 50%; width: 36px; height: 36px; animation: spin 0.8s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .media-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.25s ease; }
+        .media-card:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 10px 25px rgba(37,99,235,0.25); }
+    </style>
+</head>
+<body>
+    <div class="sticky top-0 z-50 bg-[#000]/95 backdrop-blur border-b border-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <a href="index.html" class="bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-right"></i> القنوات
+                </a>
+                <div class="flex bg-gray-900 p-1 rounded-xl flex-1 md:flex-none border border-gray-800">
+                    <button onclick="switchTab('movies')" id="btn-movies" class="flex-1 md:flex-none rounded-lg font-bold px-5 py-2 bg-blue-600 text-white transition">أفلام</button>
+                    <button onclick="switchTab('series')" id="btn-series" class="flex-1 md:flex-none rounded-lg font-bold px-5 py-2 text-gray-400 hover:text-white transition">مسلسلات</button>
+                </div>
+            </div>
+            <input type="text" id="searchInput" placeholder="بحث بالاسم..." class="w-full md:w-80 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-blue-500 text-sm">
+        </div>
+        <div id="categoriesContainer" class="flex gap-2 overflow-x-auto no-scrollbar mt-3 pb-1">
+            <div class="spinner mx-auto"></div>
+        </div>
+    </div>
+
+    <main class="container mx-auto p-4">
+        <div id="contentGrid"></div>
+    </main>
+
+    <script>
+        var XTREAM = {
+            baseUrl: 'http://4576.live-44359.xyz',
+            username: '2487903738',
+            password: 'ez94z02zgm'
+        };
+        var PROXY = 'https://l.alameeeretv.workers.dev/?url=';
+
+        function apiUrl(query) {
+            var raw = XTREAM.baseUrl + '/player_api.php?username=' + XTREAM.username + '&password=' + XTREAM.password + query;
+            return PROXY + encodeURIComponent(raw);
+        }
+
+        var currentTab = 'movies';
+        var allCategories = [];
+        var currentLoadedContent = [];
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadCategories();
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                var q = e.target.value.trim().toLowerCase();
+                if (q) {
+                    renderGrid(currentLoadedContent.filter(function(i){ return (i.name || '').toLowerCase().includes(q); }));
+                } else {
+                    renderGrid(currentLoadedContent);
+                }
+            });
+        });
+
+        async function loadCategories() {
+            var c = document.getElementById('categoriesContainer');
+            c.innerHTML = '<div class="spinner mx-auto"></div>';
+            try {
+                var action = currentTab === 'movies' ? 'get_vod_categories' : 'get_series_categories';
+                var r = await fetch(apiUrl('&action=' + action));
+                allCategories = await r.json();
+                renderCategories();
+                if (allCategories.length > 0) loadCategoryContent(allCategories[0].category_id);
+            } catch(e) {
+                c.innerHTML = '<p class="text-red-400 text-sm mx-auto">تعذر تحميل التصنيفات</p>';
+            }
+        }
+
+        function renderCategories() {
+            var c = document.getElementById('categoriesContainer');
+            c.innerHTML = '';
+            allCategories.forEach(function(cat, i) {
+                var btn = document.createElement('button');
+                btn.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition ' + (i === 0 ? 'bg-blue-600 text-white' : 'bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-800');
+                btn.textContent = cat.category_name.replace(/^[A-Z]+\|\s*/i, '').trim();
+                btn.onclick = function() {
+                    Array.from(c.children).forEach(function(x){
+                        x.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-800';
+                    });
+                    btn.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition bg-blue-600 text-white';
+                    loadCategoryContent(cat.category_id);
+                };
+                c.appendChild(btn);
+            });
+        }
+
+        async function loadCategoryContent(id) {
+            var grid = document.getElementById('contentGrid');
+            grid.innerHTML = '<div class="spinner mx-auto col-span-full my-12"></div>';
+            try {
+                var action = currentTab === 'movies' ? 'get_vod_streams' : 'get_series';
+                var r = await fetch(apiUrl('&action=' + action + '&category_id=' + id));
+                currentLoadedContent = (await r.json()) || [];
+                renderGrid(currentLoadedContent);
+            } catch(e) {
+                grid.innerHTML = '<p class="col-span-full text-center text-red-400 my-12">فشل تحميل المحتوى</p>';
+            }
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.getElementById('btn-movies').className = 'flex-1 md:flex-none rounded-lg font-bold px-5 py-2 transition ' + (tab === 'movies' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white');
+            document.getElementById('btn-series').className = 'flex-1 md:flex-none rounded-lg font-bold px-5 py-2 transition ' + (tab === 'series' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white');
+            loadCategories();
+        }
+
+        function renderGrid(data) {
+            var grid = document.getElementById('contentGrid');
+            grid.innerHTML = '';
+            if (!data || data.length === 0) {
+                grid.innerHTML = '<p class="col-span-full text-center text-gray-400 my-12">لا يوجد محتوى في هذا القسم</p>';
+                return;
+            }
+            data.slice(0, 100).forEach(function(item) {
+                var name = item.name || 'بدون عنوان';
+                var poster = item.stream_icon || item.cover || 'https://via.placeholder.com/300x450/111/333?text=No+Poster';
+                var card = document.createElement('div');
+                card.className = 'media-card';
+                card.innerHTML = '<img src="' + poster + '" loading="lazy" class="w-full aspect-[2/3] object-cover bg-gray-900" onerror="this.src=\'https://via.placeholder.com/300x450/111/333?text=No+Poster\'"><div class="p-2"><h3 class="font-bold text-xs text-gray-200 truncate" title="' + name + '">' + name + '</h3></div>';
+                card.onclick = function() {
+                    var streamUrl = (currentTab === 'movies'
+                        ? XTREAM.baseUrl + '/movie/' + XTREAM.username + '/' + XTREAM.password + '/' + (item.stream_id || item.series_id) + '.' + (item.container_extension || 'mp4')
+                        : XTREAM.baseUrl + '/series/' + XTREAM.username + '/' + XTREAM.password + '/' + (item.series_id || item.stream_id) + '.mp4'
+                    );
+                    window.open(streamUrl, '_blank');
+                };
+                grid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
