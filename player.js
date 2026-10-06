@@ -561,12 +561,26 @@ function buildChannels() {
             if (c.t === 'ts') cls += ' ts-ch';
             if (c.t === 'iframe') cls += ' iframe-ch';
             b.className = cls;
-                    if (ri === 0) {
+                            if (ri === 0) {
           b.classList.add('bein-logo-ch');
           var img = document.createElement('img');
           img.src = 'bein-' + (ci + 1) + '.png';
           img.alt = c.n;
           b.appendChild(img);
+        } else if (row.label && row.label.indexOf('ثمانية') !== -1) {
+          b.style.display = 'inline-flex';
+          b.style.alignItems = 'center';
+          b.style.gap = '6px';
+          var img = document.createElement('img');
+          img.src = 'thamanya.png';
+          img.alt = 'ثمانية';
+          img.style.width = '18px';
+          img.style.height = '18px';
+          img.style.objectFit = 'contain';
+          var txt = document.createElement('span');
+          txt.textContent = c.n.replace(/^ثمانية\s*/, '');
+          b.appendChild(img);
+          b.appendChild(txt);
         } else {
           b.textContent = c.n;
         }
