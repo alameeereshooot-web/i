@@ -3,59 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المسلسلات والأفلام</title>
+    <title>مكتبة الأفلام والمسلسلات</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; background: #000; color: #fff; margin: 0; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        #contentGrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); }
-        .spinner { border: 3px solid rgba(255,255,255,0.08); border-top: 3px solid #2563eb; border-radius: 50%; width: 36px; height: 36px; animation: spin 0.8s linear infinite; }
+        #contentGrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+        @media (min-width: 640px) {
+            #contentGrid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+        }
+        .spinner { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #dc2626; border-radius: 50%; width: 36px; height: 36px; animation: spin 0.8s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        .media-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.25s ease; }
-        .media-card:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 10px 25px rgba(37,99,235,0.25); }
+        .media-card { background: #0c0f17; border: 1px solid #1e293b; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s, border-color 0.2s; position: relative; }
+        .media-card:hover { transform: translateY(-4px); border-color: #dc2626; }
+        .modal-overlay { backdrop-filter: blur(8px); background: rgba(0,0,0,0.88); }
     </style>
 </head>
-<body>
-    <div class="sticky top-0 z-50 bg-[#000]/95 backdrop-blur border-b border-gray-800 p-4 shadow-lg">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-            <div class="flex items-center gap-3 w-full md:w-auto">
-                <a href="index.html" class="bg-gray-800 hover:bg-gray-700 text-gray-200 px-3 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
-                    <i class="fa-solid fa-arrow-right"></i> القنوات
-                </a>
-                <div class="flex bg-gray-900 p-1 rounded-xl flex-1 md:flex-none border border-gray-800">
-                    <button onclick="switchTab('movies')" id="btn-movies" class="flex-1 md:flex-none rounded-lg font-bold px-5 py-2 bg-blue-600 text-white transition">أفلام</button>
-                    <button onclick="switchTab('series')" id="btn-series" class="flex-1 md:flex-none rounded-lg font-bold px-5 py-2 text-gray-400 hover:text-white transition">مسلسلات</button>
+<body class="min-h-screen pb-12">
+
+    <!-- شريط التنقل والبحث العلوي -->
+    <header class="sticky top-0 z-40 bg-black/90 border-b border-gray-800 p-3 sm:p-4 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+                <div class="flex bg-gray-900 border border-gray-800 p-1 rounded-xl">
+                    <button onclick="switchTab('movies')" id="btn-movies" class="rounded-lg font-bold px-5 py-2 bg-red-600 text-white text-sm transition">
+                        <i class="fa-solid fa-film ml-1"></i> أفلام
+                    </button>
+                    <button onclick="switchTab('series')" id="btn-series" class="rounded-lg font-bold px-5 py-2 text-gray-400 hover:text-white text-sm transition">
+                        <i class="fa-solid fa-tv ml-1"></i> مسلسلات
+                    </button>
                 </div>
+                <a href="index.html" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-2 rounded-lg transition">
+                    <i class="fa-solid fa-arrow-right ml-1"></i> البث المباشر
+                </a>
             </div>
-            <input type="text" id="searchInput" placeholder="بحث بالاسم..." class="w-full md:w-80 bg-gray-900 border border-gray-800 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-blue-500 text-sm">
+            <div class="relative w-full md:w-80">
+                <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل..." class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-2 pr-10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-red-600">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-gray-500 text-xs"></i>
+            </div>
         </div>
-        <div id="categoriesContainer" class="flex gap-2 overflow-x-auto no-scrollbar mt-3 pb-1">
+        <!-- شريط التصنيفات -->
+        <div id="categoriesContainer" class="max-w-7xl mx-auto flex gap-2 overflow-x-auto no-scrollbar mt-3 pt-1">
             <div class="spinner mx-auto"></div>
         </div>
-    </div>
+    </header>
 
-    <main class="container mx-auto p-4">
+    <!-- شبكة المحتوى -->
+    <main class="max-w-7xl mx-auto p-3 sm:p-4 mt-2">
         <div id="contentGrid"></div>
     </main>
 
+    <!-- المشغل المدمج المنبثق -->
+    <div id="playerModal" class="fixed inset-0 z-50 modal-overlay flex flex-col items-center justify-center p-2 sm:p-4 hidden">
+        <div class="bg-gray-950 border border-gray-800 rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh]">
+            
+            <!-- رأس نافذة المشغل -->
+            <div class="flex items-center justify-between p-3 bg-gray-900 border-b border-gray-800">
+                <h3 id="playerTitle" class="font-bold text-sm sm:text-base text-gray-200 truncate pr-2">جاري التشغيل...</h3>
+                <button onclick="closePlayer()" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-red-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- حاوية الفيديو -->
+            <div class="relative bg-black w-full aspect-video flex items-center justify-center">
+                <video id="mainVideo" controls playsinline class="w-full h-full bg-black"></video>
+            </div>
+
+            <!-- تنبيه حظر HTTP وخيارات المشغلات الخارجية -->
+            <div id="mixedContentNotice" class="p-3 bg-gray-900 border-t border-gray-800 text-xs text-gray-300">
+                <div class="flex items-center gap-2 mb-2 text-yellow-400 font-bold">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>إذا لم يبدأ الفيديو تلقائياً بسبب حظر الـ HTTP:</span>
+                </div>
+                <p class="text-gray-400 mb-2 leading-relaxed">
+                    المتصفح قد يمنع روابط الـ HTTP على مواقع HTTPS. يمكنك تفعيل <b>"السماح بالمحتوى غير الآمن"</b> من إعدادات المتصفح 🔒، أو التشغيل مباشرة عبر التطبيقات الخارجية بالأسفل:
+                </p>
+                <div class="flex flex-wrap gap-2 pt-1">
+                    <a id="btnVlc" href="#" class="bg-orange-600 hover:bg-orange-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-play"></i> تشغيل في VLC
+                    </a>
+                    <a id="btnMx" href="#" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-film"></i> تشغيل في MX Player
+                    </a>
+                    <button onclick="copyStreamUrl()" class="bg-gray-800 hover:bg-gray-700 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-regular fa-copy"></i> نسخ الرابط
+                    </button>
+                    <a id="btnDirect" href="#" target="_blank" class="bg-gray-800 hover:bg-gray-700 text-white font-bold px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> فتح مباشر
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- نافذة اختيار حلقات المسلسل المنبثقة -->
+    <div id="seriesModal" class="fixed inset-0 z-50 modal-overlay flex items-center justify-center p-3 hidden">
+        <div class="bg-gray-950 border border-gray-800 rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
+                <h3 id="seriesModalTitle" class="font-bold text-base text-gray-200 truncate">حلقات المسلسل</h3>
+                <button onclick="closeSeriesModal()" class="w-8 h-8 rounded-full bg-gray-800 hover:bg-red-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- تبويبات المواسم -->
+            <div id="seasonsList" class="flex gap-2 p-3 overflow-x-auto no-scrollbar border-b border-gray-800 bg-gray-900/50"></div>
+            <!-- شبكة الحلقات -->
+            <div id="episodesList" class="p-4 overflow-y-auto max-h-[60vh] grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div class="spinner mx-auto col-span-full"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // بيانات سيرفر Xtream
         var XTREAM = {
             baseUrl: 'http://4576.live-44359.xyz',
             username: '2487903738',
             password: 'ez94z02zgm'
         };
-        var PROXY = 'https://l.alameeeretv.workers.dev/?url=';
 
-        function apiUrl(query) {
-            var raw = XTREAM.baseUrl + '/player_api.php?username=' + XTREAM.username + '&password=' + XTREAM.password + query;
-            return PROXY + encodeURIComponent(raw);
-        }
-
+        var API = XTREAM.baseUrl + '/player_api.php?username=' + XTREAM.username + '&password=' + XTREAM.password;
         var currentTab = 'movies';
         var allCategories = [];
         var currentLoadedContent = [];
+        var currentPlayingUrl = '';
 
         document.addEventListener('DOMContentLoaded', async function() {
             await loadCategories();
@@ -69,80 +144,220 @@
             });
         });
 
+        // جلب التصنيفات
         async function loadCategories() {
             var c = document.getElementById('categoriesContainer');
             c.innerHTML = '<div class="spinner mx-auto"></div>';
             try {
                 var action = currentTab === 'movies' ? 'get_vod_categories' : 'get_series_categories';
-                var r = await fetch(apiUrl('&action=' + action));
+                var r = await fetch(API + '&action=' + action);
                 allCategories = await r.json();
                 renderCategories();
                 if (allCategories.length > 0) loadCategoryContent(allCategories[0].category_id);
             } catch(e) {
-                c.innerHTML = '<p class="text-red-400 text-sm mx-auto">تعذر تحميل التصنيفات</p>';
+                c.innerHTML = '<p class="text-xs text-red-400 mx-auto">فشل تحميل التصنيفات</p>';
             }
         }
 
+        // عرض أزرار التصنيفات
         function renderCategories() {
             var c = document.getElementById('categoriesContainer');
             c.innerHTML = '';
             allCategories.forEach(function(cat, i) {
                 var btn = document.createElement('button');
-                btn.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition ' + (i === 0 ? 'bg-blue-600 text-white' : 'bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-800');
-                btn.textContent = cat.category_name.replace(/^[A-Z]+\|\s*/i, '').trim();
+                btn.className = 'whitespace-nowrap rounded-lg px-3.5 py-1.5 font-bold text-xs transition ' + 
+                    (i === 0 ? 'bg-red-600 text-white' : 'bg-gray-900 text-gray-400 hover:text-white border border-gray-800');
+                btn.textContent = cat.category_name.replace(/\|.*?\|/g, '').trim();
                 btn.onclick = function() {
                     Array.from(c.children).forEach(function(x){
-                        x.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition bg-gray-900 text-gray-300 hover:bg-gray-800 border border-gray-800';
+                        x.className = 'whitespace-nowrap rounded-lg px-3.5 py-1.5 font-bold text-xs transition bg-gray-900 text-gray-400 hover:text-white border border-gray-800';
                     });
-                    btn.className = 'whitespace-nowrap rounded-lg px-4 py-2 text-xs font-bold transition bg-blue-600 text-white';
+                    btn.className = 'whitespace-nowrap rounded-lg px-3.5 py-1.5 font-bold text-xs transition bg-red-600 text-white';
                     loadCategoryContent(cat.category_id);
                 };
                 c.appendChild(btn);
             });
         }
 
+        // جلب محتوى التصنيف (أفلام أو مسلسلات)
         async function loadCategoryContent(id) {
             var grid = document.getElementById('contentGrid');
             grid.innerHTML = '<div class="spinner mx-auto col-span-full my-12"></div>';
             try {
                 var action = currentTab === 'movies' ? 'get_vod_streams' : 'get_series';
-                var r = await fetch(apiUrl('&action=' + action + '&category_id=' + id));
+                var r = await fetch(API + '&action=' + action + '&category_id=' + id);
                 currentLoadedContent = (await r.json()) || [];
                 renderGrid(currentLoadedContent);
             } catch(e) {
-                grid.innerHTML = '<p class="col-span-full text-center text-red-400 my-12">فشل تحميل المحتوى</p>';
+                grid.innerHTML = '<p class="col-span-full text-center text-red-400 py-12">فشل تحميل المحتوى</p>';
             }
         }
 
+        // التبديل بين الأفلام والمسلسلات
         function switchTab(tab) {
+            if (currentTab === tab) return;
             currentTab = tab;
-            document.getElementById('btn-movies').className = 'flex-1 md:flex-none rounded-lg font-bold px-5 py-2 transition ' + (tab === 'movies' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white');
-            document.getElementById('btn-series').className = 'flex-1 md:flex-none rounded-lg font-bold px-5 py-2 transition ' + (tab === 'series' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white');
+            document.getElementById('btn-movies').className = 'rounded-lg font-bold px-5 py-2 text-sm transition ' + (tab === 'movies' ? 'bg-red-600 text-white' : 'text-gray-400 hover:text-white');
+            document.getElementById('btn-series').className = 'rounded-lg font-bold px-5 py-2 text-sm transition ' + (tab === 'series' ? 'bg-red-600 text-white' : 'text-gray-400 hover:text-white');
             loadCategories();
         }
 
+        // رسم كروت الأفلام / المسلسلات
         function renderGrid(data) {
             var grid = document.getElementById('contentGrid');
             grid.innerHTML = '';
             if (!data || data.length === 0) {
-                grid.innerHTML = '<p class="col-span-full text-center text-gray-400 my-12">لا يوجد محتوى في هذا القسم</p>';
+                grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-12">لا يوجد محتوى في هذا القسم</p>';
                 return;
             }
             data.slice(0, 100).forEach(function(item) {
-                var name = item.name || 'بدون عنوان';
+                var name = item.name || 'غير معروف';
                 var poster = item.stream_icon || item.cover || 'https://via.placeholder.com/300x450/111/333?text=No+Poster';
                 var card = document.createElement('div');
                 card.className = 'media-card';
-                card.innerHTML = '<img src="' + poster + '" loading="lazy" class="w-full aspect-[2/3] object-cover bg-gray-900" onerror="this.src=\'https://via.placeholder.com/300x450/111/333?text=No+Poster\'"><div class="p-2"><h3 class="font-bold text-xs text-gray-200 truncate" title="' + name + '">' + name + '</h3></div>';
+                card.innerHTML = 
+                    '<div class="relative w-full aspect-[2/3] bg-gray-950">' +
+                        '<img src="' + poster + '" loading="lazy" class="w-full h-full object-cover" onerror="this.src=\'https://via.placeholder.com/300x450/111/333?text=Poster\'">' +
+                        '<div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 flex items-center justify-center transition">' +
+                            '<span class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg"><i class="fa-solid fa-play"></i></span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="p-2">' +
+                        '<h3 class="font-bold text-xs text-gray-200 line-clamp-2 leading-tight" title="' + name + '">' + name + '</h3>' +
+                    '</div>';
+
                 card.onclick = function() {
-                    var streamUrl = (currentTab === 'movies'
-                        ? XTREAM.baseUrl + '/movie/' + XTREAM.username + '/' + XTREAM.password + '/' + (item.stream_id || item.series_id) + '.' + (item.container_extension || 'mp4')
-                        : XTREAM.baseUrl + '/series/' + XTREAM.username + '/' + XTREAM.password + '/' + (item.series_id || item.stream_id) + '.mp4'
-                    );
-                    window.open(streamUrl, '_blank');
+                    if (currentTab === 'movies') {
+                        var ext = item.container_extension || 'mp4';
+                        var streamUrl = XTREAM.baseUrl + '/movie/' + XTREAM.username + '/' + XTREAM.password + '/' + item.stream_id + '.' + ext;
+                        playMedia(streamUrl, name);
+                    } else {
+                        openSeriesEpisodes(item.series_id, name);
+                    }
                 };
                 grid.appendChild(card);
             });
+        }
+
+        // تشغيل الرابط في المشغل المدمج
+        function playMedia(url, title) {
+            currentPlayingUrl = url;
+            document.getElementById('playerTitle').textContent = title;
+
+            // إعداد روابط التطبيقات الخارجية
+            document.getElementById('btnVlc').href = 'vlc://' + url;
+            document.getElementById('btnMx').href = 'intent:' + url + '#Intent;package=com.mxtech.videoplayer.ad;type=video/*;end';
+            document.getElementById('btnDirect').href = url;
+
+            var video = document.getElementById('mainVideo');
+            video.pause();
+            video.src = url;
+            video.load();
+
+            document.getElementById('playerModal').classList.remove('hidden');
+
+            var playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    console.log("Auto-play error / Mixed content:", error);
+                });
+            }
+        }
+
+        // إغلاق المشغل المدمج
+        function closePlayer() {
+            var video = document.getElementById('mainVideo');
+            video.pause();
+            video.src = '';
+            document.getElementById('playerModal').classList.add('hidden');
+        }
+
+        // نسخ رابط البث
+        function copyStreamUrl() {
+            if (!currentPlayingUrl) return;
+            navigator.clipboard.writeText(currentPlayingUrl).then(function() {
+                alert('تم نسخ الرابط المباشر بنجاح!');
+            }).catch(function() {
+                prompt('انسخ الرابط:', currentPlayingUrl);
+            });
+        }
+
+        // فتح نافذة حلقات المسلسل
+        async function openSeriesEpisodes(seriesId, seriesTitle) {
+            var modal = document.getElementById('seriesModal');
+            document.getElementById('seriesModalTitle').textContent = seriesTitle;
+            var seasonsList = document.getElementById('seasonsList');
+            var episodesList = document.getElementById('episodesList');
+            seasonsList.innerHTML = '';
+            episodesList.innerHTML = '<div class="spinner mx-auto col-span-full my-8"></div>';
+            modal.classList.remove('hidden');
+
+            try {
+                var r = await fetch(API + '&action=get_series_info&series_id=' + seriesId);
+                var data = await r.json();
+                var episodes = data.episodes || {};
+                var seasonKeys = Object.keys(episodes);
+
+                if (seasonKeys.length === 0) {
+                    episodesList.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">لا توجد حلقات متوفرة</p>';
+                    return;
+                }
+
+                // عرض المواسم
+                seasonKeys.forEach(function(sKey, idx) {
+                    var sBtn = document.createElement('button');
+                    sBtn.className = 'whitespace-nowrap px-3 py-1 rounded-lg text-xs font-bold transition ' + 
+                        (idx === 0 ? 'bg-red-600 text-white' : 'bg-gray-800 text-gray-300 hover:text-white');
+                    sBtn.textContent = 'الموسم ' + sKey;
+                    sBtn.onclick = function() {
+                        Array.from(seasonsList.children).forEach(function(b){
+                            b.className = 'whitespace-nowrap px-3 py-1 rounded-lg text-xs font-bold transition bg-gray-800 text-gray-300 hover:text-white';
+                        });
+                        sBtn.className = 'whitespace-nowrap px-3 py-1 rounded-lg text-xs font-bold transition bg-red-600 text-white';
+                        renderEpisodes(episodes[sKey], seriesTitle, sKey);
+                    };
+                    seasonsList.appendChild(sBtn);
+                });
+
+                // عرض حلقات الموسم الأول تلقائياً
+                renderEpisodes(episodes[seasonKeys[0]], seriesTitle, seasonKeys[0]);
+
+            } catch(e) {
+                episodesList.innerHTML = '<p class="col-span-full text-center text-red-400 py-8">فشل تحميل الحلقات</p>';
+            }
+        }
+
+        // عرض قائمة الحلقات داخل نافذة المسلسل
+        function renderEpisodes(eps, seriesTitle, seasonNum) {
+            var el = document.getElementById('episodesList');
+            el.innerHTML = '';
+            if (!eps || eps.length === 0) {
+                el.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">لا توجد حلقات لهذا الموسم</p>';
+                return;
+            }
+            eps.forEach(function(ep) {
+                var epNum = ep.episode_num || ep.id;
+                var epTitle = ep.title || ('الحلقة ' + epNum);
+                var ext = ep.container_extension || 'mp4';
+                var streamUrl = XTREAM.baseUrl + '/series/' + XTREAM.username + '/' + XTREAM.password + '/' + ep.id + '.' + ext;
+
+                var btn = document.createElement('button');
+                btn.className = 'bg-gray-900 hover:bg-red-600/30 border border-gray-800 hover:border-red-600 p-2.5 rounded-xl text-right transition flex items-center justify-between gap-2';
+                btn.innerHTML = 
+                    '<div class="truncate"><div class="text-xs font-bold text-gray-200 truncate">' + epTitle + '</div>' +
+                    '<span class="text-[10px] text-gray-500">حلقة ' + epNum + '</span></div>' +
+                    '<i class="fa-solid fa-play text-xs text-red-500"></i>';
+
+                btn.onclick = function() {
+                    closeSeriesModal();
+                    playMedia(streamUrl, seriesTitle + ' - S' + seasonNum + ' E' + epNum);
+                };
+                el.appendChild(btn);
+            });
+        }
+
+        function closeSeriesModal() {
+            document.getElementById('seriesModal').classList.add('hidden');
         }
     </script>
 </body>
