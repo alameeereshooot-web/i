@@ -1,6 +1,114 @@
 // ==========================================
 // 1. القنوات متعددة الجودات (beIN 1 -> 9)
 // ==========================================
+const gamerdzBaseUrl = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
+
+var beinMultiQualities1 = [
+    {
+        n: "beIN 1",
+        u: `${gamerdzBaseUrl}1806555.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806555.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806573.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806582.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806564.ts` },
+            { label: "صوت إنجليزي EN", src: `${gamerdzBaseUrl}1806546.ts` }
+        ]
+    },
+    {
+        n: "beIN 2",
+        u: `${gamerdzBaseUrl}1806554.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806554.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806572.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806581.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806563.ts` }
+        ]
+    },
+    {
+        n: "beIN 3",
+        u: `${gamerdzBaseUrl}1806553.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806553.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806571.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806580.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806562.ts` }
+        ]
+    },
+    {
+        n: "beIN 4",
+        u: `${gamerdzBaseUrl}1806552.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806552.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806570.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806579.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806561.ts` }
+        ]
+    },
+    {
+        n: "beIN 5",
+        u: `${gamerdzBaseUrl}1806551.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806551.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806569.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806578.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806560.ts` }
+        ]
+    },
+    {
+        n: "beIN 6",
+        u: `${gamerdzBaseUrl}1806550.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806550.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806568.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806577.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806559.ts` }
+        ]
+    },
+    {
+        n: "beIN 7",
+        u: `${gamerdzBaseUrl}1806549.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806549.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806567.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806576.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806558.ts` }
+        ]
+    },
+    {
+        n: "beIN 8",
+        u: `${gamerdzBaseUrl}1806548.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806548.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806566.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806575.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806557.ts` }
+        ]
+    },
+    {
+        n: "beIN 9",
+        u: `${gamerdzBaseUrl}1806547.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl}1806547.ts` },
+            { label: "HD 720p", src: `${gamerdzBaseUrl}1806565.ts` },
+            { label: "FHD 1080p", src: `${gamerdzBaseUrl}1806574.ts` },
+            { label: "4K", src: `${gamerdzBaseUrl}1806556.ts` }
+        ]
+    }
+];
+
+// ==========================================
+// 1. القنوات متعددة الجودات (beIN 1 -> 9)
+// ==========================================
 const gamerdzBaseUrl = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
 
 var beinMultiQualities = [
@@ -339,6 +447,7 @@ var alwanChannels = [
 // 3. جدول الأقسام
 // ==========================================
 var ROWS = [
+    { label: 'BEIN متعددة', channels: beinMultiQualities1, special: false },
     { label: 'BEIN متعددة', channels: beinMultiQualities, special: false },
     { label: 'bein', channels: beinChannels, special: false },
     { label: 'bein متعدد', channels: beinMultiChannels, special: true },
