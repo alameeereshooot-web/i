@@ -9,9 +9,9 @@ var beinMultiQualities1 = [
         u: `${gamerdzBaseUrl1}1806555.ts`,
         t: "ts",
         qualities: [
-            { label: "SD (الأساسية)", src: `${gamerdzBaseUrl1}1806555.ts` },
-            { label: "HD 720p", src: `${gamerdzBaseUrl1}1806573.ts` },
-            { label: "FHD 1080p", src: `${gamerdzBaseUrl1}1806582.ts` },
+            { label: "360p", src: `${gamerdzBaseUrl1}1806555.ts` },
+            { label: "720p", src: `${gamerdzBaseUrl1}1806573.ts` },
+            { label: "1080p", src: `${gamerdzBaseUrl1}1806582.ts` },
             { label: "4K", src: `${gamerdzBaseUrl1}1806564.ts` },
             { label: "صوت إنجليزي EN", src: `${gamerdzBaseUrl1}1806546.ts` }
         ]
