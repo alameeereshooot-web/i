@@ -3,491 +3,529 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>الاميري موفيز | Alameeer Movies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>الاميري موفيز</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
             background-color: #000000;
             color: #ffffff;
-            font-family: 'Cairo', sans-serif;
-            overflow-x: hidden;
-            padding-bottom: 50px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding-bottom: 30px;
         }
 
-        /* 1. المشغل الثابت في أعلى الصفحة (دائم الظهور مثل القنوات) */
+        /* 1. المشغل العلوي الثابت تماماً مثل مشغل القنوات */
         #player-wrapper {
             position: sticky;
             top: 0;
             width: 100%;
-            background: #000000;
+            height: 240px;
+            background-color: #000000;
             z-index: 1000;
-            border-bottom: 2px solid #1a1a24;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            border-bottom: 1px solid #1a1a1a;
         }
-        .player-container {
+
+        @media (min-width: 768px) {
+            #player-wrapper {
+                height: 480px;
+            }
+        }
+
+        #main-player {
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            padding-top: 56.25%; /* 16:9 شاشة سينمائية */
-            background: #000000;
-        }
-        .player-container iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            height: 100%;
             border: none;
-            background: #000;
+            background-color: #000000;
         }
-        .player-bar {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 8px 12px;
+
+        /* 2. شريط التحكم والسيرفرات وزر TV */
+        .controls-bar {
+            background-color: #0a0a0a;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #000000;
+            border-bottom: 1px solid #1f1f1f;
             gap: 8px;
-            flex-wrap: wrap;
-            border-top: 1px solid #15151f;
         }
-        .media-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #e50914;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 55%;
-        }
-        .server-pills {
+
+        .server-buttons {
             display: flex;
             gap: 6px;
         }
-        .server-btn {
-            background: #151520;
-            color: #aaa;
-            border: 1px solid #252535;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        .server-btn.active {
-            background: #e50914;
-            color: #fff;
-            border-color: #e50914;
-            font-weight: 700;
-        }
 
-        /* أدوات الحلقات للمسلسلات */
-        .ep-controls {
-            display: none;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-        }
-        .ep-controls input {
-            width: 45px;
-            background: #151520;
+        .btn-server {
+            background: #1e1e24;
+            color: #aaa;
             border: 1px solid #333;
-            color: #fff;
-            padding: 2px 4px;
-            border-radius: 4px;
-            text-align: center;
-            font-size: 11px;
-        }
-
-        /* 2. شريط البحث */
-        .header {
-            padding: 12px 14px 6px 14px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            background: #000000;
-        }
-        .search-box {
-            flex: 1;
-            position: relative;
-        }
-        .search-box input {
-            width: 100%;
-            background: #111116;
-            border: 1px solid #22222e;
-            padding: 8px 14px;
-            border-radius: 8px;
-            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
             font-size: 13px;
-            outline: none;
-            font-family: inherit;
-        }
-        .search-box input:focus {
-            border-color: #e50914;
-        }
-        .search-btn {
-            background: #e50914;
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        /* 3. شريط التصنيفات الأفقي مثل المباشر */
-        .categories-nav {
-            display: flex;
-            gap: 8px;
-            padding: 10px 14px;
-            overflow-x: auto;
-            white-space: nowrap;
-            scrollbar-width: none;
-            background: #000000;
-        }
-        .categories-nav::-webkit-scrollbar { display: none; }
-        .cat-chip {
-            background: #111118;
-            border: 1px solid #22222e;
-            color: #aaa;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
         }
-        .cat-chip.active {
+
+        .btn-server.active {
             background: #e50914;
             color: #fff;
             border-color: #e50914;
         }
 
-        /* 4. شبكة الكروت والبوسترات */
-        .section-title {
-            padding: 10px 14px 6px 14px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
+        /* زر Tv المميز للرجوع للمباشر */
+        .btn-tv {
+            background: linear-gradient(135deg, #00c853, #009624);
+            color: #ffffff !important;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #000;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 200, 83, 0.4);
         }
-        .section-title::before {
-            content: '';
+
+        .btn-tv:active {
+            transform: scale(0.96);
+        }
+
+        .now-playing-title {
+            color: #e50914;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 40%;
+        }
+
+        /* 3. صندوق البحث السريع */
+        .search-container {
+            padding: 12px 14px 6px 14px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input {
+            flex: 1;
+            background: #141414;
+            border: 1px solid #282828;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #e50914;
+        }
+
+        .search-btn {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 0 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 4. شريط الأقسام الأفقي (مثل المباشر) */
+        .categories-scroll {
+            display: flex;
+            gap: 8px;
+            padding: 10px 14px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .categories-scroll::-webkit-scrollbar { display: none; }
+
+        .cat-chip {
+            background: #141414;
+            color: #b3b3b3;
+            border: 1px solid #262626;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .cat-chip.active {
+            background: #e50914;
+            color: white;
+            border-color: #e50914;
+            font-weight: bold;
+        }
+
+        /* عنوان القسم الحالي */
+        .section-header {
+            padding: 12px 16px 6px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-header::before {
+            content: "";
             width: 4px;
-            height: 14px;
+            height: 16px;
             background: #e50914;
             border-radius: 2px;
         }
-        .movies-grid {
+
+        /* 5. شبكة البوسترات والكروت */
+        .media-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             padding: 10px 14px;
-            background: #000;
-        }
-        @media (min-width: 600px) {
-            .movies-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-        @media (min-width: 900px) {
-            .movies-grid { grid-template-columns: repeat(6, 1fr); }
         }
 
-        .movie-card {
-            background: #0a0a0f;
+        @media (min-width: 600px) {
+            .media-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 14px;
+            }
+        }
+        @media (min-width: 900px) {
+            .media-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        .card {
+            background: #111;
             border-radius: 8px;
             overflow: hidden;
-            position: relative;
             cursor: pointer;
-            border: 1px solid #1a1a24;
-            transition: transform 0.2s;
-        }
-        .movie-card:hover { transform: translateY(-4px); }
-        .poster-box {
             position: relative;
-            padding-top: 148%;
-            background: #121218;
+            transition: transform 0.2s;
+            border: 1px solid #1f1f1f;
         }
-        .poster-box img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+
+        .card:active {
+            transform: scale(0.96);
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 2 / 3;
             object-fit: cover;
+            display: block;
+            background: #181818;
         }
-        .rating-badge {
-            position: absolute;
-            top: 6px; left: 6px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-size: 9px;
-            font-weight: 700;
-            color: #ffb703;
-        }
-        .type-badge {
-            position: absolute;
-            top: 6px; right: 6px;
-            background: #e50914;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-size: 8px;
-            font-weight: 700;
-        }
+
         .card-info {
-            padding: 6px 8px;
-            background: #0a0a0f;
+            padding: 6px;
         }
-        .card-name {
+
+        .card-title {
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             color: #eee;
         }
-        .card-year {
+
+        .badge-type {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0,0,0,0.75);
+            color: #ffd700;
             font-size: 10px;
-            color: #777;
-            margin-top: 2px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
         }
-        .loading-text {
-            grid-column: 1 / -1;
+
+        /* رسالة التحميل والخطأ */
+        .state-box {
             text-align: center;
+            padding: 40px 20px;
             color: #888;
-            padding: 40px;
-            font-size: 13px;
+            font-size: 14px;
+            grid-column: 1 / -1;
+        }
+
+        /* محدد المواسم والحلقات للمسلسلات */
+        #tv-controls {
+            display: none;
+            background: #111;
+            padding: 8px 14px;
+            border-bottom: 1px solid #222;
+            gap: 8px;
+            align-items: center;
+        }
+        .tv-select {
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. المشغل الثابت (دائم الظهور في الأعلى مثل القنوات) -->
+    <!-- 1. المشغل الثابت فوق -->
     <div id="player-wrapper">
-        <div class="player-container">
-            <iframe id="video-frame" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-        </div>
-        <div class="player-bar">
-            <span class="media-title" id="p-title">اختر فيلماً أو مسلسلاً للمشاهدة</span>
-            <div class="ep-controls" id="ep-controls">
-                <span>موسم:</span>
-                <input type="number" id="season-num" value="1" min="1" onchange="updateEpisode()">
-                <span>حلقة:</span>
-                <input type="number" id="ep-num" value="1" min="1" onchange="updateEpisode()">
-            </div>
-            <div class="server-pills">
-                <button class="server-btn active" onclick="switchServer(1)">سيرفر 1 (مترجم)</button>
-                <button class="server-btn" onclick="switchServer(2)">سيرفر 2</button>
-            </div>
-        </div>
+        <iframe id="main-player" 
+                src="" 
+                allowfullscreen="true" 
+                webkitallowfullscreen="true" 
+                mozallowfullscreen="true"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-presentation">
+        </iframe>
     </div>
 
-    <!-- 2. شريط البحث -->
-    <div class="header">
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="ابحث بالاسم هنا..." onkeypress="handleEnter(event)">
+    <!-- 2. شريط السيرفرات + زر TV -->
+    <div class="controls-bar">
+        <div class="server-buttons">
+            <button class="btn-server active" id="srv1" onclick="switchServer(1)">سيرفر 1</button>
+            <button class="btn-server" id="srv2" onclick="switchServer(2)">سيرفر 2</button>
         </div>
-        <button class="search-btn" onclick="searchMedia()">بحث</button>
+        <div class="now-playing-title" id="now-playing">اختر فيلماً للمشاهدة</div>
+        <a href="https://alameeereshooot-web.github.io/i/" class="btn-tv" title="الانتقال إلى البث المباشر">
+            <i class="fas fa-tv"></i> Tv
+        </a>
     </div>
 
-    <!-- 3. شريط المجموعات والتصنيفات -->
-    <div class="categories-nav">
-        <button class="cat-chip active" onclick="loadCategory('trending', this)">🔥 الأكثر رواجاً</button>
-        <button class="cat-chip" onclick="loadCategory('arabic', this)">🇸🇦 أفلام عربية</button>
-        <button class="cat-chip" onclick="loadCategory('action', this)">💥 أكشن وإثارة</button>
-        <button class="cat-chip" onclick="loadCategory('series', this)">📺 مسلسلات</button>
-        <button class="cat-chip" onclick="loadCategory('comedy', this)">😂 كوميديا</button>
-        <button class="cat-chip" onclick="loadCategory('horror', this)">👻 رعب</button>
-        <button class="cat-chip" onclick="loadCategory('animation', this)">🎨 أنمي وكارتون</button>
+    <!-- محدد الحلقات للمسلسلات -->
+    <div id="tv-controls">
+        <span style="font-size: 12px; color: #aaa;">الموسم:</span>
+        <select id="season-num" class="tv-select" onchange="updateEpisode()"></select>
+        <span style="font-size: 12px; color: #aaa; margin-right: 6px;">الحلقة:</span>
+        <select id="episode-num" class="tv-select" onchange="updateEpisode()"></select>
     </div>
 
-    <!-- 4. العنوان وشبكة البوسترات -->
-    <div class="section-title" id="sec-title">الأكثر رواجاً هذا الأسبوع</div>
-    <div class="movies-grid" id="grid">
-        <div class="loading-text">جاري تحميل الأفلام... ⏳</div>
+    <!-- 3. البحث -->
+    <div class="search-container">
+        <input type="text" id="search-box" class="search-input" placeholder="ابحث عن فيلم أو مسلسل..." onkeypress="handleEnter(event)">
+        <button class="search-btn" onclick="searchMedia()"><i class="fas fa-search"></i></button>
+    </div>
+
+    <!-- 4. المجموعات والتصنيفات -->
+    <div class="categories-scroll">
+        <div class="cat-chip active" onclick="loadCat('trending', this)">🔥 الأكثر رواجاً</div>
+        <div class="cat-chip" onclick="loadCat('arabic', this)">🇸🇦 أفلام عربية</div>
+        <div class="cat-chip" onclick="loadCat('action', this)">💥 أكشن وإثارة</div>
+        <div class="cat-chip" onclick="loadCat('series', this)">📺 مسلسلات</div>
+        <div class="cat-chip" onclick="loadCat('anime', this)">🎨 أنمي وكارتون</div>
+        <div class="cat-chip" onclick="loadCat('comedy', this)">😂 كوميديا</div>
+        <div class="cat-chip" onclick="loadCat('horror', this)">👻 رعب</div>
+    </div>
+
+    <div class="section-header" id="current-cat-title">الأكثر رواجاً</div>
+
+    <!-- 5. شبكة الأفلام -->
+    <div class="media-grid" id="grid">
+        <div class="state-box">جاري تحميل البوسترات...</div>
     </div>
 
     <script>
-        const API_KEY = 'c7f20018c3cfd619983fa996c5aa527b';
-        const BASE_URL = 'https://api.themoviedb.org/3';
-        const IMG_URL = 'https://image.tmdb.org/t/p/w342';
+        const TMDB_KEY = 'c7f20018c3cfa8d9e2621142511eaee4';
+        
+        // بروكسيات متعددة لضمان تخطي أي حجب لمزودات الاتصال باليمن
+        const PROXIES = [
+            (u) => `https://l.alameeeretv.workers.dev/?url=${encodeURIComponent(u)}`,
+            (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+            (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`
+        ];
 
-        let currentId = null;
-        let currentType = 'movie';
         let currentServer = 1;
+        let currentItem = { id: 533535, type: 'movie', title: 'Deadpool & Wolverine' }; // افتراضي عند الفتح
+        let currentSeason = 1;
+        let currentEpisode = 1;
 
-        // دالة الاتصال المضمونة مع تجاوز الحجب عبر بروكسي فوري
+        // دالة جلب قوية تتنقل بين البروكسيات تلقائياً في حال فشل أي واحد
         async function fetchAPI(endpoint) {
-            const cleanEndpoint = endpoint.includes('?') ? `${endpoint}&` : `${endpoint}?`;
-            const directUrl = `${BASE_URL}${cleanEndpoint}api_key=${API_KEY}&language=ar-SA`;
-            const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`;
-
-            // نحاول البروكسي مباشرة لضمان عدم التعثر بحجب الشبكة المحلية
-            try {
-                const res = await fetch(proxyUrl);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.results && data.results.length > 0) return data.results;
+            const tmdbUrl = `https://api.themoviedb.org/3${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${TMDB_KEY}&language=ar-SA`;
+            
+            // نجرب أولاً رابط Workers الخاص بك ثم البدائل
+            for (let proxyFn of PROXIES) {
+                try {
+                    const target = proxyFn(tmdbUrl);
+                    const res = await fetch(target, { cache: "no-store" });
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && (data.results || data.id)) return data.results || data;
+                    }
+                } catch (e) {
+                    // الانتقال للبروكسي التالي
                 }
-            } catch (err) {}
+            }
 
-            // محاولة ثانية بالرابط المباشر
+            // محاولة أخيرة مباشرة بدون بروكسي
             try {
-                const resDirect = await fetch(directUrl);
-                if (resDirect.ok) {
-                    const dataDirect = await resDirect.json();
-                    return dataDirect.results || [];
+                const direct = await fetch(tmdbUrl);
+                if (direct.ok) {
+                    const data = await direct.json();
+                    return data.results || data;
                 }
-            } catch (err) {}
+            } catch(e) {}
 
             return [];
         }
 
-        // تشغيل الفيديو في المشغل الثابت فوراً
-        function playMedia(id, type, title) {
-            currentId = id;
-            currentType = type;
-            document.getElementById('p-title').innerText = title;
+        // تشغيل الرابط في المشغل بحسب السيرفر
+        function playMedia() {
+            const player = document.getElementById('main-player');
+            const titleEl = document.getElementById('now-playing');
+            titleEl.textContent = currentItem.title || 'جاري العرض';
 
-            const isTv = (type === 'tv');
-            document.getElementById('ep-controls').style.display = isTv ? 'flex' : 'none';
-
-            updateFrameSource();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function updateFrameSource() {
-            if (!currentId) return;
-            const season = document.getElementById('season-num').value || 1;
-            const episode = document.getElementById('ep-num').value || 1;
-            const frame = document.getElementById('video-frame');
+            let src = '';
+            const id = currentItem.id;
+            const isTv = currentItem.type === 'tv';
 
             if (currentServer === 1) {
-                // سيرفر VidLink النظيف مع تفعيل الترجمة العربية
-                if (currentType === 'tv') {
-                    frame.src = `https://vidlink.pro/tv/${currentId}/${season}/${episode}?sub.info=true&sub.lang=ar`;
-                } else {
-                    frame.src = `https://vidlink.pro/movie/${currentId}?sub.info=true&sub.lang=ar`;
-                }
+                // سيرفر 1 (VidLink سريع ونظيف وبترجمة تلقائية)
+                src = isTv 
+                    ? `https://vidlink.pro/tv/${id}/${currentSeason}/${currentEpisode}?sub.info=true`
+                    : `https://vidlink.pro/movie/${id}?sub.info=true`;
             } else {
-                // سيرفر بديل
-                if (currentType === 'tv') {
-                    frame.src = `https://autoembed.co/tv/tmdb/${currentId}-${season}-${episode}`;
-                } else {
-                    frame.src = `https://autoembed.co/movie/tmdb/${currentId}`;
-                }
+                // سيرفر 2 (AutoEmbed بديل قوي)
+                src = isTv
+                    ? `https://player.autoembed.cc/embed/tv/${id}/${currentSeason}/${currentEpisode}`
+                    : `https://player.autoembed.cc/embed/movie/${id}`;
             }
+
+            player.src = src;
         }
 
         function switchServer(num) {
             currentServer = num;
-            document.querySelectorAll('.server-btn').forEach((b, idx) => {
-                b.classList.toggle('active', idx + 1 === num);
-            });
-            updateFrameSource();
+            document.getElementById('srv1').classList.toggle('active', num === 1);
+            document.getElementById('srv2').classList.toggle('active', num === 2);
+            playMedia();
+        }
+
+        function selectMedia(id, type, title, totalSeasons = 1) {
+            currentItem = { id, type, title };
+            currentSeason = 1;
+            currentEpisode = 1;
+
+            const tvCtrl = document.getElementById('tv-controls');
+            if (type === 'tv') {
+                tvCtrl.style.display = 'flex';
+                setupTvDropdowns(totalSeasons || 3);
+            } else {
+                tvCtrl.style.display = 'none';
+            }
+
+            playMedia();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setupTvDropdowns(seasonsCount) {
+            const sSelect = document.getElementById('season-num');
+            const eSelect = document.getElementById('episode-num');
+            sSelect.innerHTML = '';
+            eSelect.innerHTML = '';
+
+            for (let s = 1; s <= (seasonsCount || 1); s++) {
+                sSelect.innerHTML += `<option value="${s}">الموسم ${s}</option>`;
+            }
+            for (let e = 1; e <= 30; e++) {
+                eSelect.innerHTML += `<option value="${e}">الحلقة ${e}</option>`;
+            }
         }
 
         function updateEpisode() {
-            updateFrameSource();
+            currentSeason = document.getElementById('season-num').value;
+            currentEpisode = document.getElementById('episode-num').value;
+            playMedia();
         }
 
-        function renderList(items, typeDefault = 'movie') {
+        // رسم البوسترات في الصفحة
+        function renderList(items) {
             const grid = document.getElementById('grid');
-            grid.innerHTML = '';
-
             if (!items || items.length === 0) {
-                grid.innerHTML = '<p class="loading-text">تعذر جلب النتائج، يرجى المحاولة بعد قليل أو تجربة تصنيف آخر.</p>';
+                grid.innerHTML = '<div class="state-box">تعذر العثور على محتوى حالياً، اضغط تصنيفاً آخر.</div>';
                 return;
             }
 
-            // تشغيل أول عنصر تلقائياً في المشغل عند أول تحميل
-            if (!currentId && items[0]) {
-                const first = items[0];
-                playMedia(first.id, first.media_type || typeDefault, first.title || first.name);
-            }
+            grid.innerHTML = items.filter(it => it.poster_path).map(it => {
+                const title = it.title || it.name || 'بدون اسم';
+                const type = it.media_type || (it.first_air_date ? 'tv' : 'movie');
+                const badge = type === 'tv' ? 'مسلسل' : 'فيلم';
+                const safeTitle = title.replace(/'/g, "\\'");
+                const poster = `https://image.tmdb.org/t/p/w342${it.poster_path}`;
 
-            items.forEach(item => {
-                const title = item.title || item.name;
-                const date = item.release_date || item.first_air_date || '';
-                const year = date ? date.split('-')[0] : '';
-                const type = item.media_type || typeDefault;
-                const poster = item.poster_path ? `${IMG_URL}${item.poster_path}` : 'https://via.placeholder.com/300x450/111/444?text=No+Poster';
-                const rating = item.vote_average ? item.vote_average.toFixed(1) : '5.0';
-
-                const card = document.createElement('div');
-                card.className = 'movie-card';
-                card.onclick = () => playMedia(item.id, type, title);
-                card.innerHTML = `
-                    <div class="poster-box">
+                return `
+                    <div class="card" onclick="selectMedia(${it.id}, '${type}', '${safeTitle}')">
+                        <span class="badge-type">${badge}</span>
                         <img src="${poster}" alt="${title}" loading="lazy">
-                        <span class="rating-badge">★ ${rating}</span>
-                        <span class="type-badge">${type === 'tv' ? 'مسلسل' : 'فيلم'}</span>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-name">${title}</div>
-                        <div class="card-year">${year}</div>
+                        <div class="card-info">
+                            <div class="card-title">${title}</div>
+                        </div>
                     </div>
                 `;
-                grid.appendChild(card);
-            });
+            }).join('');
         }
 
-        async function loadCategory(cat, el) {
-            document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-            if (el) el.classList.add('active');
-
-            const titleEl = document.getElementById('sec-title');
-            document.getElementById('grid').innerHTML = '<div class="loading-text">جاري التحميل... ⏳</div>';
-
-            if (cat === 'trending') {
-                titleEl.innerText = '🔥 الأكثر رواجاً هذا الأسبوع';
-                const data = await fetchAPI('/trending/all/week');
-                renderList(data);
-            } else if (cat === 'arabic') {
-                titleEl.innerText = '🇸🇦 أفلام عربية ومصرية';
-                const data = await fetchAPI('/discover/movie?with_original_language=ar&sort_by=popularity.desc');
-                renderList(data, 'movie');
-            } else if (cat === 'action') {
-                titleEl.innerText = '💥 أقوى أفلام الأكشن';
-                const data = await fetchAPI('/discover/movie?with_genres=28&sort_by=popularity.desc');
-                renderList(data, 'movie');
-            } else if (cat === 'series') {
-                titleEl.innerText = '📺 مسلسلات رائجة';
-                const data = await fetchAPI('/trending/tv/week');
-                renderList(data, 'tv');
-            } else if (cat === 'comedy') {
-                titleEl.innerText = '😂 أفلام كوميدية';
-                const data = await fetchAPI('/discover/movie?with_genres=35&sort_by=popularity.desc');
-                renderList(data, 'movie');
-            } else if (cat === 'horror') {
-                titleEl.innerText = '👻 أفلام رعب';
-                const data = await fetchAPI('/discover/movie?with_genres=27&sort_by=popularity.desc');
-                renderList(data, 'movie');
-            } else if (cat === 'animation') {
-                titleEl.innerText = '🎨 أنمي ورسوم متحركة';
-                const data = await fetchAPI('/discover/movie?with_genres=16&sort_by=popularity.desc');
-                renderList(data, 'movie');
+        // تحميل الأقسام
+        async function loadCat(cat, chipEl) {
+            if (chipEl) {
+                document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+                chipEl.classList.add('active');
+                document.getElementById('current-cat-title').textContent = chipEl.textContent.replace(/^[^\s]+ /, '');
             }
+
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '<div class="state-box">جاري جلب البوسترات...</div>';
+
+            let endpoint = '/trending/all/day';
+            if (cat === 'arabic') endpoint = '/discover/movie?with_original_language=ar&sort_by=popularity.desc';
+            if (cat === 'action') endpoint = '/discover/movie?with_genres=28&sort_by=popularity.desc';
+            if (cat === 'series') endpoint = '/discover/tv?sort_by=popularity.desc';
+            if (cat === 'anime') endpoint = '/discover/tv?with_genres=16&sort_by=popularity.desc';
+            if (cat === 'comedy') endpoint = '/discover/movie?with_genres=35&sort_by=popularity.desc';
+            if (cat === 'horror') endpoint = '/discover/movie?with_genres=27&sort_by=popularity.desc';
+
+            const items = await fetchAPI(endpoint);
+            renderList(items);
         }
 
         async function searchMedia() {
-            const query = document.getElementById('searchInput').value.trim();
+            const query = document.getElementById('search-box').value.trim();
             if (!query) return;
-            document.getElementById('sec-title').innerText = `نتائج البحث عن: ${query}`;
-            document.getElementById('grid').innerHTML = '<div class="loading-text">جاري البحث... ⏳</div>';
-            const data = await fetchAPI(`/search/multi?query=${encodeURIComponent(query)}`);
-            renderList(data);
+
+            document.getElementById('current-cat-title').textContent = `نتائج البحث عن: "${query}"`;
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '<div class="state-box">جاري البحث...</div>';
+
+            const items = await fetchAPI(`/search/multi?query=${encodeURIComponent(query)}`);
+            renderList(items);
         }
 
         function handleEnter(e) {
             if (e.key === 'Enter') searchMedia();
         }
 
-        // البدء فور فتح الصفحة
-        window.onload = () => loadCategory('trending');
+        // بدء التشغيل
+        window.onload = () => {
+            playMedia(); // يبدأ المشغل شغال مباشرة فوق
+            loadCat('trending', null);
+        };
     </script>
 </body>
 </html>
