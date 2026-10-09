@@ -2,244 +2,470 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlameeereMovies | أحدث الأفلام والمسلسلات مجاناً</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>الاميري موفيز | Alameeer Movies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0f0f15; color: #fff; padding: 20px; }
-        
-        header { text-align: center; margin-bottom: 30px; }
-        header h1 { color: #e50914; font-size: 2.2rem; margin-bottom: 10px; font-weight: 800; }
-        header p { color: #aaa; font-size: 0.95rem; }
-        
-        .search-container { max-width: 600px; margin: 0 auto 30px auto; display: flex; gap: 10px; }
-        .search-container input { flex: 1; padding: 14px 20px; border: 1px solid #2a2a40; background: #1f1f2e; color: white; border-radius: 30px; font-size: 15px; outline: none; transition: border-color 0.3s; }
-        .search-container input:focus { border-color: #e50914; }
-        .search-container button { padding: 0 28px; background: #e50914; border: none; color: white; border-radius: 30px; font-weight: bold; font-size: 15px; cursor: pointer; transition: background 0.2s; }
-        .search-container button:hover { background: #b80710; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
 
-        .player-container { max-width: 900px; margin: 0 auto 40px auto; display: none; background: #14141f; border: 1px solid #2a2a40; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.7); }
-        .player-container iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
-        .close-btn { background: #e50914; color: white; border: none; padding: 14px; cursor: pointer; width: 100%; font-weight: bold; font-size: 15px; transition: background 0.2s; }
-        .close-btn:hover { background: #b80710; }
-        
-        .player-bar { padding: 12px 16px; background: #1f1f2e; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #2a2a40; }
-        .server-btns { display: flex; gap: 8px; align-items: center; }
-        .server-btns span { font-size: 13px; color: #aaa; }
-        .server-btns button { padding: 6px 14px; border-radius: 6px; border: 1px solid #3a3a55; background: #14141f; color: #fff; font-size: 13px; cursor: pointer; font-weight: bold; }
-        .server-btns button.active { background: #e50914; border-color: #e50914; }
-        
-        .episode-controls { display: none; gap: 14px; align-items: center; }
-        .episode-controls label { font-weight: bold; font-size: 13px; color: #ddd; }
-        .episode-controls input { width: 65px; padding: 6px 10px; background: #0f0f15; border: 1px solid #444; color: white; border-radius: 6px; text-align: center; font-size: 14px; outline: none; }
-        .episode-controls input:focus { border-color: #e50914; }
+        /* 1. المشغل الثابت في أعلى الصفحة */
+        #player-wrapper {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #000000;
+            z-index: 1000;
+            border-bottom: 2px solid #1c1c24;
+            display: none;
+        }
+        .player-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+        .player-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .player-bar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #0a0a0f;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .media-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #e50914;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50%;
+        }
+        .server-pills {
+            display: flex;
+            gap: 6px;
+        }
+        .server-btn {
+            background: #1f1f2e;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .server-btn.active {
+            background: #e50914;
+            border-color: #e50914;
+        }
+        .close-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
 
-        .section-title { margin-bottom: 25px; font-size: 1.5rem; border-right: 5px solid #e50914; padding-right: 12px; font-weight: 700; }
-        .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
-        .movie-card { background: #1f1f2e; border-radius: 10px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; position: relative; border: 1px solid #2a2a40; }
-        .movie-card:hover { transform: translateY(-6px); border-color: #e50914; box-shadow: 0 10px 20px rgba(229, 9, 20, 0.25); }
-        .movie-card img { width: 100%; height: 240px; object-fit: cover; display: block; background-color: #14141f; }
-        .movie-info { padding: 12px; text-align: center; }
-        .movie-title { font-weight: 600; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
-        
-        .badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.85); color: #ffbd03; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: bold; z-index: 2; }
-        .type-badge { position: absolute; top: 10px; left: 10px; background: #e50914; color: white; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: bold; z-index: 2; }
+        /* التحكم بالحلقات للمسلسلات */
+        .ep-controls {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+        }
+        .ep-controls input {
+            width: 45px;
+            background: #181824;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 2px 4px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* 2. شريط البحث والتصنيفات في الأعلى */
+        .header {
+            padding: 12px 14px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #000;
+        }
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            background: #121218;
+            border: 1px solid #252530;
+            padding: 8px 14px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+            font-family: inherit;
+        }
+        .search-box input:focus {
+            border-color: #e50914;
+        }
+        .search-btn {
+            background: #e50914;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* شريط التصنيفات الأفقي (مثل قنوات المباشر) */
+        .categories-nav {
+            display: flex;
+            gap: 8px;
+            padding: 8px 14px 14px 14px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            background: #000;
+        }
+        .categories-nav::-webkit-scrollbar { display: none; }
+        .cat-chip {
+            background: #121218;
+            border: 1px solid #222;
+            color: #bbb;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cat-chip.active {
+            background: #e50914;
+            color: #fff;
+            border-color: #e50914;
+        }
+
+        /* 3. شبكة الأفلام (الكروت) */
+        .section-title {
+            padding: 10px 14px 6px 14px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 14px;
+            background: #e50914;
+            border-radius: 2px;
+        }
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px 14px;
+        }
+        @media (min-width: 600px) {
+            .movies-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (min-width: 900px) {
+            .movies-grid { grid-template-columns: repeat(6, 1fr); }
+        }
+
+        .movie-card {
+            background: #0d0d12;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid #1a1a24;
+        }
+        .movie-card:hover { transform: translateY(-4px); }
+        .poster-box {
+            position: relative;
+            padding-top: 148%;
+            background: #151520;
+        }
+        .poster-box img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .rating-badge {
+            position: absolute;
+            top: 6px; left: 6px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #ffb703;
+        }
+        .type-badge {
+            position: absolute;
+            top: 6px; right: 6px;
+            background: #e50914;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+        }
+        .card-info {
+            padding: 6px 8px;
+        }
+        .card-name {
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #eee;
+        }
+        .card-year {
+            font-size: 10px;
+            color: #777;
+            margin-top: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>AlameeereMovies</h1>
-        <p>شاهد أحدث الأفلام والمسلسلات العالمية مجاناً وبأعلى جودة</p>
-    </header>
-
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل بالاسم هنا...">
-        <button onclick="searchMedia()">بحث</button>
-    </div>
-
-    <div class="player-container" id="playerContainer">
-        <button class="close-btn" onclick="closePlayer()">إغلاق شاشة العرض والعودة للمكتبة ✕</button>
-        
-        <!-- حظر النوافذ المنبثقة الإعلانية عبر sandbox مع السماح بالفيديو والصوت فقط -->
-        <iframe id="mainIframe" src="" allowfullscreen allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>
-        
+    <!-- المشغل الثابت في الأعلى -->
+    <div id="player-wrapper">
+        <div class="player-container">
+            <iframe id="video-frame" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+        </div>
         <div class="player-bar">
-            <div class="server-btns">
-                <span>السيرفر:</span>
-                <button id="srv1" class="active" onclick="switchServer('vidlink')">⚡ سيرفر 1 (سريع + ترجمة)</button>
-                <button id="srv2" onclick="switchServer('autoembed')">🌐 سيرفر 2 (AutoEmbed)</button>
-                <button id="srv3" onclick="switchServer('vidsrc')">🔄 سيرفر 3</button>
+            <span class="media-title" id="p-title">جاري التحميل...</span>
+            <div class="ep-controls" id="ep-controls">
+                <span>موسم:</span>
+                <input type="number" id="season-num" value="1" min="1" onchange="updateEpisode()">
+                <span>حلقة:</span>
+                <input type="number" id="ep-num" value="1" min="1" onchange="updateEpisode()">
             </div>
-
-            <div class="episode-controls" id="episodeControls">
-                <div>
-                    <label for="seasonInput">الموسم: </label>
-                    <input type="number" id="seasonInput" value="1" min="1" onchange="updateEpisode()">
-                </div>
-                <div>
-                    <label for="episodeInput">الحلقة: </label>
-                    <input type="number" id="episodeInput" value="1" min="1" onchange="updateEpisode()">
-                </div>
+            <div class="server-pills">
+                <button class="server-btn active" onclick="switchServer(1)">سيرفر 1 (عربي)</button>
+                <button class="server-btn" onclick="switchServer(2)">سيرفر 2</button>
             </div>
+            <button class="close-btn" onclick="closePlayer()">✕ إغلاق</button>
         </div>
     </div>
 
-    <h2 class="section-title" id="gridTitle">🔥 الأكثر رواجاً هذا الأسبوع:</h2>
-    <div class="movies-grid" id="moviesGrid">
-        <p id="loadingText" style="grid-column: 1/-1; text-align:center; color:#ffbd03;">جاري تحميل مكتبة الأفلام السريعة...</p>
+    <!-- شريط البحث -->
+    <div class="header">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل..." onkeypress="handleEnter(event)">
+        </div>
+        <button class="search-btn" onclick="searchMedia()">بحث</button>
     </div>
 
+    <!-- شريط المجموعات والتصنيفات -->
+    <div class="categories-nav">
+        <button class="cat-chip active" onclick="loadCategory('trending', this)">🔥 الأكثر رواجاً</button>
+        <button class="cat-chip" onclick="loadCategory('arabic', this)">🇸🇦 أفلام عربية</button>
+        <button class="cat-chip" onclick="loadCategory('action', this)">💥 أكشن وإثارة</button>
+        <button class="cat-chip" onclick="loadCategory('series', this)">📺 مسلسلات</button>
+        <button class="cat-chip" onclick="loadCategory('comedy', this)">😂 كوميديا</button>
+        <button class="cat-chip" onclick="loadCategory('horror', this)">👻 رعب</button>
+        <button class="cat-chip" onclick="loadCategory('animation', this)">🎨 أنمي وكارتون</button>
+    </div>
+
+    <!-- العنوان وشبكة العرض -->
+    <div class="section-title" id="sec-title">الأكثر رواجاً هذا الأسبوع</div>
+    <div class="movies-grid" id="grid"></div>
+
     <script>
-        const TMDB_API_KEY = 'c7f20018c3cfc5d46cdc6f1defb13d3d'; 
+        const API_KEY = 'c7f20018c3cfd619983fa996c5aa527b';
+        const BASE_URL = 'https://api.themoviedb.org/3';
+        const IMG_URL = 'https://image.tmdb.org/t/p/w342';
 
-        let currentMediaId = null;
-        let currentMediaType = null;
-        let currentServer = 'vidlink';
+        let currentId = null;
+        let currentType = 'movie';
+        let currentServer = 1;
 
-        const moviesGrid = document.getElementById('moviesGrid');
-        const playerContainer = document.getElementById('playerContainer');
-        const mainIframe = document.getElementById('mainIframe');
-        const episodeControls = document.getElementById('episodeControls');
-        const gridTitle = document.getElementById('gridTitle');
-        const searchInput = document.getElementById('searchInput');
-        const loadingText = document.getElementById('loadingText');
+        // 1. تشغيل الفيديو في المشغل الثابت
+        function playMedia(id, type, title) {
+            currentId = id;
+            currentType = type;
+            document.getElementById('p-title').innerText = title;
 
-        async function fetchTrendingMedia() {
+            const isTv = (type === 'tv');
+            document.getElementById('ep-controls').style.display = isTv ? 'flex' : 'none';
+
+            updateFrameSource();
+            document.getElementById('player-wrapper').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateFrameSource() {
+            const season = document.getElementById('season-num').value || 1;
+            const episode = document.getElementById('ep-num').value || 1;
+            const frame = document.getElementById('video-frame');
+
+            if (currentServer === 1) {
+                // سيرفر VidLink النظيف مع فرض الترجمة العربية
+                if (currentType === 'tv') {
+                    frame.src = `https://vidlink.pro/tv/${currentId}/${season}/${episode}?sub.info=true&sub.lang=ar`;
+                } else {
+                    frame.src = `https://vidlink.pro/movie/${currentId}?sub.info=true&sub.lang=ar`;
+                }
+            } else {
+                // سيرفر بديل
+                if (currentType === 'tv') {
+                    frame.src = `https://autoembed.co/tv/tmdb/${currentId}-${season}-${episode}`;
+                } else {
+                    frame.src = `https://autoembed.co/movie/tmdb/${currentId}`;
+                }
+            }
+        }
+
+        function switchServer(num) {
+            currentServer = num;
+            document.querySelectorAll('.server-btn').forEach((b, idx) => {
+                b.classList.toggle('active', idx + 1 === num);
+            });
+            updateFrameSource();
+        }
+
+        function updateEpisode() {
+            updateFrameSource();
+        }
+
+        function closePlayer() {
+            document.getElementById('player-wrapper').style.display = 'none';
+            document.getElementById('video-frame').src = '';
+        }
+
+        // 2. جلب وتصنيف الأفلام من API
+        async function fetchAPI(endpoint) {
             try {
-                const url = `https://api.themoviedb.org/3/trending/all/week?api_key=${TMDB_API_KEY}&language=ar`;
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (loadingText) loadingText.style.display = 'none';
-                displayMedia(data.results || []);
-            } catch (error) {
-                console.error("خطأ:", error);
-                if (loadingText) loadingText.innerText = "فشل تحميل الأفلام. تأكد من اتصال الإنترنت.";
+                const res = await fetch(`${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}&language=ar-SA`);
+                const data = await res.json();
+                return data.results || [];
+            } catch (e) {
+                console.error("فشل الجلب:", e);
+                return [];
+            }
+        }
+
+        async function renderList(items, typeDefault = 'movie') {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+
+            if (!items || items.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 40px;">لا توجد نتائج حالياً</p>';
+                return;
+            }
+
+            items.forEach(item => {
+                const title = item.title || item.name;
+                const date = item.release_date || item.first_air_date || '';
+                const year = date ? date.split('-')[0] : '';
+                const type = item.media_type || typeDefault;
+                const poster = item.poster_path ? `${IMG_URL}${item.poster_path}` : 'https://via.placeholder.com/300x450/111/444?text=No+Poster';
+                const rating = item.vote_average ? item.vote_average.toFixed(1) : '5.0';
+
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.onclick = () => playMedia(item.id, type, title);
+                card.innerHTML = `
+                    <div class="poster-box">
+                        <img src="${poster}" alt="${title}" loading="lazy">
+                        <span class="rating-badge">★ ${rating}</span>
+                        <span class="type-badge">${type === 'tv' ? 'مسلسل' : 'فيلم'}</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-name">${title}</div>
+                        <div class="card-year">${year}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        async function loadCategory(cat, el) {
+            document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+            if (el) el.classList.add('active');
+
+            const titleEl = document.getElementById('sec-title');
+
+            if (cat === 'trending') {
+                titleEl.innerText = '🔥 الأكثر رواجاً هذا الأسبوع';
+                const data = await fetchAPI('/trending/all/week');
+                renderList(data);
+            } else if (cat === 'arabic') {
+                titleEl.innerText = '🇸🇦 أفلام عربية ومصرية';
+                const data = await fetchAPI('/discover/movie?with_original_language=ar&sort_by=popularity.desc');
+                renderList(data, 'movie');
+            } else if (cat === 'action') {
+                titleEl.innerText = '💥 أقوى أفلام الأكشن';
+                const data = await fetchAPI('/discover/movie?with_genres=28&sort_by=popularity.desc');
+                renderList(data, 'movie');
+            } else if (cat === 'series') {
+                titleEl.innerText = '📺 مسلسلات رائجة';
+                const data = await fetchAPI('/trending/tv/week');
+                renderList(data, 'tv');
+            } else if (cat === 'comedy') {
+                titleEl.innerText = '😂 أفلام كوميدية';
+                const data = await fetchAPI('/discover/movie?with_genres=35&sort_by=popularity.desc');
+                renderList(data, 'movie');
+            } else if (cat === 'horror') {
+                titleEl.innerText = '👻 أفلام رعب';
+                const data = await fetchAPI('/discover/movie?with_genres=27&sort_by=popularity.desc');
+                renderList(data, 'movie');
+            } else if (cat === 'animation') {
+                titleEl.innerText = '🎨 أنمي ورسوم متحركة';
+                const data = await fetchAPI('/discover/movie?with_genres=16&sort_by=popularity.desc');
+                renderList(data, 'movie');
             }
         }
 
         async function searchMedia() {
-            const query = searchInput.value.trim();
+            const query = document.getElementById('searchInput').value.trim();
             if (!query) return;
-            moviesGrid.innerHTML = "<p style='grid-column: 1/-1; text-align:center; color:#ffbd03;'>جاري البحث السريع...</p>";
-            
-            try {
-                const url = `https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&language=ar&query=${encodeURIComponent(query)}`;
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                gridTitle.innerText = "🔍 نتائج البحث عن: " + query;
-                displayMedia(data.results || []);
-            } catch (error) {
-                console.error("خطأ:", error);
-            }
+            document.getElementById('sec-title').innerText = `نتائج البحث عن: ${query}`;
+            const data = await fetchAPI(`/search/multi?query=${encodeURIComponent(query)}`);
+            renderList(data);
         }
 
-        searchInput.addEventListener("keyup", function(event) {
-            if (event.key === "Enter") { searchMedia(); }
-        });
-
-        function displayMedia(items) {
-            moviesGrid.innerHTML = '';
-            let validCardsCount = 0;
-            
-            items.forEach(item => {
-                const title = item.title || item.name;
-                const mediaType = item.media_type || (item.title ? 'movie' : 'tv');
-                
-                if (!item.poster_path || !title || mediaType === 'person') return;
-                
-                validCardsCount++;
-                const card = document.createElement('div');
-                card.className = 'movie-card';
-                
-                const typeLabel = mediaType === 'movie' ? 'فيلم' : 'مسلسل';
-                const ratingValue = item.vote_average ? item.vote_average.toFixed(1) : '0.0';
-                
-                card.innerHTML = '<div class="badge">⭐ ' + ratingValue + '</div>' +
-                                 '<div class="type-badge">' + typeLabel + '</div>' +
-                                 '<img src="https://image.tmdb.org/t/p/w500' + item.poster_path + '" alt="' + title + '">' +
-                                 '<div class="movie-info"><div class="movie-title">' + title + '</div></div>';
-
-                card.onclick = function() { startPlay(item.id, mediaType); };
-                moviesGrid.appendChild(card);
-            });
-
-            if (validCardsCount === 0) {
-                moviesGrid.innerHTML = "<p style='grid-column: 1/-1; text-align:center; color: #aaa;'>لا توجد نتائج متوفرة.</p>";
-            }
+        function handleEnter(e) {
+            if (e.key === 'Enter') searchMedia();
         }
 
-        function startPlay(id, type) {
-            currentMediaId = id;
-            currentMediaType = type;
-            
-            document.getElementById('seasonInput').value = 1;
-            document.getElementById('episodeInput').value = 1;
-
-            if (type === 'tv') {
-                episodeControls.style.display = 'flex';
-            } else {
-                episodeControls.style.display = 'none';
-            }
-
-            renderEmbed();
-            playerContainer.style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function renderEmbed() {
-            if (!currentMediaId) return;
-            const season = document.getElementById('seasonInput').value || 1;
-            const episode = document.getElementById('episodeInput').value || 1;
-            let finalUrl = '';
-
-            if (currentServer === 'vidlink') {
-                // سيرفر VidLink: سريع وفيه زر ترجمة متعددة (CC) وإعلانات أقل بكثير
-                if (currentMediaType === 'movie') {
-                    finalUrl = `https://vidlink.pro/movie/${currentMediaId}`;
-                } else {
-                    finalUrl = `https://vidlink.pro/tv/${currentMediaId}/${season}/${episode}`;
-                }
-            } else if (currentServer === 'autoembed') {
-                // سيرفر AutoEmbed: بديل ممتاز وفيه زر ترجمة
-                if (currentMediaType === 'movie') {
-                    finalUrl = `https://player.autoembed.cc/embed/movie/${currentMediaId}`;
-                } else {
-                    finalUrl = `https://player.autoembed.cc/embed/tv/${currentMediaId}/${season}/${episode}`;
-                }
-            } else {
-                // سيرفر vidsrc كخيار أخير
-                if (currentMediaType === 'movie') {
-                    finalUrl = `https://vidsrc.to/embed/movie/${currentMediaId}`;
-                } else {
-                    finalUrl = `https://vidsrc.to/embed/tv/${currentMediaId}/${season}/${episode}`;
-                }
-            }
-
-            mainIframe.src = finalUrl;
-        }
-
-        function switchServer(srvName) {
-            currentServer = srvName;
-            document.querySelectorAll('.server-btns button').forEach(b => b.classList.remove('active'));
-            if (srvName === 'vidlink') document.getElementById('srv1').classList.add('active');
-            if (srvName === 'autoembed') document.getElementById('srv2').classList.add('active');
-            if (srvName === 'vidsrc') document.getElementById('srv3').classList.add('active');
-            renderEmbed();
-        }
-
-        function updateEpisode() {
-            renderEmbed();
-        }
-
-        function closePlayer() {
-            playerContainer.style.display = 'none';
-            mainIframe.src = '';
-        }
-
-        window.onload = fetchTrendingMedia;
+        // تشغيل الرائج عند فتح الصفحة تلقائياً
+        window.onload = () => loadCategory('trending');
     </script>
 </body>
 </html>
