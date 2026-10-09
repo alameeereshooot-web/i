@@ -15,29 +15,29 @@
             padding-bottom: 50px;
         }
 
-        /* 1. المشغل الثابت في أعلى الصفحة */
+        /* 1. المشغل الثابت في أعلى الصفحة (دائم الظهور مثل القنوات) */
         #player-wrapper {
             position: sticky;
             top: 0;
             width: 100%;
             background: #000000;
             z-index: 1000;
-            border-bottom: 2px solid #1c1c24;
-            display: none;
+            border-bottom: 2px solid #1a1a24;
         }
         .player-container {
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
             position: relative;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background: #000;
+            padding-top: 56.25%; /* 16:9 شاشة سينمائية */
+            background: #000000;
         }
         .player-container iframe {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: none;
+            background: #000;
         }
         .player-bar {
             max-width: 900px;
@@ -46,9 +46,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #0a0a0f;
+            background: #000000;
             gap: 8px;
             flex-wrap: wrap;
+            border-top: 1px solid #15151f;
         }
         .media-title {
             font-size: 13px;
@@ -57,16 +58,16 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 50%;
+            max-width: 55%;
         }
         .server-pills {
             display: flex;
             gap: 6px;
         }
         .server-btn {
-            background: #1f1f2e;
-            color: #fff;
-            border: 1px solid #333;
+            background: #151520;
+            color: #aaa;
+            border: 1px solid #252535;
             padding: 4px 10px;
             border-radius: 6px;
             font-size: 11px;
@@ -75,19 +76,12 @@
         }
         .server-btn.active {
             background: #e50914;
-            border-color: #e50914;
-        }
-        .close-btn {
-            background: #333;
             color: #fff;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
+            border-color: #e50914;
+            font-weight: 700;
         }
 
-        /* التحكم بالحلقات للمسلسلات */
+        /* أدوات الحلقات للمسلسلات */
         .ep-controls {
             display: none;
             align-items: center;
@@ -96,7 +90,7 @@
         }
         .ep-controls input {
             width: 45px;
-            background: #181824;
+            background: #151520;
             border: 1px solid #333;
             color: #fff;
             padding: 2px 4px;
@@ -105,13 +99,13 @@
             font-size: 11px;
         }
 
-        /* 2. شريط البحث والتصنيفات في الأعلى */
+        /* 2. شريط البحث */
         .header {
-            padding: 12px 14px;
+            padding: 12px 14px 6px 14px;
             display: flex;
             gap: 8px;
             align-items: center;
-            background: #000;
+            background: #000000;
         }
         .search-box {
             flex: 1;
@@ -119,8 +113,8 @@
         }
         .search-box input {
             width: 100%;
-            background: #121218;
-            border: 1px solid #252530;
+            background: #111116;
+            border: 1px solid #22222e;
             padding: 8px 14px;
             border-radius: 8px;
             color: #fff;
@@ -143,21 +137,21 @@
             font-family: inherit;
         }
 
-        /* شريط التصنيفات الأفقي (مثل قنوات المباشر) */
+        /* 3. شريط التصنيفات الأفقي مثل المباشر */
         .categories-nav {
             display: flex;
             gap: 8px;
-            padding: 8px 14px 14px 14px;
+            padding: 10px 14px;
             overflow-x: auto;
             white-space: nowrap;
             scrollbar-width: none;
-            background: #000;
+            background: #000000;
         }
         .categories-nav::-webkit-scrollbar { display: none; }
         .cat-chip {
-            background: #121218;
-            border: 1px solid #222;
-            color: #bbb;
+            background: #111118;
+            border: 1px solid #22222e;
+            color: #aaa;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
@@ -171,7 +165,7 @@
             border-color: #e50914;
         }
 
-        /* 3. شبكة الأفلام (الكروت) */
+        /* 4. شبكة الكروت والبوسترات */
         .section-title {
             padding: 10px 14px 6px 14px;
             font-size: 14px;
@@ -180,6 +174,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            background: #000;
         }
         .section-title::before {
             content: '';
@@ -193,6 +188,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             padding: 10px 14px;
+            background: #000;
         }
         @media (min-width: 600px) {
             .movies-grid { grid-template-columns: repeat(4, 1fr); }
@@ -202,19 +198,19 @@
         }
 
         .movie-card {
-            background: #0d0d12;
+            background: #0a0a0f;
             border-radius: 8px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: transform 0.2s;
             border: 1px solid #1a1a24;
+            transition: transform 0.2s;
         }
         .movie-card:hover { transform: translateY(-4px); }
         .poster-box {
             position: relative;
             padding-top: 148%;
-            background: #151520;
+            background: #121218;
         }
         .poster-box img {
             position: absolute;
@@ -225,11 +221,10 @@
         .rating-badge {
             position: absolute;
             top: 6px; left: 6px;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-            padding: 2px 6px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2px 5px;
             border-radius: 4px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             color: #ffb703;
         }
@@ -237,13 +232,14 @@
             position: absolute;
             top: 6px; right: 6px;
             background: #e50914;
-            padding: 2px 6px;
+            padding: 2px 5px;
             border-radius: 4px;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
         }
         .card-info {
             padding: 6px 8px;
+            background: #0a0a0f;
         }
         .card-name {
             font-size: 11px;
@@ -258,17 +254,24 @@
             color: #777;
             margin-top: 2px;
         }
+        .loading-text {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #888;
+            padding: 40px;
+            font-size: 13px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- المشغل الثابت في الأعلى -->
+    <!-- 1. المشغل الثابت (دائم الظهور في الأعلى مثل القنوات) -->
     <div id="player-wrapper">
         <div class="player-container">
             <iframe id="video-frame" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
         </div>
         <div class="player-bar">
-            <span class="media-title" id="p-title">جاري التحميل...</span>
+            <span class="media-title" id="p-title">اختر فيلماً أو مسلسلاً للمشاهدة</span>
             <div class="ep-controls" id="ep-controls">
                 <span>موسم:</span>
                 <input type="number" id="season-num" value="1" min="1" onchange="updateEpisode()">
@@ -276,22 +279,21 @@
                 <input type="number" id="ep-num" value="1" min="1" onchange="updateEpisode()">
             </div>
             <div class="server-pills">
-                <button class="server-btn active" onclick="switchServer(1)">سيرفر 1 (عربي)</button>
+                <button class="server-btn active" onclick="switchServer(1)">سيرفر 1 (مترجم)</button>
                 <button class="server-btn" onclick="switchServer(2)">سيرفر 2</button>
             </div>
-            <button class="close-btn" onclick="closePlayer()">✕ إغلاق</button>
         </div>
     </div>
 
-    <!-- شريط البحث -->
+    <!-- 2. شريط البحث -->
     <div class="header">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل..." onkeypress="handleEnter(event)">
+            <input type="text" id="searchInput" placeholder="ابحث بالاسم هنا..." onkeypress="handleEnter(event)">
         </div>
         <button class="search-btn" onclick="searchMedia()">بحث</button>
     </div>
 
-    <!-- شريط المجموعات والتصنيفات -->
+    <!-- 3. شريط المجموعات والتصنيفات -->
     <div class="categories-nav">
         <button class="cat-chip active" onclick="loadCategory('trending', this)">🔥 الأكثر رواجاً</button>
         <button class="cat-chip" onclick="loadCategory('arabic', this)">🇸🇦 أفلام عربية</button>
@@ -302,9 +304,11 @@
         <button class="cat-chip" onclick="loadCategory('animation', this)">🎨 أنمي وكارتون</button>
     </div>
 
-    <!-- العنوان وشبكة العرض -->
+    <!-- 4. العنوان وشبكة البوسترات -->
     <div class="section-title" id="sec-title">الأكثر رواجاً هذا الأسبوع</div>
-    <div class="movies-grid" id="grid"></div>
+    <div class="movies-grid" id="grid">
+        <div class="loading-text">جاري تحميل الأفلام... ⏳</div>
+    </div>
 
     <script>
         const API_KEY = 'c7f20018c3cfd619983fa996c5aa527b';
@@ -315,7 +319,34 @@
         let currentType = 'movie';
         let currentServer = 1;
 
-        // 1. تشغيل الفيديو في المشغل الثابت
+        // دالة الاتصال المضمونة مع تجاوز الحجب عبر بروكسي فوري
+        async function fetchAPI(endpoint) {
+            const cleanEndpoint = endpoint.includes('?') ? `${endpoint}&` : `${endpoint}?`;
+            const directUrl = `${BASE_URL}${cleanEndpoint}api_key=${API_KEY}&language=ar-SA`;
+            const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(directUrl)}`;
+
+            // نحاول البروكسي مباشرة لضمان عدم التعثر بحجب الشبكة المحلية
+            try {
+                const res = await fetch(proxyUrl);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.results && data.results.length > 0) return data.results;
+                }
+            } catch (err) {}
+
+            // محاولة ثانية بالرابط المباشر
+            try {
+                const resDirect = await fetch(directUrl);
+                if (resDirect.ok) {
+                    const dataDirect = await resDirect.json();
+                    return dataDirect.results || [];
+                }
+            } catch (err) {}
+
+            return [];
+        }
+
+        // تشغيل الفيديو في المشغل الثابت فوراً
         function playMedia(id, type, title) {
             currentId = id;
             currentType = type;
@@ -325,17 +356,17 @@
             document.getElementById('ep-controls').style.display = isTv ? 'flex' : 'none';
 
             updateFrameSource();
-            document.getElementById('player-wrapper').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateFrameSource() {
+            if (!currentId) return;
             const season = document.getElementById('season-num').value || 1;
             const episode = document.getElementById('ep-num').value || 1;
             const frame = document.getElementById('video-frame');
 
             if (currentServer === 1) {
-                // سيرفر VidLink النظيف مع فرض الترجمة العربية
+                // سيرفر VidLink النظيف مع تفعيل الترجمة العربية
                 if (currentType === 'tv') {
                     frame.src = `https://vidlink.pro/tv/${currentId}/${season}/${episode}?sub.info=true&sub.lang=ar`;
                 } else {
@@ -363,30 +394,19 @@
             updateFrameSource();
         }
 
-        function closePlayer() {
-            document.getElementById('player-wrapper').style.display = 'none';
-            document.getElementById('video-frame').src = '';
-        }
-
-        // 2. جلب وتصنيف الأفلام من API
-        async function fetchAPI(endpoint) {
-            try {
-                const res = await fetch(`${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}api_key=${API_KEY}&language=ar-SA`);
-                const data = await res.json();
-                return data.results || [];
-            } catch (e) {
-                console.error("فشل الجلب:", e);
-                return [];
-            }
-        }
-
-        async function renderList(items, typeDefault = 'movie') {
+        function renderList(items, typeDefault = 'movie') {
             const grid = document.getElementById('grid');
             grid.innerHTML = '';
 
             if (!items || items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666; padding: 40px;">لا توجد نتائج حالياً</p>';
+                grid.innerHTML = '<p class="loading-text">تعذر جلب النتائج، يرجى المحاولة بعد قليل أو تجربة تصنيف آخر.</p>';
                 return;
+            }
+
+            // تشغيل أول عنصر تلقائياً في المشغل عند أول تحميل
+            if (!currentId && items[0]) {
+                const first = items[0];
+                playMedia(first.id, first.media_type || typeDefault, first.title || first.name);
             }
 
             items.forEach(item => {
@@ -420,6 +440,7 @@
             if (el) el.classList.add('active');
 
             const titleEl = document.getElementById('sec-title');
+            document.getElementById('grid').innerHTML = '<div class="loading-text">جاري التحميل... ⏳</div>';
 
             if (cat === 'trending') {
                 titleEl.innerText = '🔥 الأكثر رواجاً هذا الأسبوع';
@@ -456,6 +477,7 @@
             const query = document.getElementById('searchInput').value.trim();
             if (!query) return;
             document.getElementById('sec-title').innerText = `نتائج البحث عن: ${query}`;
+            document.getElementById('grid').innerHTML = '<div class="loading-text">جاري البحث... ⏳</div>';
             const data = await fetchAPI(`/search/multi?query=${encodeURIComponent(query)}`);
             renderList(data);
         }
@@ -464,7 +486,7 @@
             if (e.key === 'Enter') searchMedia();
         }
 
-        // تشغيل الرائج عند فتح الصفحة تلقائياً
+        // البدء فور فتح الصفحة
         window.onload = () => loadCategory('trending');
     </script>
 </body>
