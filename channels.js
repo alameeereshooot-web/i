@@ -531,7 +531,7 @@ var alwanChannels = [
 // ==========================================
 // 3. جدول الأقسام النهائي
 // ==========================================
-var channelRows = [
+var ROWS = [
     { label: 'BEIN SPORTS', channels: beinMultiQualities, special: false },
     { label: 'OSN', channels: osnChannels, special: false },
     { label: 'ثمانية سبورت (TS)', channels: tamanyaSportTsChannels, special: false },
@@ -549,3 +549,4 @@ var channelRows = [
     { label: 'الفجر', channels: fajerChannels, special: false },
     { label: 'الوان', channels: alwanChannels, special: false }
 ];
+var channelRows = ROWS;
