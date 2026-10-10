@@ -524,8 +524,8 @@ var alwanChannels = [
 var ROWS = [
     { label: 'BEIN SPORTS', channels: beinMultiQualities, special: false },
     { label: 'OSN', channels: osnChannels, special: false },
-    { label: 'ثمانية سبورت (TS)', channels: tamanyaSportTsChannels, special: false },
-    { label: 'ثمانية سبورت (HLS)', channels: tamanyaSportHlsChannels, special: false },
+    { label: 'ثمانية sport', channels: tamanyaSportTsChannels, special: false },
+    { label: 'ثمانية سبورت', channels: tamanyaSportHlsChannels, special: false },
     { label: 'BEIN متعددة (سيرفر 1)', channels: beinMultiQualities1, special: false },
     { label: 'BEIN متعددة (سيرفر 2)', channels: beinMultiQualities2, special: false },
     { label: 'bein الأصلية', channels: beinChannels, special: false },
