@@ -1,4 +1,111 @@
 // ==========================================
+// 1. باقة beIN SPORTS (من 1 إلى 6 فقط) - متعددة الجودات
+// ==========================================
+const ta2alBase = "https://l.alameeeretv.workers.dev/?url=http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/";
+
+var beinMultiQualities = [
+    {
+        n: "beIN 1",
+        u: `${ta2alBase}332188.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}332188.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}35767.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}906544.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}204112.ts` }
+        ]
+    },
+    {
+        n: "beIN 2",
+        u: `${ta2alBase}499052.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}499052.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}131825.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}392327.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}934886.ts` }
+        ]
+    },
+    {
+        n: "beIN 3",
+        u: `${ta2alBase}34592.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}34592.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}652548.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}423451.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}595940.ts` }
+        ]
+    },
+    {
+        n: "beIN 4",
+        u: `${ta2alBase}914326.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}914326.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}243256.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}259959.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}738363.ts` }
+        ]
+    },
+    {
+        n: "beIN 5",
+        u: `${ta2alBase}799894.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}799894.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}35682.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}478444.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}291247.ts` }
+        ]
+    },
+    {
+        n: "beIN 6",
+        u: `${ta2alBase}786431.ts`,
+        t: "ts",
+        qualities: [
+            { label: "SD 2M (الأساسية)", src: `${ta2alBase}786431.ts` },
+            { label: "LOW 1M (ضعيف)", src: `${ta2alBase}641814.ts` },
+            { label: "NANO 2M", src: `${ta2alBase}750305.ts` },
+            { label: "HQ 4M (عالية)", src: `${ta2alBase}780270.ts` }
+        ]
+    }
+];
+
+// ==========================================
+// 2. باقة OSN الجديدة
+// ==========================================
+var osnChannels = [
+    { n: "OSN Movies HD", u: `${ta2alBase}1848.ts`, t: "ts" },
+    { n: "OSN Movies First HD", u: `${ta2alBase}1851.ts`, t: "ts" },
+    { n: "OSN Action HD", u: `${ta2alBase}1849.ts`, t: "ts" },
+    { n: "OSN Yahala Cinema", u: `${ta2alBase}1852.ts`, t: "ts" },
+    { n: "OSN Yahala HD", u: `${ta2alBase}1854.ts`, t: "ts" },
+    { n: "OSN Series HD", u: `${ta2alBase}1847.ts`, t: "ts" },
+    { n: "OSN Comedy HD", u: `${ta2alBase}1845.ts`, t: "ts" },
+    { n: "OSN Discovery HD", u: `${ta2alBase}1860.ts`, t: "ts" },
+    { n: "OSN History HD", u: `${ta2alBase}1857.ts`, t: "ts" },
+    { n: "OSN Disney HD", u: `${ta2alBase}1867.ts`, t: "ts" },
+    { n: "OSN Nick Jr HD", u: `${ta2alBase}1865.ts`, t: "ts" },
+    { n: "OSN Kids Zone HD", u: `${ta2alBase}1864.ts`, t: "ts" }
+];
+
+// ==========================================
+// 3. باقة ثمانية سبورت (THMANAYH)
+// ==========================================
+var tamanyaSportChannels = [
+    { n: "ثمانية 1 SD", u: `${ta2alBase}560245.ts`, t: "ts" },
+    { n: "ثمانية 1 HQ", u: `${ta2alBase}739003.ts`, t: "ts" },
+    { n: "ثمانية 1 HD", u: `${ta2alBase}696998.ts`, t: "ts" },
+    { n: "ثمانية 2 SD", u: `${ta2alBase}310421.ts`, t: "ts" },
+    { n: "ثمانية 2 HQ", u: `${ta2alBase}670314.ts`, t: "ts" },
+    { n: "ثمانية 2 HD", u: `${ta2alBase}572066.ts`, t: "ts" },
+    { n: "ثمانية 3 SD", u: `${ta2alBase}982038.ts`, t: "ts" },
+    { n: "ثمانية 3 HQ", u: `${ta2alBase}867094.ts`, t: "ts" },
+    { n: "ثمانية 3 HD", u: `${ta2alBase}140439.ts`, t: "ts" }
+];
+
+// ==========================================
 // 1. القنوات متعددة الجودات (beIN 1 -> 9 - السيرفر الأول TS)
 // ==========================================
 const gamerdzBaseUrl1 = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
@@ -446,7 +553,10 @@ var alwanChannels = [
 // ==========================================
 // 3. جدول الأقسام
 // ==========================================
-var ROWS = [
+var channelRows = [
+    { label: 'BEIN SPORTS', channels: beinMultiQualities, special: false },
+    { label: 'OSN', channels: osnChannels, special: false },
+    { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
     { label: 'BEIN متعددة (سيرفر 1)', channels: beinMultiQualities1, special: false },
     { label: 'BEIN متعددة (سيرفر 2)', channels: beinMultiQualities2, special: false },
     { label: 'bein', channels: beinChannels, special: false },
