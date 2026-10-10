@@ -336,20 +336,22 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
 .row-label { background: #000; }
 
 /* ===== تخصيص أزرار صفوف ثمانية (TS + HLS) ===== */
-/* خلفية سوداء نقية + نص أبيض مكبّر + أيقونة أكبر */
+/* نفس مقاس beIN تماماً + خلفية سوداء + نص أبيض */
 .ch.thamanya-ch {
     background: #000000;
     border: 1px solid #2a2a2a;
     color: #ffffff;
-    font-size: 15px;
+    width: 72px;
+    min-width: 72px;
+    height: 36px;
+    padding: 3px 6px;
+    gap: 4px;
+    font-size: 12px;
     font-weight: 700;
-    min-width: 85px;
-    height: 40px;
-    padding: 0 12px;
-    gap: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 .ch.thamanya-ch:hover {
     background: #1a1a1a;
@@ -362,14 +364,14 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     box-shadow: 0 0 0 1px #60a5fa inset;
 }
 .ch.thamanya-ch img {
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
     display: block;
 }
 .ch.thamanya-ch span {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 1;
 }
