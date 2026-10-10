@@ -79,18 +79,18 @@ var beinMultiQualities = [
 ];
 
 var osnChannels = [
-    { n: "OSN Movies HD", u: `${ta2alBase}1848.ts`, t: "ts" },
-    { n: "OSN Movies First HD", u: `${ta2alBase}1851.ts`, t: "ts" },
-    { n: "OSN Action HD", u: `${ta2alBase}1849.ts`, t: "ts" },
+    { n: "OSN Movies", u: `${ta2alBase}1848.ts`, t: "ts" },
+    { n: "OSN Movies First", u: `${ta2alBase}1851.ts`, t: "ts" },
+    { n: "OSN Action", u: `${ta2alBase}1849.ts`, t: "ts" },
     { n: "OSN Yahala Cinema", u: `${ta2alBase}1852.ts`, t: "ts" },
-    { n: "OSN Yahala HD", u: `${ta2alBase}1854.ts`, t: "ts" },
-    { n: "OSN Series HD", u: `${ta2alBase}1847.ts`, t: "ts" },
-    { n: "OSN Comedy HD", u: `${ta2alBase}1845.ts`, t: "ts" },
-    { n: "OSN Discovery HD", u: `${ta2alBase}1860.ts`, t: "ts" },
-    { n: "OSN History HD", u: `${ta2alBase}1857.ts`, t: "ts" },
-    { n: "OSN Disney HD", u: `${ta2alBase}1867.ts`, t: "ts" },
-    { n: "OSN Nick Jr HD", u: `${ta2alBase}1865.ts`, t: "ts" },
-    { n: "OSN Kids Zone HD", u: `${ta2alBase}1864.ts`, t: "ts" }
+    { n: "OSN Yahala", u: `${ta2alBase}1854.ts`, t: "ts" },
+    { n: "OSN Series", u: `${ta2alBase}1847.ts`, t: "ts" },
+    { n: "OSN Comedy", u: `${ta2alBase}1845.ts`, t: "ts" },
+    { n: "OSN Discovery", u: `${ta2alBase}1860.ts`, t: "ts" },
+    { n: "OSN History", u: `${ta2alBase}1857.ts`, t: "ts" },
+    { n: "OSN Disney", u: `${ta2alBase}1867.ts`, t: "ts" },
+    { n: "OSN Nick Jr", u: `${ta2alBase}1865.ts`, t: "ts" },
+    { n: "OSN Kids Zone", u: `${ta2alBase}1864.ts`, t: "ts" }
 ];
 
 var tamanyaSportTsChannels = [
@@ -444,37 +444,27 @@ var playChannels = [
 ];
 
 var entertainmentChannels = [
-    { n: "BeIN Movies HD1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/40773.ts", t: "ts" },
-    { n: "BeIN Movies HD2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35030.ts", t: "ts" },
-    { n: "BeIN Movies HD3", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35029.ts", t: "ts" },
-    { n: "BeIN Movies HD4", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35028.ts", t: "ts" },
-    { n: "BeIN Drama HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35026.ts", t: "ts" },
-    { n: "BeIN Series HD1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35024.ts", t: "ts" },
-    { n: "BeIN Series HD2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/176897.ts", t: "ts" },
-    { n: "BeIN AD Nat Geo HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/595709.ts", t: "ts" },
-    { n: "BeIN Nat Geographic HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/595705.ts", t: "ts" },
-    { n: "BeIN Nat Geo Wild HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/595706.ts", t: "ts" },
-    { n: "BeIN Discovery HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/56834.ts", t: "ts" },
-    { n: "BeIN Discovery Family HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/56201.ts", t: "ts" },
-    { n: "BeIN BBC EARTH HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/196053.ts", t: "ts" },
-    { n: "BeIN Boomerang HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35016.ts", t: "ts" },
-    { n: "BeIN فتافيت HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/64588.ts", t: "ts" },
-    { n: "BeIN FOOD NETWORK HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/84845.ts", t: "ts" },
-    { n: "BeIN FOX MOVIES ACTION HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/196050.ts", t: "ts" },
-    { n: "BeIN Gourmet HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/64589.ts", t: "ts" },
-    { n: "BeiN HGTV (HD)", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/91888.ts", t: "ts" },
-    { n: "BeIN JEEM HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35023.ts", t: "ts" },
-    { n: "BeIN Baraem HD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/35025.ts", t: "ts" },
-    { n: "BEIN BOX OFFICE 1 FHD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785558.ts", t: "ts" },
-    { n: "BEIN BOX OFFICE 2 FHD", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785557.ts", t: "ts" },
-    { n: "افلام بين اود 1", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785556.ts", t: "ts" },
-    { n: "افلام بين اود 2", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785555.ts", t: "ts" },
-    { n: "بين اود 3 افلام", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785554.ts", t: "ts" },
-    { n: "بين اود 4 افلام", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785553.ts", t: "ts" },
-    { n: "بين اود 5 افلام", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785552.ts", t: "ts" },
-    { n: "بين اود 6 افلام", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785551.ts", t: "ts" },
-    { n: "افلام بين اود 7", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785550.ts", t: "ts" },
-    { n: "بين اود 8 افلام", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/785549.ts", t: "ts" }
+    { n: "Movies 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1936.ts", t: "ts" },
+    { n: "Movies 2", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1935.ts", t: "ts" },
+    { n: "Movies 3", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1934.ts", t: "ts" },
+    { n: "Movies 4", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1933.ts", t: "ts" },
+    { n: "Drama 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1932.ts", t: "ts" },
+    { n: "Series 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1931.ts", t: "ts" },
+    { n: "Series 2", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1930.ts", t: "ts" },
+    { n: "star Life", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1929.ts", t: "ts" },
+    { n: "star film", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1926.ts", t: "ts" },
+    { n: "star Action", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1925.ts", t: "ts" },
+    { n: "star se", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1920.ts", t: "ts" },
+    { n: "Star World", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1924.ts", t: "ts" },
+    { n: "Star Movies", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1923.ts", t: "ts" },
+    { n: "Gourmet", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1922.ts", t: "ts" },
+    { n: "Fatafeat", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1921.ts", t: "ts" },
+    { n: "Baraem", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1917.ts", t: "ts" },
+    { n: "jeem", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1916.ts", t: "ts" },
+    { n: "Baby", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1915.ts", t: "ts" },
+    { n: "Travel", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1914.ts", t: "ts" },
+    { n: "Carton Network", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1913.ts", t: "ts" },
+    { n: "Boomerang", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1912.ts", t: "ts" }
 ];
 
 var fajerChannels = [
