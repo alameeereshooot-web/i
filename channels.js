@@ -1,7 +1,13 @@
 // ==========================================
-// 1. باقة beIN SPORTS (من 1 إلى 6 فقط) - متعددة الجودات
+// 1. المتغيرات الأساسية وروابط السيرفرات
 // ==========================================
 const ta2alBase = "https://l.alameeeretv.workers.dev/?url=http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/";
+const gamerdzBaseUrl1 = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
+const gamerdzBaseUrl2 = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
+
+// ==========================================
+// 2. مصفوفات القنوات
+// ==========================================
 
 var beinMultiQualities = [
     {
@@ -72,9 +78,6 @@ var beinMultiQualities = [
     }
 ];
 
-// ==========================================
-// 2. باقة OSN الجديدة
-// ==========================================
 var osnChannels = [
     { n: "OSN Movies HD", u: `${ta2alBase}1848.ts`, t: "ts" },
     { n: "OSN Movies First HD", u: `${ta2alBase}1851.ts`, t: "ts" },
@@ -90,9 +93,6 @@ var osnChannels = [
     { n: "OSN Kids Zone HD", u: `${ta2alBase}1864.ts`, t: "ts" }
 ];
 
-// ==========================================
-// 3. باقة ثمانية سبورت (TS القديمة)
-// ==========================================
 var tamanyaSportTsChannels = [
     { n: "ثمانية 1 SD", u: `${ta2alBase}560245.ts`, t: "ts" },
     { n: "ثمانية 1 HQ", u: `${ta2alBase}739003.ts`, t: "ts" },
@@ -104,11 +104,6 @@ var tamanyaSportTsChannels = [
     { n: "ثمانية 3 HQ", u: `${ta2alBase}867094.ts`, t: "ts" },
     { n: "ثمانية 3 HD", u: `${ta2alBase}140439.ts`, t: "ts" }
 ];
-
-// ==========================================
-// 4. باقة beIN MULTI (GamerDZ - سيرفر 1 TS)
-// ==========================================
-const gamerdzBaseUrl1 = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
 
 var beinMultiQualities1 = [
     {
@@ -212,11 +207,6 @@ var beinMultiQualities1 = [
         ]
     }
 ];
-
-// ==========================================
-// 5. باقة beIN MULTI (GamerDZ - سيرفر 2 HLS)
-// ==========================================
-const gamerdzBaseUrl2 = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
 
 var beinMultiQualities2 = [
     {
@@ -341,9 +331,6 @@ var beinMultiQualities2 = [
     }
 ];
 
-// ==========================================
-// 6. باقي مصفوفات القنوات الفردية
-// ==========================================
 var beinChannels = [
     { n: "bein 1 HD", u: "https://mainnew.fiberlive.live:8443/live/D8550E7ACCB1/775371713/50.m3u8", t: "hls" },
     { n: "bein 2 HD", u: "https://mainnew.fiberlive.live:8443/live/D8550E7ACCB1/775371713/51.m3u8", t: "hls" },
@@ -542,7 +529,7 @@ var alwanChannels = [
 ];
 
 // ==========================================
-// 7. جدول الأقسام (كل مصفوفة في صف مستقل بدون تكرار)
+// 3. جدول الأقسام النهائي
 // ==========================================
 var channelRows = [
     { label: 'BEIN SPORTS', channels: beinMultiQualities, special: false },
