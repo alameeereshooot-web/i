@@ -444,27 +444,27 @@ var playChannels = [
 ];
 
 var entertainmentChannels = [
-    { n: "Movies 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1936.ts", t: "ts" },
-    { n: "Movies 2", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1935.ts", t: "ts" },
-    { n: "Movies 3", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1934.ts", t: "ts" },
-    { n: "Movies 4", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1933.ts", t: "ts" },
-    { n: "Drama 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1932.ts", t: "ts" },
-    { n: "Series 1", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1931.ts", t: "ts" },
-    { n: "Series 2", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1930.ts", t: "ts" },
-    { n: "star Life", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1929.ts", t: "ts" },
-    { n: "star film", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1926.ts", t: "ts" },
-    { n: "star Action", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1925.ts", t: "ts" },
-    { n: "star se", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1920.ts", t: "ts" },
-    { n: "Star World", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1924.ts", t: "ts" },
-    { n: "Star Movies", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1923.ts", t: "ts" },
-    { n: "Gourmet", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1922.ts", t: "ts" },
-    { n: "Fatafeat", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1921.ts", t: "ts" },
-    { n: "Baraem", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1917.ts", t: "ts" },
-    { n: "jeem", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1916.ts", t: "ts" },
-    { n: "Baby", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1915.ts", t: "ts" },
-    { n: "Travel", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1914.ts", t: "ts" },
-    { n: "Carton Network", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1913.ts", t: "ts" },
-    { n: "Boomerang", u: "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/1912.ts", t: "ts" }
+    { n: "Movies 1", u: `${ta2alBase}1936.ts`, t: "ts" },
+    { n: "Movies 2", u: `${ta2alBase}1935.ts`, t: "ts" },
+    { n: "Movies 3", u: `${ta2alBase}1934.ts`, t: "ts" },
+    { n: "Movies 4", u: `${ta2alBase}1933.ts`, t: "ts" },
+    { n: "Drama 1", u:`${ta2alBase}1932.ts`, t: "ts" },
+    { n: "Series 1", u: `${ta2alBase}1931.ts`, t: "ts" },
+    { n: "Series 2", u: `${ta2alBase}1930.ts`, t: "ts" },
+    { n: "star Life", u: `${ta2alBase}1929.ts`, t: "ts" },
+    { n: "star film", u: `${ta2alBase}1926.ts`, t: "ts" },
+    { n: "star Action", u: `${ta2alBase}1925.ts`, t: "ts" },
+    { n: "star se", u: `${ta2alBase}1920.ts`, t: "ts" },
+    { n: "Star World", u: `${ta2alBase}1924.ts`, t: "ts" },
+    { n: "Star Movies", u: `${ta2alBase}1923.ts`, t: "ts" },
+    { n: "Gourmet", u: `${ta2alBase}1922.ts`, t: "ts" },
+    { n: "Fatafeat", u: `${ta2alBase}1921.ts`, t: "ts" },
+    { n: "Baraem", u: `${ta2alBase}1917.ts`, t: "ts" },
+    { n: "jeem", u: `${ta2alBase}1916.ts`, t: "ts" },
+    { n: "Baby", u: `${ta2alBase}1915.ts`, t: "ts" },
+    { n: "Travel", u: `${ta2alBase}1914.ts`, t: "ts" },
+    { n: "Carton Network", u: `${ta2alBase}1913.ts`, t: "ts" },
+    { n: "Boomerang", u: `${ta2alBase}1912.ts`, t: "ts" }
 ];
 
 var fajerChannels = [
