@@ -91,9 +91,9 @@ var osnChannels = [
 ];
 
 // ==========================================
-// 3. باقة ثمانية سبورت (THMANAYH)
+// 3. باقة ثمانية سبورت (TS القديمة)
 // ==========================================
-var tamanyaSportChannels = [
+var tamanyaSportTsChannels = [
     { n: "ثمانية 1 SD", u: `${ta2alBase}560245.ts`, t: "ts" },
     { n: "ثمانية 1 HQ", u: `${ta2alBase}739003.ts`, t: "ts" },
     { n: "ثمانية 1 HD", u: `${ta2alBase}696998.ts`, t: "ts" },
@@ -106,7 +106,7 @@ var tamanyaSportChannels = [
 ];
 
 // ==========================================
-// 1. القنوات متعددة الجودات (beIN 1 -> 9 - السيرفر الأول TS)
+// 4. باقة beIN MULTI (GamerDZ - سيرفر 1 TS)
 // ==========================================
 const gamerdzBaseUrl1 = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
 
@@ -214,7 +214,7 @@ var beinMultiQualities1 = [
 ];
 
 // ==========================================
-// 1. القنوات متعددة الجودات (beIN 1 -> 9 - السيرفر الثاني HLS)
+// 5. باقة beIN MULTI (GamerDZ - سيرفر 2 HLS)
 // ==========================================
 const gamerdzBaseUrl2 = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
 
@@ -342,7 +342,7 @@ var beinMultiQualities2 = [
 ];
 
 // ==========================================
-// 2. مصفوفات القنوات الأصلية
+// 6. باقي مصفوفات القنوات الفردية
 // ==========================================
 var beinChannels = [
     { n: "bein 1 HD", u: "https://mainnew.fiberlive.live:8443/live/D8550E7ACCB1/775371713/50.m3u8", t: "hls" },
@@ -359,7 +359,7 @@ var beinMultiChannels = [
     { n: "bein1", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F194432.m3u8", t: "hls" },
     { n: "bein2", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F618157.m3u8", t: "hls" },
     { n: "bein3", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F117974.m3u8", t: "hls" },
-    { n: "bein4", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F194432.m3u8", t: "hls" },
+    { n: "bein4", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F332578.m3u8", t: "hls" },
     { n: "bein5", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F332578.m3u8", t: "hls" }
 ];
 
@@ -498,22 +498,13 @@ var fajerChannels = [
     { n: "الفجر 5", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F1110.m3u8", t: "hls" }
 ];
 
-var tamanyaSportChannels = [
+var tamanyaSportHlsChannels = [
     { n: "ثمانية ١", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3455_.m3u8", t: "hls" },
     { n: "ثمانية ٢", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3454_.m3u8", t: "hls" },
     { n: "ثمانية ٣", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3453_.m3u8", t: "hls" },
     { n: "ثمانية 1 LOW", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F469683.m3u8", t: "hls" },
     { n: "ثمانية 2 LOW", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F126197.m3u8", t: "hls" },
     { n: "ثمانية 3 LOW", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F598188.m3u8", t: "hls" },
-    { n: "ثمانية 1 SD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F560245.m3u8", t: "hls" },
-    { n: "ثمانية 2 SD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F310421.m3u8", t: "hls" },
-    { n: "ثمانية 3 SD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F982038.m3u8", t: "hls" },
-    { n: "ثمانية 1 HQ", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F739003.m3u8", t: "hls" },
-    { n: "ثمانية 2 HQ", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F670314.m3u8", t: "hls" },
-    { n: "ثمانية 3 HQ", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F867094.m3u8", t: "hls" },
-    { n: "ثمانية 1 HD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F696998.m3u8", t: "hls" },
-    { n: "ثمانية 2 HD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F572066.m3u8", t: "hls" },
-    { n: "ثمانية 3 HD", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F140439.m3u8", t: "hls" },
     { n: "ثمانية 1 720", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F882115.m3u8", t: "hls" },
     { n: "ثمانية 2 720", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F785917.m3u8", t: "hls" },
     { n: "ثمانية 3 720", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F595243.m3u8", t: "hls" },
@@ -551,16 +542,17 @@ var alwanChannels = [
 ];
 
 // ==========================================
-// 3. جدول الأقسام
+// 7. جدول الأقسام (كل مصفوفة في صف مستقل بدون تكرار)
 // ==========================================
 var channelRows = [
     { label: 'BEIN SPORTS', channels: beinMultiQualities, special: false },
     { label: 'OSN', channels: osnChannels, special: false },
-    { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
+    { label: 'ثمانية سبورت (TS)', channels: tamanyaSportTsChannels, special: false },
+    { label: 'ثمانية سبورت (HLS)', channels: tamanyaSportHlsChannels, special: false },
     { label: 'BEIN متعددة (سيرفر 1)', channels: beinMultiQualities1, special: false },
     { label: 'BEIN متعددة (سيرفر 2)', channels: beinMultiQualities2, special: false },
-    { label: 'bein', channels: beinChannels, special: false },
-    { label: 'bein متعدد', channels: beinMultiChannels, special: true },
+    { label: 'bein الأصلية', channels: beinChannels, special: false },
+    { label: 'bein متعددة مفردة', channels: beinMultiChannels, special: true },
     { label: 'أخبار', channels: newsChannels, special: false },
     { label: 'mbc', channels: mbcNewChannels, special: false },
     { label: 'رياضة', channels: sportsChannels, special: false },
@@ -568,6 +560,5 @@ var channelRows = [
     { label: 'وقت اللعب', channels: playChannels, special: false },
     { label: 'ترفيه', channels: entertainmentChannels, special: false },
     { label: 'الفجر', channels: fajerChannels, special: false },
-    { label: 'ثمانية سبورت', channels: tamanyaSportChannels, special: false },
     { label: 'الوان', channels: alwanChannels, special: false }
 ];
