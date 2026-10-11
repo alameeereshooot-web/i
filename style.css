@@ -375,3 +375,18 @@ video.ff { object-fit: contain; transform: scaleY(0.72); transform-origin: cente
     font-weight: 700;
     line-height: 1;
 }
+/* تنسيق أزرار الشعارات المخصصة (ألوان والفجر) */
+.custom-logo-ch {
+  padding: 4px 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 64px !important;
+}
+.custom-logo-ch img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 28px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
