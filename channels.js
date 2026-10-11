@@ -4,7 +4,8 @@
 const ta2alBase = "https://l.alameeeretv.workers.dev/?url=http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/";
 const gamerdzBaseUrl1 = "https://x.gamerdz1517.com/live/00:1A:79:9A:B0:A8/smgo6jm8/";
 const gamerdzBaseUrl2 = "https://x.gamerdz1517.com/live/00:1A:79:c2:a0:33/hkgukywu/";
-const ta2alBase2 = "https://l.alameeeretv.workers.dev/?url=http://sa.xurvani.cfd:80/live/564500400/3839746022/";
+const server1Base = "https://i.m737217130.workers.dev/s1/live/";
+
 // ==========================================
 // 2. مصفوفات القنوات
 // ==========================================
@@ -510,11 +511,11 @@ var tamanyaSportHlsChannels = [
     { n: "ثمانية 3 4K", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F841733.m3u8", t: "hls" }
 ];
 var SoloSportChannels = [
-    { n: "solo 1", u: `${ta2alBase2}834440.m3u8`, t: "ts" },
-    { n: "solo 2", u: `${ta2alBase2}834436.m3u8`, t: "ts" },
-    { n: "solo 3", u: `${ta2alBase2}834432.m3u8`, t: "ts" },
-    { n: "solo 4", u: `${ta2alBase2}834428.m3u8`, t: "ts" },
-    { n: "solo 5", u: `${ta2alBase2}834424.m3u8`, t: "ts" }
+    { n: "solo 1", u: `${server1Base}834440.m3u8`, t: "ts" },
+    { n: "solo 2", u: `${server1Base}834436.m3u8`, t: "ts" },
+    { n: "solo 3", u: `${server1Base}834432.m3u8`, t: "ts" },
+    { n: "solo 4", u: `${server1Base}834428.m3u8`, t: "ts" },
+    { n: "solo 5", u: `${server1Base}834424.m3u8`, t: "ts" }
 ];  
 var alwanChannels = [
     { n: "الوان 1", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3461_.m3u8", t: "hls", logo: "logos/alwan-1.png" },
