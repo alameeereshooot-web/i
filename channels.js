@@ -510,12 +510,11 @@ var tamanyaSportHlsChannels = [
     { n: "ثمانية 3 4K", u: "https://l.alameeeretv.workers.dev/?url=http%3A%2F%2Fso.ta2al.us%3A80%2Flive%2FMH12ARBMH12%2FMH12ARBMH12%2F841733.m3u8", t: "hls" }
 ];
 var SoloSportChannels = [
-    { n: "solo 1", u: `${ta2alBase2}834440.ts`, t: "ts" },
-    { n: "solo 2", u: `${ta2alBase2}834436.ts`, t: "ts" },
-    { n: "solo 3", u: `${ta2alBase2}834432.ts`, t: "ts" },
-    { n: "solo 4", u: `${ta2alBase2}834428.ts`, t: "ts" },
-    { n: "solo 5", u: `${ta2alBase2}834424.ts`, t: "ts" },
-    { n: "solo F1", u: `${ta2alBase2}834416.ts`, t: "ts" }
+    { n: "solo 1", u: `${ta2alBase2}834440.m3u8`, t: "ts" },
+    { n: "solo 2", u: `${ta2alBase2}834436.m3u8`, t: "ts" },
+    { n: "solo 3", u: `${ta2alBase2}834432.m3u8`, t: "ts" },
+    { n: "solo 4", u: `${ta2alBase2}834428.m3u8`, t: "ts" },
+    { n: "solo 5", u: `${ta2alBase2}834424.m3u8`, t: "ts" }
 ];  
 var alwanChannels = [
     { n: "الوان 1", u: "https://l.alameeeretv.workers.dev/?url=https%3A%2F%2Fblcco.linkip.org%2Flive%2F3461_.m3u8", t: "hls", logo: "logos/alwan-1.png" },
