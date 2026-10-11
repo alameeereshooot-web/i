@@ -1,5 +1,0 @@
-logos/fajer-1.png
-logos/fajer-2.png
-logos/fajer-3.png
-logos/fajer-4.png
-logos/fajer-5.png
