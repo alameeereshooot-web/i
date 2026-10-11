@@ -434,7 +434,7 @@ var dashChannels = [
     }
 ];
 
-var ta2alBase = "http://so.ta2al.us:80/live/MH12ARBMH12/MH12ARBMH12/";
+var playChannels = [
     { n: "MBC Action", u: `${ta2alBase}1657.ts`, t: "ts" },
     { n: "SHAHID SPORT", u: `${ta2alBase}2475.ts`, t: "ts" },
     { n: "Al-wan 1", u: `${ta2alBase}3461.ts`, t: "ts", logo: "logos/alwan-1.png" },
