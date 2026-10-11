@@ -561,14 +561,23 @@ function buildChannels() {
             if (c.t === 'ts') cls += ' ts-ch';
             if (c.t === 'iframe') cls += ' iframe-ch';
             b.className = cls;
-                            if (ri === 0) {
+                                    if (c.logo) {
+          b.classList.add('custom-logo-ch');
+          var img = document.createElement('img');
+          img.src = c.logo;
+          img.alt = c.n;
+          img.style.maxHeight = '28px';
+          img.style.maxWidth = '60px';
+          img.style.objectFit = 'contain';
+          b.appendChild(img);
+        } else if (ri === 0) {
           b.classList.add('bein-logo-ch');
           var img = document.createElement('img');
           img.src = 'bein-' + (ci + 1) + '.png';
           img.alt = c.n;
           b.appendChild(img);
         } else if (row.label && row.label.indexOf('ثمانية') !== -1) {
-          b.classList.add('thamanya-ch');           // ✅ كلاس التخصيص الجديد
+          b.classList.add('thamanya-ch');
           b.style.display = 'inline-flex';
           b.style.alignItems = 'center';
           b.style.gap = '8px';
@@ -582,7 +591,6 @@ function buildChannels() {
         } else {
           b.textContent = c.n;
         }
-            b.id = 'ch-' + ri + '-' + ci;
             b.onclick = function () { load(ri, ci); };
             scroll.appendChild(b);
         });
