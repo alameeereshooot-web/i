@@ -542,6 +542,307 @@ var alwanChannels = [
     { n: "الوان UFC", u: "http://vip2.sharkhost.xyz/live/9143315182/7352465335/738884.m3u8", t: "hls" }
 ];
 
+const sscDashChannels = [
+  {
+    n: "SSC News",
+    u: "https://ssc-news-live-enc.edgenextcdn.net/out/v1/ef466f43623c4bbaa3f905b566ec35ea/index.mpd",
+    t: "dash",
+    clearkey: {
+      "3d04975236a44f62857d181597705ee6": "362133e9cb13189ad4fe095ced216f60"
+    }
+  },
+  {
+    n: "SSC 1 Sports",
+    u: "https://ssc-1-enc.edgenextcdn.net/out/v1/c696e4819b55414388a1a487e8a45ca1/index.mpd",
+    t: "dash",
+    clearkey: {
+      "d84c325f36814f39bbe59080272b10c3": "550727de4c96ef1ecff874905493580f"
+    }
+  },
+  {
+    n: "SSC 2 Sports",
+    u: "https://ssc-2-enc.edgenextcdn.net/out/v1/a16db2ec338a445a82d9c541cc9293f9/index.mpd",
+    t: "dash",
+    clearkey: {
+      "8bcfc55359e24bd7ad1c5560a96ddd3c": "b5dcf721ab522af92a9d3bf0bd55b596"
+    }
+  },
+  {
+    n: "SSC 3 Sports",
+    u: "https://ssc-3-enc.edgenextcdn.net/out/v1/42e86125555242aaa2a12056832e7814/index.mpd",
+    t: "dash",
+    clearkey: {
+      "7de5dd08ad8041d586c2f16ccc9490a1": "5e1503f3398b34f5099933fedab847ef"
+    }
+  },
+  {
+    n: "SSC 4 Sports",
+    u: "https://ssc-4-enc.edgenextcdn.net/out/v1/5267ea5772874b0db24559d643eaad93/index.mpd",
+    t: "dash",
+    clearkey: {
+      "5c672f6b85a94638872d0214f7806ed4": "bf8756fbb866ee2d5c701c2289dd8de3"
+    }
+  },
+  {
+    n: "SSC 5 Sports",
+    u: "https://ssc-5-enc.edgenextcdn.net/out/v1/99289eac5a7b4319905da595afbd792b/index.mpd",
+    t: "dash",
+    clearkey: {
+      "c88b512b17ab4f6cb09eb0ff4a1056ed": "adc08ee1c20a734972a55c9aebbd1888"
+    }
+  },
+  {
+    n: "SSC Extra 1",
+    u: "https://ssc-extra-1-enc.edgenextcdn.net/out/v1/647c58693f1d46af92bd7e69f17912cb/index.mpd",
+    t: "dash",
+    clearkey: {
+      "ecbc9e6fe6b145efb6658fb5cf7427f8": "03c17e28911f71221acbc0b11f900401"
+    }
+  },
+  {
+    n: "SSC Extra 2",
+    u: "https://ssc-extra-2-enc.edgenextcdn.net/out/v1/8b70de2b70d447ba8a7450ba90926a2d/index.mpd",
+    t: "dash",
+    clearkey: {
+      "4d89249bd4ca4ebc9e70443265f9507d": "cf074ffd2646c9c2f8513b47fa57bc30"
+    }
+  },
+  {
+    n: "SSC Extra 3",
+    u: "https://ssc-extra-2-enc.edgenextcdn.net/out/v1/8f1c6c3f05ef4284a64b342891bd85ae/index.mpd",
+    t: "dash",
+    clearkey: {
+      "73efb1eb27294f8ea059765b368f411b": "8af553e93bc5b20e828a14a7643e0c59"
+    }
+  }
+];
+
+const thmaneyahDashChannels = [
+  {
+    n: "ثمانية 1",
+    u: "https://scccrwb-live.cdn.intigral-ott.net/bpk-tv/STCT1/wv-pr/manifest.mpd",
+    t: "dash",
+    clearkey: {
+      "714c789c76686632652eefc19f18c3db": "962cee49ee9422b44a6c60a7999854ad"
+    }
+  },
+  {
+    n: "ثمانية 2",
+    u: "https://scccrwb-live.cdn.intigral-ott.net/bpk-tv/STCT2/wv-pr/manifest.mpd",
+    t: "dash",
+    clearkey: {
+      "97e293d59ed72db87f12fe7075d8bb4c": "c633955e4477ed5acbae68a2b0f1d216"
+    }
+  },
+  {
+    n: "ثمانية 3",
+    u: "https://scccrwb-live.cdn.intigral-ott.net/bpk-tv/STCT3/wv-pr/manifest.mpd",
+    t: "dash",
+    clearkey: {
+      "4bc8e4e871589a45e7c0c7d245c243c6": "4c5e8108e0f3cea4b588f5727d3de482"
+    }
+  }
+];
+
+const artDashChannels = [
+  {
+    n: "Art Aflam",
+    u: "https://ev-tcn-dxb-cdn.aws.playco.com/live/eds/ART_Aflam/DASH/ART_Aflam.mpd",
+    t: "dash",
+    clearkey: {
+      "47425a7e8f7e4030d186559852ae97db": "264e7cb9dfd6b9e5c281c97db4c2b4fa"
+    }
+  },
+  {
+    n: "Art Aflam 1",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/ART_Aflam/DASH/ART_Aflam.mpd",
+    t: "dash",
+    clearkey: {
+      "264e7cb9dfd6b9e5c281c97db4c2b4fa": "47425a7e8f7e4030d186559852ae97db"
+    }
+  },
+  {
+    n: "Art Aflam 2",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/ART_Aflam_2/DASH/ART_Aflam_2.mpd",
+    t: "dash",
+    clearkey: {
+      "809a386e57689d56c01a5c3190889641": "d54639bb7d418d515e5198663a6d7ae5"
+    }
+  },
+  {
+    n: "Art Cinema",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/ART_Cinema/DASH/ART_Cinema.mpd",
+    t: "dash",
+    clearkey: {
+      "bd484fc91dcf152010a0e367e15ab60e": "d9bed0a77b7da410129820bcc6606670"
+    }
+  },
+  {
+    n: "Art Hekayat 1",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/ART_Hekayat/DASH/ART_Hekayat.mpd",
+    t: "dash",
+    clearkey: {
+      "3d614bb04140eda383d117fb55e9a361": "b669cdf2cb65eff56d1e3534c7a54b53"
+    }
+  },
+  {
+    n: "Art Hekayat 2",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/ART_Hekayat_2/DASH/ART_Hekayat_2.mpd",
+    t: "dash",
+    clearkey: {
+      "4ccb01903d6868e27953ff0298d4ac05": "d156518d6ab453d9f9d12c243280be8f"
+    }
+  }
+];
+
+const starzDashChannels = [
+  {
+    n: "Starzplay 1",
+    u: "https://sps1.starzplayarabia.com/out/v1/eee188845e9543699fd24e5a9890c6e2/index.mpd",
+    t: "dash",
+    clearkey: {
+      "b253c726c24c7c94a3ddf9b1907e2c76": "097963d6ad73c3d712a104981de0ed42"
+    }
+  },
+  {
+    n: "Starzplay 2",
+    u: "https://sps2.starzplayarabia.com/out/v1/15e7d1ffb99746dda03f71dbbbc3c08b/index.mpd",
+    t: "dash",
+    clearkey: {
+      "ee861edcd99093153a763a94b14c2c5a": "ab3991f6a7729ba1ea4bcdba0c1ae6c0"
+    }
+  },
+  {
+    n: "Starzplay 3",
+    u: "https://sps3.starzplayarabia.com/out/v1/95528122fa434bcd948c9ed2e7afabee/index.mpd",
+    t: "dash",
+    clearkey: {
+      "117c29396ec6fd295880013241a466e1": "3dfb883251884e66d784111877c44b13"
+    }
+  }
+];
+
+const shahidDashChannels = [
+  {
+    n: "Shahid Sport 1",
+    u: "https://shahid-sports-1-enc.edgenextcdn.net/out/v1/0169cfa282614ebe97ef0201da87bb04/index.mpd",
+    t: "dash",
+    clearkey: {
+      "ab081a704aad41829b1123b09b6ecafd": "dd51609092fff15e68b91debf5d591f9"
+    }
+  },
+  {
+    n: "Shahid Sport 2",
+    u: "https://shahid-sports-2-enc.edgenextcdn.net/out/v1/589aa6b16ce942388695b5b214f4ae93/index.mpd",
+    t: "dash",
+    clearkey: {
+      "50a7f3afc00a40b38face4db639d0e4c": "ad7000691326064706281a700b7d6714"
+    }
+  },
+  {
+    n: "Shahid Sport 3",
+    u: "https://shahid-sports-3-enc.edgenextcdn.net/out/v1/2658c96bbfa54f339e357fe36361587e/index.mpd",
+    t: "dash",
+    clearkey: {
+      "2b6f6b340aa8467785e4e82f9320fb5a": "8889701d704078c4d910ed1409413d9b"
+    }
+  },
+  {
+    n: "Shahid Sport 4",
+    u: "https://shahid-sports-4-enc.edgenextcdn.net/out/v1/f813ab47644d4c41a99285513f6c7409/index.mpd",
+    t: "dash",
+    clearkey: {
+      "6477160076644679af1028534f03f67e": "1267f99705113a62c7782c4d5281a7eb"
+    }
+  },
+  {
+    n: "Shahid Sport 5",
+    u: "https://shahid-sports-5-enc.edgenextcdn.net/out/v1/ae00715d1c2c4432852b44a254c04a3d/index.mpd",
+    t: "dash",
+    clearkey: {
+      "e2df3c205b674360bc6f364ba1090e70": "93da2c77bc812bc05a6e20ad8d35ea78"
+    }
+  }
+];
+
+const arabicDashChannels = [
+  {
+    n: "CN Arabia",
+    u: "https://scccrwb-live.cdn.intigral-ott.net/bpk-tv/CNA/wv-pr/manifest.mpd",
+    t: "dash",
+    clearkey: {
+      "ece7bbc683eb35d1e6b3e32cccbd8fb0": "f72bd6ea26e243524d58993b58122313"
+    }
+  },
+  {
+    n: "MBC Plus Variety",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/MBC_Plus_Variety_HD/DASH/MBC_Plus_Variety_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "a458dbbe9cb445d92a27fb45cd371be7": "b00f2e592b5bbade5beaa61e3aee7b32"
+    }
+  },
+  {
+    n: "MBC 2",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/MBC_2HD/DASH/MBC_2HD.mpd",
+    t: "dash",
+    clearkey: {
+      "535b41e50f71d5dcdd7b61685500980f": "864e981865940ef26cde333a1a8be344"
+    }
+  },
+  {
+    n: "MBC Max",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/MBC_Max_HD/DASH/MBC_Max_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "d995e35f26a3f5ad83f783272d33d956": "5e065664006dfd499957b7a4324c8a4f"
+    }
+  },
+  {
+    n: "MBC Elife",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/MBC_Plus_eLife_HD/DASH/MBC_Plus_eLife_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "867c8d7670eab5e7aa10571830ad3d8c": "030cf68626950b12145bc7147d6a9bda"
+    }
+  },
+  {
+    n: "MBC Action",
+    u: "https://ev-fast-mpd.starzplayarabia.com/live/eds/MBC_Action_HD/DASH/MBC_Action_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "d889ec7cb5cd8acb44f702726a56ae21": "37be04cfb92f19ecd6074b976c1f3c54"
+    }
+  }
+];
+
+const ksaSportDashChannels = [
+  {
+    n: "KSA Sport 1",
+    u: "https://ev-tcn-dxb-cdn.aws.playco.com/live/eds/KSA_Sports1_HD/DASH/KSA_Sports1_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "a0723ff5bf2bbbb31dc727e4346b1cc7": "29951a0a48586258ab168f26b3f58daa"
+    }
+  },
+  {
+    n: "KSA Sport 2",
+    u: "https://ev-tcn-dxb-cdn.aws.playco.com/live/eds/KSA_Sports2_HD/DASH/KSA_Sports2_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "f7142ef5a9d7b8ef1044232e74605e91": "f36d37064c1109c107ffab95c0f7532d"
+    }
+  },
+  {
+    n: "KSA Sport 3",
+    u: "https://ev-fuj-dxb-cdn-edge2.aws.playco.com/live/eds/KSA_Sports3_HD/DASH/KSA_Sports3_HD.mpd",
+    t: "dash",
+    clearkey: {
+      "637dc9620732d390ab2df32e070256f0": "0e47bb47e90258b5f392f8ecb54a8b22"
+    }
+  }
+];
+
 // ==========================================
 // 3. جدول الأقسام النهائي
 // ==========================================
@@ -562,6 +863,13 @@ var ROWS = [
     { label: 'ترفيه', channels: entertainmentChannels, special: false },
     { label: 'الفجر', channels: fajerChannels, special: false },
     { label: 'solo sport', channels: SoloSportChannels, special: false },
-    { label: 'الوان', channels: alwanChannels, special: false }
+    { label: 'الوان', channels: alwanChannels, special: false },
+    { label: "ssc Dash", ico: "⚽", channels: sscDashChannels },
+    { label: "thmaneyah Dash", ico: "📡", channels: thmaneyahDashChannels },
+    { label: "art Dach", ico: "🎭", channels: artDashChannels },
+    { label: "ستارز Dach", ico: "⭐", channels: starzDashChannels },
+    { label: "Shahid Dach", ico: "📺", channels: shahidDashChannels },
+    { label: "قنوات عربية", ico: "📺", channels: arabicDashChannels },
+    { label: "KSA Sport Dach", ico: "🇸🇦", channels: ksaSportDashChannels }
 ];
 var channelRows = ROWS;
